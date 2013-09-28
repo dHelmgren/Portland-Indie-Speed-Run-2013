@@ -1,5 +1,5 @@
-__author__ = 'Devin'
-
+__author__ = 'Devin & Stan'
+import pygame
 import Inventory
 
 ##
@@ -19,5 +19,10 @@ class Game(object):
     #
     #
     def __init__(self):
-        self.inventory = Inventory()
+        pygame.init()
+        #self.inventory = Inventory()
+        size = (500, 500) #(width, height)
+        self.screen = pygame.display.set_mode(size)
 
+
+a = Game()
