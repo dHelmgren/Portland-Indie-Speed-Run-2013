@@ -20,7 +20,7 @@ class Game(object):
     #
     def __init__(self):
         pygame.init()
-        #self.inventory = Inventory()
+        self.inventory = Inventory.Inventory()           ######WE GOTTA FIX IT
         size = (500, 500) #(width, height)
         self.screen = pygame.display.set_mode(size)
 
