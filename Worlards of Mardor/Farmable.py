@@ -7,12 +7,12 @@ import math
 #unit stat lookup
 #stats ordered as follows (turnout, time, cost, sellPrice, hardiness, consumption, stacks, maxStacks, output)
 UNIT_STATS = []
-UNIT_STATS.append((8, 2, 100, 100, 0, 0, 1, None, None))  #BLOODROOT
-UNIT_STATS.append((6, 3, 200, 300, 0, 0, 1, None, None))  #SCREAMING_FUNGUS
-UNIT_STATS.append((1, 6, 400, 800, 0, 0, 1, None, None))  #ORCWORT
+UNIT_STATS.append((8, 2, 100, 100, 0, 0, 0, None, None))  #BLOODROOT
+UNIT_STATS.append((6, 3, 200, 300, 0, 0, 0, None, None))  #SCREAMING_FUNGUS
+UNIT_STATS.append((1, 6, 400, 800, 0, 0, 0, None, None))  #ORCWORT
 UNIT_STATS.append((.2, 3, 300, 50, 0, 1, 2, 80, None))  #PLAGUE_TOAD
 UNIT_STATS.append((10, 7, 800, 400, 0, 4, 2, 8, None))  #DIRE_RAT
-UNIT_STATS.append((0, 7, 1000, 0, 0, 0, 0, 0, 0))  #GOBLIN
+UNIT_STATS.append((0, 7, 1000, 0, 0, 2, 0, 0, 0))  #GOBLIN
 
 ##
 #Farmable
@@ -58,7 +58,7 @@ class Farmable(object):
     ##
     def updateStacks(self):
         #Update the size of the population
-        self.stacks = math.trunc(self.stacks* 1.5)
+        self.stacks = math.floor(self.stacks * 1.5)
         #don't let it exceed the capacity
         if self.stacks > self.maxStacks:
             self.stacks = self.maxStacks
@@ -71,5 +71,11 @@ class Farmable(object):
         #decrease the number of turns until the object is "done"
         self.clock -= 1
 
+    def removeAStack(self):
+        self.stacks -= 1
+
+    ##
+    #printStats
+    #Description: prints information about the farmable
     def printStats(self):
         print((self.clock, self.stacks, self.type))

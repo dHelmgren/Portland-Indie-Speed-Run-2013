@@ -18,8 +18,10 @@ class Crop(Farmable):
 
     def readyForHarvest(self):
         self.harvestable = True
+        #a plant starts with 0 stacks, gains a stack when ready for harvest
+        self.stacks = 1
 
     def makeRuined(self):
         self.harvestable = False
-        #a plant starts with 1 stack, if ruined, it has none
-        self.stacks = 0
+        #a plant starts with 0 stack, if ruined, it has -1
+        self.stacks = -1

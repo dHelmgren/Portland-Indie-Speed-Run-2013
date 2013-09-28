@@ -63,19 +63,36 @@ class Game(object):
 
     def unitTest(self):
         self.inventory.addUnitPlot(1, Crop(BLOODROOT))
-        self.inventory.addUnitPlot(2, Crop(SCREAMING_FUNGUS))
-        self.inventory.addUnitPlot(3, Crop(ORCWORT))
-        self.inventory.addUnitPlot(4, Livestock(PLAGUE_TOAD))
-        self.inventory.addUnitPlot(5, Livestock(DIRE_RAT))
+        #self.inventory.addUnitPlot(2, Crop(SCREAMING_FUNGUS))
+        #self.inventory.addUnitPlot(3, Crop(ORCWORT))
+        #self.inventory.addUnitPlot(4, Livestock(PLAGUE_TOAD))
+        #self.inventory.addUnitPlot(5, Livestock(DIRE_RAT))
 
-        for num in [0,1,2,3,4,5,6,7,8,9,10,11]:
+        '''self.endTurn()
+        print(self.inventory.foodstuffs)
+        for unit in self.inventory.unitList:
+            if unit is not None:
+                Farmable.printStats(unit)
+        self.harvestPlot(1)
+        self.endTurn()
+        for unit in self.inventory.unitList:
+            if unit is not None:
+                Farmable.printStats(unit)
+        print(self.inventory.foodstuffs)
+        self.harvestPlot(1)
+        for unit in self.inventory.unitList:
+            if unit is not None:
+                Farmable.printStats(unit)
+        print(self.inventory.foodstuffs)'''
+
+        '''for num in [0,1,2,3,4,5,6,7,8,9,10,11]:
             print("Turn Number:")
             print(num)
             for unit in self.inventory.unitList:
                 if unit is not None:
                     Farmable.printStats(unit)
             print(self.inventory.foodstuffs)
-            self.updateState()
+            self.updateState()'''
 
 
 
@@ -84,16 +101,18 @@ class Game(object):
     #drawScreen
     #Description: Draws the side bar for the game including the blood vial, and relevant invs
     #
-    #
+    ##
+
     def drawScreen(self, screen):
         if self.state is DWELLINGS:
-            #draw our dwellings screen
+            #TODO: draw our dwellings screen
             do = "stuff"
+
         elif self.state is CROPS:
-            #draw our crops screen
+            #TODO: draw our crops screen
             do = "stuff"
         else:
-            #draw our shop screen
+            #TODO: draw our shop screen
             do = "stuff"
 
     ##
@@ -136,10 +155,43 @@ class Game(object):
             return False
 
     ##
+    #EVENT OUTCOME FUNCTIONS
+    ##
+
+    ##
+    #harvestPlot
+    #Description: when given a unitPlot, harvests a stack of that unit. If the last stack is harvested, the unit is
+    #   removed from the inventory, and foodstuffs are added to the inventory.
+    #
+    #Parameters:
+    #   unitID - the plot number which has been clicked
+    ##
+
+    def harvestPlot(self, unitID):
+        #if the target is valid...
+        if self.inventory.unitList[unitID] is not None:
+            #get the object and remove a stack
+            unitData = self.inventory.unitList[unitID]
+            if unitData.stacks > 0:
+                Farmable.removeAStack(unitData)
+                #based on the item's turnout, increase the number of foodstuffs
+                self.inventory.foodstuffs += unitData.turnout
+                #if there are no more stacks, that unit is depleted, remove it
+                if unitData.stacks == 0:
+                    self.inventory.removeUnitPlot(unitID)
+            elif unitData.stacks <= 0:
+                print("Not ready.")
+
+
+
+
+    ##
     #endTurn
     #Description: Do all of our cool end-turn thingies
+    ##
     def endTurn(self):
         print "End turn button pressed!"
+        self.updateState()
 
 a = Game()
 a.unitTest()
