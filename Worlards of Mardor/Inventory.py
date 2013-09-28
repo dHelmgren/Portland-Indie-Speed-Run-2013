@@ -1,5 +1,9 @@
 __author__ = 'Devin & Stan'
 
+from Worker import *
+from Crop import *
+from Livestock import *
+from Constants import *
 ##
 #Inventory
 #Description: This file holds all the relevant information about a player's inventory
@@ -24,6 +28,7 @@ class Inventory(object):
         self.favor = 0.5
         self.foodstuffs = 10
         self.unitList = []
+        self.unitList.append(Worker(GOBLIN))
         self.maxUnits = 6
 
     #this will need getter and setter methods for each variable

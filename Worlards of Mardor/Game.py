@@ -2,6 +2,8 @@ __author__ = 'Devin & Stan'
 import pygame
 import Inventory
 import sys
+from Constants import *
+
 
 ##
 #Game

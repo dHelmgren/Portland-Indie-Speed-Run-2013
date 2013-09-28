@@ -17,9 +17,4 @@ DIRE_RAT = 4
 #Worker Types
 GOBLIN = 5
 
-#Unit Stat Lookup list
 
-UNIT_STATS = []
-UNIT_STATS.append((0, 0, 100, 0, 0, None, None))#BLOODROOT
-UNIT_STATS.append((0, 0, 200, 0, 0, None, None))#SCREAMING_FUNGUS
-UNIT_STATS.append((0, 0, 400, 0, 0, None, None))#ORCWORT
