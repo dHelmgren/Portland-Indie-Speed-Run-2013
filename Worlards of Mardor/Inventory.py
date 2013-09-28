@@ -1,4 +1,4 @@
-__author__ = 'Devin'
+__author__ = 'Devin & Stan'
 
 ##
 #Inventory
@@ -20,11 +20,11 @@ class Inventory(object):
     #
     ##
     def __init__(self):
-        blood = 300
-        favor = 0.5
-        foodstuffs = 10
-        unitList = []
-        maxUnits = 6
+        self.blood = 300
+        self.favor = 0.5
+        self.foodstuffs = 10
+        self.unitList = []
+        self.maxUnits = 6
 
     #this will need getter and setter methods for each variable
 
