@@ -77,8 +77,19 @@ class Game(object):
         vial = pygame.image.load("bloodvial.png")
         rect = vial.get_rect()
         rect = rect.move([710, 0])  #move the vial to the right side of the screen
-
         screen.blit(vial, rect)
+
+        blood = pygame.image.load("bloodicon.png")
+        rect = blood.get_rect()
+        rect = rect.move([715, 400])  #move the blood drop to the right side of the screen
+        screen.blit(blood, rect)
+
+        food = pygame.image.load("foodicon.png")
+        rect = food.get_rect()
+        rect = rect.move([715, 500])  #move the blood drop to the right side of the screen
+        screen.blit(food, rect)
+
+
 
 a = Game()
 while True:
@@ -86,10 +97,9 @@ while True:
         if event.type == pygame.QUIT: sys.exit()
 
     musicPlaying = pygame.mixer.get_busy()
-
     if not musicPlaying:
         song = pygame.mixer.Sound("MoonlightHall.mp3")
-        song.play(0, 6000)
+        song.play()
 
     a.screen.fill((0, 0, 0))
     a.drawScreen(a.screen)
