@@ -68,31 +68,31 @@ class Game(object):
         #self.inventory.addUnitPlot(4, Livestock(PLAGUE_TOAD))
         #self.inventory.addUnitPlot(5, Livestock(DIRE_RAT))
 
-        '''self.endTurn()
-        print(self.inventory.foodstuffs)
-        for unit in self.inventory.unitList:
-            if unit is not None:
-                Farmable.printStats(unit)
-        self.harvestPlot(1)
-        self.endTurn()
-        for unit in self.inventory.unitList:
-            if unit is not None:
-                Farmable.printStats(unit)
-        print(self.inventory.foodstuffs)
-        self.harvestPlot(1)
-        for unit in self.inventory.unitList:
-            if unit is not None:
-                Farmable.printStats(unit)
-        print(self.inventory.foodstuffs)'''
+        # self.endTurn()
+        # print(self.inventory.foodstuffs)
+        # for unit in self.inventory.unitList:
+        #     if unit is not None:
+        #         Farmable.printStats(unit)
+        # self.harvestPlot(1)
+        # self.endTurn()
+        # for unit in self.inventory.unitList:
+        #     if unit is not None:
+        #         Farmable.printStats(unit)
+        # print(self.inventory.foodstuffs)
+        # self.harvestPlot(1)
+        # for unit in self.inventory.unitList:
+        #     if unit is not None:
+        #         Farmable.printStats(unit)
+        # print(self.inventory.foodstuffs)
 
-        '''for num in [0,1,2,3,4,5,6,7,8,9,10,11]:
-            print("Turn Number:")
-            print(num)
-            for unit in self.inventory.unitList:
-                if unit is not None:
-                    Farmable.printStats(unit)
-            print(self.inventory.foodstuffs)
-            self.updateState()'''
+        # for num in [0,1,2,3,4,5,6,7,8,9,10,11]:
+        #     print("Turn Number:")
+        #     print(num)
+        #     for unit in self.inventory.unitList:
+        #         if unit is not None:
+        #             Farmable.printStats(unit)
+        #     print(self.inventory.foodstuffs)
+        #     self.updateState()
 
 
 
@@ -180,9 +180,53 @@ class Game(object):
                 if unitData.stacks == 0:
                     self.inventory.removeUnitPlot(unitID)
             elif unitData.stacks <= 0:
-                print("Not ready.")
+                print("Not ready to harvest.")
 
+    ##
+    #sellPlot
+    #Description: sells a in order to add to our currency
+    #
+    #Parameter:
+    #   unitID - the plot number which has been clicked
+    ##
 
+    def sellPlot(self, unitID):
+        #if the target is valid...
+        if self.inventory.unitList[unitID] is not None:
+            #get the object and remove a stack
+            unitData = self.inventory.unitList[unitID]
+            if unitData.stacks > 0:
+                Farmable.removeAStack(unitData)
+                #based on the item's turnout, increase the blood in our funds
+                self.inventory.blood += unitData.sellPrice
+                #if there are no more stacks, that unit is depleted, remove it
+                if unitData.stacks == 0:
+                    self.inventory.removeUnitPlot(unitID)
+            elif unitData.stacks <= 0:
+                print("Not ready to sell.")
+
+    ##
+    #sacrificePlot
+    #Description: sacrifices a plot order to add to our tithe
+    #
+    #Parameter:
+    #   unitID - the plot number which has been clicked
+    ##
+
+    def sacrificePlot(self, unitID):
+        #if the target is valid...
+        if self.inventory.unitList[unitID] is not None:
+            #get the object and remove a stack
+            unitData = self.inventory.unitList[unitID]
+            if unitData.stacks > 0:
+                Farmable.removeAStack(unitData)
+                #based on the item's turnout, increase the blood in our funds
+                self.inventory.tithe += unitData.sellPrice
+                #if there are no more stacks, that unit is depleted, remove it
+                if unitData.stacks == 0:
+                    self.inventory.removeUnitPlot(unitID)
+            elif unitData.stacks <= 0:
+                print("Not ready to sell.")
 
 
     ##
