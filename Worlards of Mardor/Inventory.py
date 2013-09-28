@@ -10,6 +10,7 @@ from Constants import *
 #
 #Variables:
 #   blood - the amount of currency currently held by the
+#   tithe - the amount of blood given to the tithe so far
 #   favor - the amount of favor the player holds with their deity
 #   unitList[] - the units owned by the player
 #   foodstuffs - the amount of food that the player can give to their livestock and workers
@@ -26,6 +27,7 @@ class Inventory(object):
     ##
     def __init__(self):
         self.blood = 300
+        self.tithe = 0
         self.favor = 0.5
         self.foodstuffs = 10
         self.unitList = [None]*10
