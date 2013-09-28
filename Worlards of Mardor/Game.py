@@ -68,6 +68,15 @@ class Game(object):
         #self.inventory.addUnitPlot(4, Livestock(PLAGUE_TOAD))
         #self.inventory.addUnitPlot(5, Livestock(DIRE_RAT))
 
+        print(self.inventory.blood)
+        print(self.inventory.tithe)
+        print(self.inventory.foodstuffs)
+        self.sacrificePlot(0)
+        self.sellPlot(0)
+        self.harvestPlot(0)
+        print(self.inventory.blood)
+        print(self.inventory.tithe)
+        print(self.inventory.foodstuffs)
         # self.endTurn()
         # print(self.inventory.foodstuffs)
         # for unit in self.inventory.unitList:
@@ -226,12 +235,15 @@ class Game(object):
             if unitData.stacks > 0:
                 Farmable.removeAStack(unitData)
                 #based on the item's turnout, increase the blood in our funds
-                self.inventory.tithe += unitData.sellPrice
+                if isinstance(unitData, Worker):
+                    self.inventory.tithe += unitData.sellPrice * 2
+                else:
+                    self.inventory.tithe += unitData.sellPrice
                 #if there are no more stacks, that unit is depleted, remove it
                 if unitData.stacks == 0:
                     self.inventory.removeUnitPlot(unitID)
             elif unitData.stacks <= 0:
-                print("Not ready to sell.")
+                print("Not ready to sacrifice.")
 
 
     ##
