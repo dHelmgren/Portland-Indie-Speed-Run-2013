@@ -15,7 +15,7 @@ __author__ = 'Devin'
 class Farmable(object):
 
     def __init__(self, tur, tim, cos, sel, har):
-        self. turnout = tur
+        self.turnout = tur
         self.time = tim
         self.cost = cos
         self.sellPrice = sel
