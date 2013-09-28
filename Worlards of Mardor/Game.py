@@ -40,7 +40,14 @@ class Game(object):
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
 
+    def updateTithe(self):
+        self.titheFrac = "0/100"
 
+    def updateBlood(self):
+        self.bankNum = str(self.inventory.blood)
+
+    def updateFood(self):
+        self.foodNum = str(self.inventory.foodstuffs)
     ##
     #updateState
     #Description: Updates the state of the game and the inventory between turns. Is responsible for
@@ -154,12 +161,15 @@ class Game(object):
 
         numFont = pygame.font.SysFont("Lucidia Consol", 50)
 
+        self.updateTithe()
         titheLab = numFont.render(self.titheFrac, 1, (255, 0, 0))
         screen.blit(titheLab, (695, 275))
 
+        self.updateBlood()
         bankLab = numFont.render(self.bankNum, 1, (255, 0, 0))
         screen.blit(bankLab, (690, 380))
 
+        self.updateFood()
         foodLab = numFont.render(self.foodNum, 1, (255, 0, 0))
         screen.blit(foodLab, (690, 490))
 
