@@ -28,4 +28,4 @@ class Inventory(object):
 
     #this will need getter and setter methods for each variable
 
-    
+
