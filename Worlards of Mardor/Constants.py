@@ -5,6 +5,11 @@ __author__ = 'Devin'
 #Description: a list for all of the constants that are used in the game
 ##
 
+#Screen States
+SHOP = -3
+CROPS = -2
+DWELLINGS = -1
+
 #Crop Types
 BLOODROOT = 0
 SCREAMING_FUNGUS = 1

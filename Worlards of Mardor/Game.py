@@ -15,8 +15,8 @@ from Constants import *
 #
 #Variables:
 #   inventory - the player's inventory
-#
-#
+#   screen - The screen as it is shown to the player
+#   state - The state that the game is currently in
 #
 
 class Game(object):
@@ -30,6 +30,7 @@ class Game(object):
         self.inventory = Inventory.Inventory()
         size = (800, 640) #(width, height)
         self.screen = pygame.display.set_mode(size)
+        self.state = DWELLINGS
 
     ##
     #updateState
@@ -52,6 +53,22 @@ class Game(object):
                 whatShouldWeDo = "I don't know yet"
 
     ##
+    #drawScreen
+    #Description: Draws the side bar for the game including the blood vial, and relevant invs
+    #
+    #
+    def drawScreen(self, screen):
+        if self.state is DWELLINGS:
+            #draw our dwellings screen
+            do = "stuff"
+        elif self.state is CROPS:
+            #draw our crops screen
+            do = "stuff"
+        else:
+            #draw our shop screen
+            do = "stuff"
+
+    ##
     #drawSideBar
     #Description: Draws the side bar for the game including the blood vial, and relevant invs
     #
@@ -69,5 +86,6 @@ while True:
         if event.type == pygame.QUIT: sys.exit()
 
     a.screen.fill((0, 0, 0))
+    a.drawScreen(a.screen)
     a.drawSideBar(a.screen)
     pygame.display.flip()
