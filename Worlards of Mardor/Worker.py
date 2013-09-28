@@ -1,6 +1,6 @@
 __author__ = 'Devin'
 
-import Livestock
+import Farmable
 
 
 ##
@@ -10,23 +10,12 @@ import Livestock
 #
 #
 #Variables:
-#   output - the amount of work that the unit can do on other crops
+
 #
 #
 
-class Worker(Livestock):
+class Worker(Farmable):
 
-    def __init__(self):
+    def __init__(self, unitType):
         #retrieve livestock info for the livestockKey
-        workerKey = (0,0,0,0,0,0,0,0,0)
-        #pull out the first five pieces for the basic key
-
-        basicKey = (0,0,0,0,0,0,0,0)
-
-        counter = 0
-        for num in workerKey:
-            if counter < 5:
-                basicKey[counter] = workerKey[counter]
-            counter += 1
-        super(Worker, self).__init__(workerKey)
-        self.output = workerKey[8]
+        super(Worker, self).__init__(unitType)
