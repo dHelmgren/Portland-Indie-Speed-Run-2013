@@ -32,9 +32,14 @@ class Game(object):
         self.inventory = Inventory.Inventory()
         size = (800, 640) #(width, height)
         self.screen = pygame.display.set_mode(size)
+        pygame.display.set_caption('Worlards of Mardor')
         self.state = DWELLINGS
         self.click = None
         self.endRect = None
+        self.titheFrac = "0/100"
+        self.bankNum = str(self.inventory.blood)
+        self.foodNum = str(self.inventory.foodstuffs)
+
 
     ##
     #updateState
@@ -146,6 +151,17 @@ class Game(object):
         rect = rect.move([704, 560])  #move the end button to the right side of the screen
         self.endRect = rect
         screen.blit(end, rect)
+
+        numFont = pygame.font.SysFont("Lucidia Consol", 50)
+
+        titheLab = numFont.render(self.titheFrac, 1, (255, 0, 0))
+        screen.blit(titheLab, (695, 275))
+
+        bankLab = numFont.render(self.bankNum, 1, (255, 0, 0))
+        screen.blit(bankLab, (690, 380))
+
+        foodLab = numFont.render(self.foodNum, 1, (255, 0, 0))
+        screen.blit(foodLab, (690, 490))
 
     ##
     #checkClick
