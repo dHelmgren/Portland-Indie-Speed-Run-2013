@@ -32,3 +32,11 @@ a = Game()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
+    vial = pygame.image.load("bloodvial.png")
+    vialrect = vial.get_rect()
+
+    a.screen.fill((0, 0, 0))
+
+    a.screen.blit(vial, vialrect)
+
+    pygame.display.flip()
