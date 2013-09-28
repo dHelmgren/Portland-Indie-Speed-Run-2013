@@ -28,7 +28,7 @@ class Game(object):
     def __init__(self):
         pygame.init()
         self.inventory = Inventory.Inventory()
-        size = (500, 500) #(width, height)
+        size = (800, 640) #(width, height)
         self.screen = pygame.display.set_mode(size)
 
     ##
@@ -51,16 +51,23 @@ class Game(object):
                 #to be managed by the player?
                 whatShouldWeDo = "I don't know yet"
 
+    ##
+    #drawSideBar
+    #Description: Draws the side bar for the game including the blood vial, and relevant invs
+    #
+    #
+    def drawSideBar(self, screen):
+        vial = pygame.image.load("bloodvial.png")
+        vialrect = vial.get_rect()
+        vialrect = vialrect.move([710, 0])
+
+        screen.blit(vial, vialrect)
 
 a = Game()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
-    vial = pygame.image.load("bloodvial.png")
-    vialrect = vial.get_rect()
 
     a.screen.fill((0, 0, 0))
-
-    a.screen.blit(vial, vialrect)
-
+    a.drawSideBar(a.screen)
     pygame.display.flip()
