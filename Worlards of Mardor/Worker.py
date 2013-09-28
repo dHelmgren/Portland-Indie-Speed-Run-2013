@@ -20,3 +20,10 @@ class Worker(Farmable):
         #retrieve livestock info for the livestockKey
 
         super(Worker, self).__init__(unitType)
+
+    ##
+    #modifyWorkerNumber
+    #Description: adjusts the number of workers at the beginning of the game
+    #
+    def modifyWorkerNumber(self):
+        self.stacks = 3

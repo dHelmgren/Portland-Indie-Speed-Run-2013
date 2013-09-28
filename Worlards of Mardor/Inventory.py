@@ -14,7 +14,8 @@ from Constants import *
 #   unitList[] - the units owned by the player
 #   foodstuffs - the amount of food that the player can give to their livestock and workers
 #   maxUnits - the number of plots that the user has right now
-#
+#   maxPlots - the maximum number of plots available to the player
+##
 
 class Inventory(object):
 
@@ -30,7 +31,33 @@ class Inventory(object):
         self.unitList = []
         self.unitList.append(Worker(GOBLIN))
         self.maxUnits = 6
+        self.maxPlots = 10
+        #sets the number of useable workers to three for the beginning of the game
+        self.unitList[0].modifyWorkerNumber()
 
-    #this will need getter and setter methods for each variable
+    ##
+    #removeUnitPlot
+    #Description: removes the unit from the unitList, which will be reflected when the GUI updates
+    #
+    #Parameter:
+    #   plotID - the number associated with the player selected plot. It is between 0 and 9
+    def removeUnitPlot(self, plotID):
+        self.unitList[plotID] = None
+
+
+    ##
+    #addUnitPlot
+    #Description: adds a unit to one of the available plots
+    #
+    #Parameters:
+    #   plotID - the id number associated with the selected plot
+    #   unit - the initialized unit object that will be stored in that plot
+    #
+    #Implications:
+    #   The unit will have to be initialized before it is given to the Inventory. Checking to see if the number of plots
+    #   is full must be done ELSEWHERE
+    #
+    def addUnitPlot(self, plotID, unit):
+        self.unitList[plotID] = unit
 
 
