@@ -43,7 +43,6 @@ class Game(object):
     #
     ##
     def updateState(self):
-
         for farmable in self.inventory.unitList:
             if farmable is not None:
                 #first, update all the farmable's clock
@@ -102,24 +101,29 @@ class Game(object):
     #
     #
     def drawSideBar(self, screen):
+        background = pygame.image.load("background.png")
+        rect = background.get_rect()
+        rect = rect.move([675, 0])  #move the vial to the right side of the screen
+        screen.blit(background, rect)
+
         vial = pygame.image.load("bloodvial.png")
         rect = vial.get_rect()
-        rect = rect.move([710, 0])  #move the vial to the right side of the screen
+        rect = rect.move([700, 10])  #move the vial to the right side of the screen
         screen.blit(vial, rect)
 
         blood = pygame.image.load("bloodicon.png")
         rect = blood.get_rect()
-        rect = rect.move([715, 400])  #move the blood drop to the right side of the screen
+        rect = rect.move([690, 320])  #move the blood drop to the right side of the screen
         screen.blit(blood, rect)
 
         food = pygame.image.load("foodicon.png")
         rect = food.get_rect()
-        rect = rect.move([715, 500])  #move the food icon to the right side of the screen
+        rect = rect.move([690, 430])  #move the food icon to the right side of the screen
         screen.blit(food, rect)
 
         end = pygame.image.load("endbutton.png")
         rect = end.get_rect()
-        rect = rect.move([715, 600])  #move the end button to the right side of the screen
+        rect = rect.move([707, 560])  #move the end button to the right side of the screen
         self.endRect = rect
         screen.blit(end, rect)
 
@@ -140,9 +144,11 @@ class Game(object):
     #Description: Do all of our cool end-turn thingies
     def endTurn(self):
         print "End turn button pressed!"
+        self.updateState()
+        print(Farmable.printStats(self.inventory.unitList[0]))
 
 a = Game()
-a.unitTest()
+#a.unitTest()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
@@ -153,8 +159,8 @@ while True:
 
     musicPlaying = pygame.mixer.get_busy()
     if not musicPlaying:
-        song = pygame.mixer.Sound("MoonlightHall.mp3")
-        song.play()
+        song = pygame.mixer.Sound("MoonlightHall.wav")
+        #song.play()
 
     a.screen.fill((0, 0, 0))
     a.drawScreen(a.screen)
