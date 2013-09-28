@@ -1,6 +1,6 @@
 __author__ = 'Devin'
 
-import Constants
+from Constants import *
 
 
 #unit stat lookup
