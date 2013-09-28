@@ -6,13 +6,7 @@ from Farmable import *
 ##
 #Worker
 #Description: This file contains information and methods to define functionality of a Worker object
-#
-#
-#
-#Variables:
-
-#
-#
+##
 
 class Worker(Farmable):
 
@@ -20,3 +14,10 @@ class Worker(Farmable):
         #retrieve livestock info for the livestockKey
 
         super(Worker, self).__init__(unitType)
+
+    ##
+    #modifyWorkerNumber
+    #Description: adjusts the number of workers at the beginning of the game
+    #
+    def modifyWorkerNumber(self):
+        self.stacks = 3
