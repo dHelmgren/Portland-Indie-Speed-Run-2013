@@ -1,11 +1,11 @@
 __author__ = 'Devin'
 
-import Farmable
+from Farmable import *
 
 
 ##
 #Worker
-#Description: This file contains information and methods to define functionality of a Livestock object
+#Description: This file contains information and methods to define functionality of a Worker object
 #
 #
 #

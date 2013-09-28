@@ -1,8 +1,8 @@
 __author__ = 'Devin & Stan'
 
-import Worker
-import Livestock
-import Crop
+from Worker import *
+from Crop import *
+from Livestock import *
 from Constants import *
 ##
 #Inventory

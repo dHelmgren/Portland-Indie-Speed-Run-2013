@@ -4,11 +4,14 @@ from Constants import *
 
 
 #unit stat lookup
+#stats ordered as follows (turnout, time, cost, sellPrice, hardiness, consumption, stacks, maxStacks, output)
 UNIT_STATS = []
 UNIT_STATS.append((0, 0, 100, 0, 0, None, None, None, None))  #BLOODROOT
 UNIT_STATS.append((0, 0, 200, 0, 0, None, None, None, None))  #SCREAMING_FUNGUS
 UNIT_STATS.append((0, 0, 400, 0, 0, None, None, None, None))  #ORCWORT
 UNIT_STATS.append((0, 0, 300, 0, 0, 0, 0, 0, None))  #PLAGUE_TOAD
+UNIT_STATS.append((0, 0, 500, 0, 0, 0, 0, 0, None))  #DIRE_RAT
+UNIT_STATS.append((0, 0, 600, 0, 0, 0, 0, 0, None))  #GOBLIN
 
 ##
 #Farmable
