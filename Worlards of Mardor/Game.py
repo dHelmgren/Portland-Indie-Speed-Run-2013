@@ -17,6 +17,8 @@ from Constants import *
 #   inventory - the player's inventory
 #   screen - The screen as it is shown to the player
 #   state - The state that the game is currently in
+#   click - A way to store where the mouse is pressed down
+#   endRect - The space that defines the end button
 #
 
 class Game(object):
@@ -31,6 +33,8 @@ class Game(object):
         size = (800, 640) #(width, height)
         self.screen = pygame.display.set_mode(size)
         self.state = DWELLINGS
+        self.click = None
+        self.endRect = None
 
     ##
     #updateState
@@ -86,15 +90,41 @@ class Game(object):
 
         food = pygame.image.load("foodicon.png")
         rect = food.get_rect()
-        rect = rect.move([715, 500])  #move the blood drop to the right side of the screen
+        rect = rect.move([715, 500])  #move the food icon to the right side of the screen
         screen.blit(food, rect)
 
+        end = pygame.image.load("endbutton.png")
+        rect = end.get_rect()
+        rect = rect.move([715, 600])  #move the end button to the right side of the screen
+        self.endRect = rect
+        screen.blit(end, rect)
 
+    ##
+    #checkClick
+    #Description: Checks to see if the release of a button click is the same place as where it
+    #       went down
+    #
+    #
+    def checkClick(self, pos):
+        if self.endRect.collidepoint(self.click) and self.endRect.collidepoint(pos):
+            return True
+        else:
+            return False
+
+    ##
+    #endTurn
+    #Description: Do all of our cool end-turn thingies
+    def endTurn(self):
+        print "End turn button pressed!"
 
 a = Game()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
+        elif event.type == pygame.MOUSEBUTTONDOWN: a.click = pygame.mouse.get_pos()
+        elif event.type == pygame.MOUSEBUTTONUP:
+            if a.checkClick(pygame.mouse.get_pos()):
+                a.endTurn()
 
     musicPlaying = pygame.mixer.get_busy()
     if not musicPlaying:
