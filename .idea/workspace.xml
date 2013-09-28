@@ -5,12 +5,11 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/background.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/end_icon_rough.xcf" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/Game.py" afterPath="$PROJECT_DIR$/Worlards of Mardor/Game.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Portland-Indie-Speed-Run-2013.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380352017524" ignored="false" />
-    <file path="/Game.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380409611146" ignored="false" />
+    <file path="/Game.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380412243451" ignored="false" />
     <file path="/Inventory.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380352103550" ignored="false" />
     <file path="/Worker.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380353067407" ignored="false" />
     <file path="/Constants.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380399961363" ignored="false" />
@@ -36,7 +35,7 @@
       <file leaf-file-name="Game.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Worlards of Mardor/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="140" column="33" selection-start="4527" selection-end="4527" vertical-scroll-proportion="0.5443038">
+            <state line="19" column="50" selection-start="445" selection-end="445" vertical-scroll-proportion="0.10632911">
               <folding>
                 <element signature="e#28#41#0" expanded="true" />
               </folding>
@@ -410,7 +409,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Worlards of Mardor/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="33" selection-start="4527" selection-end="4527" vertical-scroll-proportion="0.5443038">
+        <state line="19" column="50" selection-start="445" selection-end="445" vertical-scroll-proportion="0.10632911">
           <folding>
             <element signature="e#28#41#0" expanded="true" />
           </folding>
