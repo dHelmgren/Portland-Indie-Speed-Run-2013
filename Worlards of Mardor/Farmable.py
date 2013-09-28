@@ -18,19 +18,24 @@ UNIT_STATS.append((0, 0, 1000, 0, 0, 0, 0, 0, 0))  #GOBLIN
 #Description: This file describes the basic functionality of a farmable object
 #
 #Variables:
-#   turnout - the amount of foodstuffs added when this crop is harvested
-#   time - the number of turns required to have a mature crop
+#   turnout - the amount of foodstuffs added when this farmable is harvested
+#   time - the number of turns required to have a mature farmable
 #   cost - the cost to purchase this item from the store
 #   sellPrice - the value of each foodstuff when sold
-#   hardiness - the amount of attention needed to secure the crop between turns
+#   hardiness - the amount of attention needed to secure the farmable between turns
 #   consumption - how much foodstuffs this unit needs per turn
 #   stacks - represents the number of sub units
 #   maxStacks - the maximum number of stacks allowed for this unit
 #   output - the amount of work the unit provides each turn
-#
+#   clock - the number of turns left before the Farmable is harvestable/produces a new generation
+##
 
 class Farmable(object):
 
+    ##
+    #__init__
+    #Description: initializes any object that is farmable
+    ##
     def __init__(self, unitType):
         stats = UNIT_STATS[unitType]
         self.turnout = stats[0]
@@ -42,3 +47,24 @@ class Farmable(object):
         self.stacks = stats[6]
         self.maxStacks = stats[7]
         self.output = stats[8]
+        self.clock = self.time
+
+    ##
+    #updateStacks
+    #Description: Grows the population of a stackable farm object
+    #
+    ##
+    def updateStacks(self):
+        #Update the size of the population
+        self.stacks *= 1.5
+        #don't let it exceed the capacity
+        if self.stacks > self.maxStacks:
+            self.stacks = self.maxStacks
+
+    ##
+    #updateClock
+    #Description: Updates the clock for the
+    ##
+    def updateClock(self):
+        #decrease the number of turns until the object is "done"
+        self.clock -= 1

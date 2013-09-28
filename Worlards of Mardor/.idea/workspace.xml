@@ -3,17 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="cea5db1c-f677-490f-bdf4-599d24be03ca" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Farmable.py" afterPath="$PROJECT_DIR$/Farmable.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Game.py" afterPath="$PROJECT_DIR$/Game.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Worlards of Mardor.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Game.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380355124258" ignored="false" />
+    <file path="/Game.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380385660318" ignored="false" />
     <file path="/Inventory.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380356715937" ignored="false" />
-    <file path="/Farmable.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380383619127" ignored="false" />
+    <file path="/Farmable.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380384727460" ignored="false" />
     <file path="/Crop.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380354411532" ignored="false" />
     <file path="/Livestock.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380354385161" ignored="false" />
     <file path="/Worker.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380356347941" ignored="false" />
-    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380356845633" ignored="false" />
+    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380383746700" ignored="false" />
     <file path="/UserInterface.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380346428623" ignored="false" />
     <file path="$PROJECT_DIR$/../../AIHW4/CS421DepthFirstHeuristic-/HumanPlayer.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380347269545" ignored="false" />
     <file path="/Constants.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380353961248" ignored="false" />
@@ -36,10 +37,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Game.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Game.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="19" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
+            <state line="51" column="50" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.9076087">
               <folding>
                 <element signature="e#28#41#0" expanded="true" />
               </folding>
@@ -56,10 +57,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Farmable.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Farmable.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Farmable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="2" selection-start="619" selection-end="619" vertical-scroll-proportion="0.5543478">
+            <state line="69" column="23" selection-start="2422" selection-end="2422" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -126,10 +127,10 @@
         <option value="$PROJECT_DIR$/Livestock.py" />
         <option value="$PROJECT_DIR$/Crop.py" />
         <option value="$PROJECT_DIR$/Constants.py" />
-        <option value="$PROJECT_DIR$/Game.py" />
         <option value="$PROJECT_DIR$/Worker.py" />
         <option value="$PROJECT_DIR$/Inventory.py" />
         <option value="$PROJECT_DIR$/Farmable.py" />
+        <option value="$PROJECT_DIR$/Game.py" />
       </list>
     </option>
   </component>
@@ -423,12 +424,16 @@
       <created>1380356849721</created>
       <updated>1380356849721</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated Farmable with actual unit stats">
+      <created>1380383769109</created>
+      <updated>1380383769109</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -492,7 +497,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Game boots, and closes after initializing an inventory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Farmable with actual unit stats" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -509,6 +514,7 @@
     <MESSAGE value="implemented Worker, Livestock and Crop's init's using only Farmable" />
     <MESSAGE value="updated inventory and game to import constants" />
     <MESSAGE value="Game boots, and closes after initializing an inventory" />
+    <MESSAGE value="Updated Farmable with actual unit stats" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -560,19 +566,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Game.py">
+    <entry file="file://$PROJECT_DIR$/Farmable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="19" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#28#41#0" expanded="true" />
-          </folding>
+        <state line="69" column="23" selection-start="2422" selection-end="2422" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Farmable.py">
+    <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="2" selection-start="619" selection-end="619" vertical-scroll-proportion="0.5543478">
-          <folding />
+        <state line="51" column="50" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.9076087">
+          <folding>
+            <element signature="e#28#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
