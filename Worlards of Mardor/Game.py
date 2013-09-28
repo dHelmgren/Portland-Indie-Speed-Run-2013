@@ -1,6 +1,7 @@
 __author__ = 'Devin & Stan'
 import pygame
 import Inventory
+import sys
 
 ##
 #Game
@@ -20,9 +21,12 @@ class Game(object):
     #
     def __init__(self):
         pygame.init()
-        self.inventory = Inventory.Inventory()           ######WE GOTTA FIX IT
+        self.inventory = Inventory.Inventory()
         size = (500, 500) #(width, height)
         self.screen = pygame.display.set_mode(size)
 
 
 a = Game()
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: sys.exit()

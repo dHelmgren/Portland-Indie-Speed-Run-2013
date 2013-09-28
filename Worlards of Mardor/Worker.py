@@ -30,3 +30,4 @@ class Worker(Livestock):
             counter += 1
         super(Worker, self).__init__(workerKey)
         self.output = workerKey[8]
+
