@@ -28,8 +28,8 @@ class Inventory(object):
         self.blood = 300
         self.favor = 0.5
         self.foodstuffs = 10
-        self.unitList = []
-        self.unitList.append(Worker(GOBLIN))
+        self.unitList = [None]*10
+        self.unitList[0] = Worker(GOBLIN)
         self.maxUnits = 6
         self.maxPlots = 10
         #sets the number of useable workers to three for the beginning of the game
@@ -60,4 +60,14 @@ class Inventory(object):
     def addUnitPlot(self, plotID, unit):
         self.unitList[plotID] = unit
 
+    ##
+    #consume
+    #Description: modifies the food total using the consumption cost of a unit
+    #
+    #Parameter:
+    #   amtToEat - the consumption cost of a unit
+    #
+    #TODO: negative food total?
+    def consume(self, amtToEat):
+        self.foodstuffs -= amtToEat
 

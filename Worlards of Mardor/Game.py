@@ -38,21 +38,46 @@ class Game(object):
     #
     ##
     def updateState(self):
-        #first, update all the farmable's clocks
+
         for farmable in self.inventory.unitList:
-            Farmable.updateClock(farmable)
-            #if the clock has hit zero, the object either gains stacks, or is harvestable
-            if farmable.clock == 0:
-                if isinstance(farmable, Worker) or isinstance(farmable, Livestock):
-                    farmable.clock = farmable.time
-                    Farmable.updateStacks(farmable)
-            else:
-                #not totally sure how we want to implement this. should we move it to another list
-                #to be managed by the player?
-                whatShouldWeDo = "I don't know yet"
+            if farmable is not None:
+                #first, update all the farmable's clock
+                Farmable.updateClock(farmable)
+                #if the clock has hit zero, the object either gains stacks, or is harvestable
+                if farmable.clock == 0:
+                    if isinstance(farmable, Worker) or isinstance(farmable, Livestock):
+                        farmable.clock = farmable.time
+                        Farmable.updateStacks(farmable)
+                    #If it's a crop it's ready!
+                    elif isinstance(farmable, Crop):
+                        Crop.readyForHarvest(farmable)
+                elif farmable.clock < 0:
+                    Crop.makeRuined(farmable)
+                #next, make things eat food, using consume function and the unit's food cost
+                self.inventory.consume(farmable.consumption)
+
+    def unitTest(self):
+        self.inventory.addUnitPlot(1, Crop(BLOODROOT))
+        self.inventory.addUnitPlot(2, Crop(SCREAMING_FUNGUS))
+        self.inventory.addUnitPlot(3, Crop(ORCWORT))
+        self.inventory.addUnitPlot(4, Livestock(PLAGUE_TOAD))
+        self.inventory.addUnitPlot(5, Livestock(DIRE_RAT))
+
+        for num in [0,1,2,3,4,5,6,7,8,9,10,11]:
+            print("Turn Number:")
+            print(num)
+            for unit in self.inventory.unitList:
+                if unit is not None:
+                    Farmable.printStats(unit)
+            print(self.inventory.foodstuffs)
+            self.updateState()
+
+
+
 
 
 a = Game()
+a.unitTest()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
@@ -64,3 +89,5 @@ while True:
     a.screen.blit(vial, vialrect)
 
     pygame.display.flip()
+
+

@@ -6,13 +6,7 @@ from Farmable import *
 ##
 #Worker
 #Description: This file contains information and methods to define functionality of a Worker object
-#
-#
-#
-#Variables:
-
-#
-#
+##
 
 class Worker(Farmable):
 
