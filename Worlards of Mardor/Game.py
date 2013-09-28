@@ -75,15 +75,21 @@ class Game(object):
     #
     def drawSideBar(self, screen):
         vial = pygame.image.load("bloodvial.png")
-        vialrect = vial.get_rect()
-        vialrect = vialrect.move([710, 0])
+        rect = vial.get_rect()
+        rect = rect.move([710, 0])  #move the vial to the right side of the screen
 
-        screen.blit(vial, vialrect)
+        screen.blit(vial, rect)
 
 a = Game()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
+
+    musicPlaying = pygame.mixer.get_busy()
+
+    if not musicPlaying:
+        song = pygame.mixer.Sound("MoonlightHall.mp3")
+        song.play(0, 6000)
 
     a.screen.fill((0, 0, 0))
     a.drawScreen(a.screen)
