@@ -46,9 +46,6 @@ class Game(object):
         self.shantyEntities = []
         self.popUpEntities = []
         self.currentEntities = []
-        self.butt1 = None
-        self.butt2 = None
-        self.butt3 = None
 
 
     def updateTithe(self):
@@ -177,7 +174,7 @@ class Game(object):
                     plot = pygame.image.load("dirt.png")
                 rect = plot.get_rect()
                 rect = rect.move([32 + xAdjust*160, 16 + yAdjust*160])
-                self.currentEntities.append(rect)
+                self.currentEntities.append((rect, unit))
                 screen.blit(plot, rect)
                 xAdjust += 1
                 if xAdjust > 3:
@@ -187,6 +184,7 @@ class Game(object):
         else:
             #TODO: draw our shop screen
             do = "stuff"
+        self.currentEntities.append((self.endRect, ENDBUTTON))
 
     ##
     #drawSideBar
@@ -336,7 +334,12 @@ class Game(object):
         print "End turn button pressed!"
         self.updateState()
 
+    ##
+    #popUp
+    #Description: Draws our game's popup window
+    #
     def popUp(self, offset, screen):
+        self.currentEntities = []
         asset = pygame.image.load("window.png")
         rect = asset.get_rect()
         rect = rect.move([offset[0], offset[1]])
@@ -347,14 +350,40 @@ class Game(object):
         rect = rect.move([offset[0], offset[1]])
         rect = rect.move([13, 210])
         screen.blit(asset, rect)
+        self.currentEntities.append((rect, BUTTON1))
 
+        asset = pygame.image.load("winbutt2.png")
+        rect = asset.get_rect()
+        rect = rect.move([offset[0], offset[1]])
+        rect = rect.move([113, 210])
+        screen.blit(asset, rect)
+        self.currentEntities.append((rect, BUTTON2))
 
+        asset = pygame.image.load("winbutt3.png")
+        rect = asset.get_rect()
+        rect = rect.move([offset[0], offset[1]])
+        rect = rect.move([213, 210])
+        screen.blit(asset, rect)
+        self.currentEntities.append((rect, BUTTON3))
+
+    ##
+    #changeState
+    #Description: Changes the state
     def changeState(self, direction):
         self.state += direction
         if self.state > -1:
             self.state = SHOP
         elif self.state < -3:
             self.state = DWELLINGS
+
+    ##
+    #clickCallback
+    #Description: The method called when something on our screen has been clicked
+    #
+    # culprit - A tuple containing ([the rect of our culprit], [and their metadata])
+    def clickCallback(self, culprit):
+        print "CLICK CALLBACK!"
+        print culprit
 
 a = Game()
 a.unitTest()
@@ -366,8 +395,8 @@ while True:
         elif event.type == pygame.MOUSEBUTTONUP:
 
             for thing in a.currentEntities:
-                if a.checkClick(pygame.mouse.get_pos(), thing):
-                    print "You clicked something!"
+                if a.checkClick(pygame.mouse.get_pos(), thing[0]):
+                    a.clickCallback(thing[1])
             # if a.checkClick(pygame.mouse.get_pos(), a.butt1):
             #     a.button1()
             # elif a.checkClick(pygame.mouse.get_pos(), a.butt2):

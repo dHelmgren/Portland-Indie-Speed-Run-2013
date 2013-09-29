@@ -5,6 +5,12 @@ __author__ = 'Devin'
 #Description: a list for all of the constants that are used in the game
 ##
 
+# Button Constants
+ENDBUTTON = -7
+BUTTON1 = -6
+BUTTON2 = -5
+BUTTON3 = -4
+
 #Screen States
 SHOP = -3
 PLOTS = -2
