@@ -7,12 +7,12 @@ import math
 #unit stat lookup
 #stats ordered as follows (turnout, time, cost, sellPrice, hardiness, consumption, stacks, maxStacks, output)
 UNIT_STATS = []
-UNIT_STATS.append((8, 2, 100, 100, 0, 0, 0, None, None))  #BLOODROOT
-UNIT_STATS.append((6, 3, 200, 300, 0, 0, 0, None, None))  #SCREAMING_FUNGUS
-UNIT_STATS.append((1, 6, 400, 800, 0, 0, 0, None, None))  #ORCWORT
-UNIT_STATS.append((.2, 3, 300, 50, 1, 1, 2, 80, None))  #PLAGUE_TOAD
-UNIT_STATS.append((10, 7, 800, 400, 2, 4, 2, 8, None))  #DIRE_RAT
-UNIT_STATS.append((4, 7, 1000, 500, 2, 2, 0, 0, 0))  #GOBLIN
+UNIT_STATS.append((8, 2, 10, 10, 0, 0, 0, None, None))  #BLOODROOT
+UNIT_STATS.append((6, 3, 20, 40, 0, 0, 0, None, None))  #SCREAMING_FUNGUS
+UNIT_STATS.append((1, 6, 40, 80, 0, 0, 0, None, None))  #ORCWORT
+UNIT_STATS.append((1, 3, 30, 5, 1, 1, 2, 80, None))  #PLAGUE_TOAD
+UNIT_STATS.append((10, 7, 80, 40, 2, 4, 2, 8, None))  #DIRE_RAT
+UNIT_STATS.append((4, 7, 100, 50, 2, 2, 0, 16, 0))  #GOBLIN
 
 ##
 #Farmable

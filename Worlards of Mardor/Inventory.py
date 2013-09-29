@@ -26,7 +26,7 @@ class Inventory(object):
     #
     ##
     def __init__(self):
-        self.blood = 300
+        self.blood = 30
         self.tithe = 0
         self.favor = 0.5
         self.foodstuffs = 10
@@ -36,6 +36,7 @@ class Inventory(object):
         self.maxPlots = 10
         #sets the number of useable workers to three for the beginning of the game
         self.unitList[16].modifyWorkerNumber()
+        self.plotsWorked = 0
 
     ##
     #removeUnitPlot
@@ -45,6 +46,7 @@ class Inventory(object):
     #   plotID - the number associated with the player selected plot. It is between 0 and 9
     def removeUnitPlot(self, plotID):
         self.unitList[plotID] = None
+        self.plotsWorked -= 1
 
 
     ##
@@ -61,6 +63,7 @@ class Inventory(object):
     #
     def addUnitPlot(self, plotID, unit):
         self.unitList[plotID] = unit
+        self.plotsWorked += 1
 
     ##
     #consume
