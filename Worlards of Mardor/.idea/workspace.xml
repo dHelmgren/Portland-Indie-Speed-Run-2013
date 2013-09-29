@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cea5db1c-f677-490f-bdf4-599d24be03ca" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Game.py" afterPath="$PROJECT_DIR$/Game.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Worlards of Mardor.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Game.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380444539700" ignored="false" />
+    <file path="/Game.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380474297253" ignored="false" />
     <file path="/Inventory.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380443899308" ignored="false" />
     <file path="/Farmable.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380407419428" ignored="false" />
     <file path="/Crop.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380408074617" ignored="false" />
     <file path="/Livestock.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380354385161" ignored="false" />
     <file path="/Worker.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380400052597" ignored="false" />
-    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380447924170" ignored="false" />
+    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380474384323" ignored="false" />
     <file path="/UserInterface.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380346428623" ignored="false" />
     <file path="$PROJECT_DIR$/../../AIHW4/CS421DepthFirstHeuristic-/HumanPlayer.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380347269545" ignored="false" />
     <file path="/Constants.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380444031900" ignored="false" />
@@ -38,7 +39,7 @@
       <file leaf-file-name="Game.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="556" column="1" selection-start="20612" selection-end="20612" vertical-scroll-proportion="0.09699769">
+            <state line="314" column="59" selection-start="11990" selection-end="11990" vertical-scroll-proportion="0.5681293">
               <folding />
             </state>
           </provider>
@@ -56,7 +57,7 @@
       <file leaf-file-name="Farmable.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Farmable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="36" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0">
+            <state line="12" column="36" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -83,7 +84,7 @@
       <file leaf-file-name="Inventory.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Inventory.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="6" selection-start="2436" selection-end="2436" vertical-scroll-proportion="0.0">
+            <state line="80" column="5" selection-start="2450" selection-end="2450" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -151,7 +152,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -172,16 +172,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../AIHW4/CS421DepthFirstHeuristic-" />
-    <property name="options.searchVisible" value="true" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -207,7 +208,9 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Game.py" />
       <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -376,7 +379,11 @@
       <created>1380447927227</created>
       <updated>1380447927227</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Goblins now control the number of plots the player can use, the game can end if all goblins die.">
+      <created>1380474392869</created>
+      <updated>1380474392869</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -401,18 +408,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14015152" sideWeight="0.78194207" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25378788" sideWeight="0.78194207" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14015152" sideWeight="0.78194207" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25757575" sideWeight="0.60101867" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39898133" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21805792" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21805792" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21805792" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12776831" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -465,7 +472,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="The game is in its prototype, playable-ish form." />
+    <option name="LAST_COMMIT_MESSAGE" value="Goblins now control the number of plots the player can use, the game can end if all goblins die." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -500,9 +507,18 @@
     <MESSAGE value="this thing works. I wish I knew why." />
     <MESSAGE value="buying happens now" />
     <MESSAGE value="The game is in its prototype, playable-ish form." />
+    <MESSAGE value="Goblins now control the number of plots the player can use, the game can end if all goblins die." />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/Game.py</url>
+          <line>69</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Constants.py">
@@ -528,18 +544,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Worker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="46" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="15" column="46" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UserInterface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="1" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#22#50#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="9" column="1" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../.idea/workspace.xml">
@@ -549,9 +559,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Worker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Inventory.py">
@@ -577,21 +585,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Worker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="46" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="15" column="46" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Livestock.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="48" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Inventory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="6" selection-start="2436" selection-end="2436" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -605,14 +604,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Farmable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="36" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0">
+        <state line="12" column="36" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Inventory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="5" selection-start="2450" selection-end="2450" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="556" column="1" selection-start="20612" selection-end="20612" vertical-scroll-proportion="0.09699769">
+        <state line="314" column="59" selection-start="11990" selection-end="11990" vertical-scroll-proportion="0.5681293">
           <folding />
         </state>
       </provider>

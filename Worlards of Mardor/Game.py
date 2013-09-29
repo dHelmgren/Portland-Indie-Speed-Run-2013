@@ -312,7 +312,7 @@ class Game(object):
         self.endRect = rect
         screen.blit(asset, rect)
 
-        numFont = pygame.font.SysFont("Lucidia Console", 50)
+        numFont = pygame.font.SysFont("Lucidia Console", 30)
 
         self.updateTithe()
         titheLab = numFont.render(self.titheFrac, 1, (255, 0, 0))
