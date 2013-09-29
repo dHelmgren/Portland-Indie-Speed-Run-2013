@@ -243,7 +243,18 @@ class Game(object):
             xAdjust = 0
             yAdjust = 0
             for item in [BLOODROOT, SCREAMING_FUNGUS, ORCWORT, PLAGUE_TOAD, DIRE_RAT, GOBLIN]:
-                icon = pygame.image.load("tempstoreicon.png")
+                if item is BLOODROOT:
+                    icon = pygame.image.load("shopBloodroot.png")
+                elif item is SCREAMING_FUNGUS:
+                    icon = pygame.image.load("shopShreiker.png")
+                elif item is ORCWORT:
+                    icon = pygame.image.load("shopOrcwort.png")
+                elif item is PLAGUE_TOAD:
+                    icon = pygame.image.load("shopToad.png")
+                elif item is DIRE_RAT:
+                    icon = pygame.image.load("shopRat.png")
+                elif item is GOBLIN:
+                    icon = pygame.image.load("shopGoblin.png")
                 rect = icon.get_rect()
                 rect = rect.move([16 + 192 * xAdjust, 470 + 96 * yAdjust])
                 self.screen.blit(icon, rect)
@@ -267,27 +278,27 @@ class Game(object):
     def drawSideBar(self, screen):
         asset = pygame.image.load("sidebar.png")
         rect = asset.get_rect()
-        rect = rect.move([672, 0])  #move the vial to the right side of the screen
+        rect = rect.move([672, 0])
         screen.blit(asset, rect)
 
         asset = pygame.image.load("bloodvial.png")
         rect = asset.get_rect()
-        rect = rect.move([700, 10])  #move the vial to the right side of the screen
+        rect = rect.move([700, 10])
         screen.blit(asset, rect)
 
         asset = pygame.image.load("bloodicon.png")
         rect = asset.get_rect()
-        rect = rect.move([685, 340])  #move the blood drop to the right side of the screen
+        rect = rect.move([685, 340])
         screen.blit(asset, rect)
 
         asset = pygame.image.load("foodicon.png")
         rect = asset.get_rect()
-        rect = rect.move([685, 450])  #move the food icon to the right side of the screen
+        rect = rect.move([685, 450])
         screen.blit(asset, rect)
 
         asset = pygame.image.load("endbutton.png")
         rect = asset.get_rect()
-        rect = rect.move([704, 560])  #move the end button to the right side of the screen
+        rect = rect.move([704, 560])
         self.endRect = rect
         screen.blit(asset, rect)
 
