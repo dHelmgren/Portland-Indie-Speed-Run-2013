@@ -532,6 +532,7 @@ class Game(object):
             if things[self.selectedPlot] is BLOODROOT:
                 asset = pygame.image.load("shopBloodroot.png")
                 name = "BLOODROOT"
+                cost = "10"
                 description.append("Known for killing off nearby plants,")
                 description.append("birds and some small mammals.")
                 description.append("Important peasants should use")
@@ -539,30 +540,35 @@ class Game(object):
             elif things[self.selectedPlot] is SCREAMING_FUNGUS:
                 asset = pygame.image.load("shopShreiker.png")
                 name = "SCREAMING FUNGUS"
+                cost = "20"
                 description.append("Possibly the best food and cash crop")
                 description.append("any Warlord could ask for. If it")
                 description.append("wasn't for all the screaming....")
             elif things[self.selectedPlot] is ORCWORT:
                 asset = pygame.image.load("shopOrcwort.png")
                 name = "ORCWORT"
+                cost = "40"
                 description.append("A simple white flower whose seeds")
                 description.append("cause hemophilia. And they said")
                 description.append("blood doesn't grow on trees!")
             elif things[self.selectedPlot] is PLAGUE_TOAD:
                 asset = pygame.image.load("shopToad.png")
                 name = "PLAGUE TOAD"
+                cost = "30"
                 description.append("If the peasants complain, sacrifice")
                 description.append("them. The Plague Toads are more")
                 description.append("valuable, anyway.")
             elif things[self.selectedPlot] is DIRE_RAT:
                 asset = pygame.image.load("shopRat.png")
                 name = "DIRE RAT"
+                cost = "80"
                 description.append("Dire-Rat smells of decay and")
                 description.append("tastes of vomit. What nostalgia")
                 description.append("it must arouse in you.")
             elif things[self.selectedPlot] is GOBLIN:
                 asset = pygame.image.load("shopGoblin.png")
                 name = "GOBLIN"
+                cost = "100"
                 description.append("Nearly useless sacks of skin and")
                 description.append("organs, goblins are nevertheless")
                 description.append("perfect slaves. Easily dominated,")
@@ -572,9 +578,18 @@ class Game(object):
             rect = rect.move([340, 10])
             screen.blit(asset, rect)
 
+            asset = pygame.image.load("bloodicon.png")
+            rect = asset.get_rect()
+            rect = rect.move([420, 35])
+            screen.blit(asset, rect)
+
+            numFont = pygame.font.SysFont("Courier", 20)
+            price = numFont.render(cost, 1, (0, 0, 0))
+            screen.blit(price, (460, 45))
+
             numFont = pygame.font.SysFont("Courier", 25)
             title = numFont.render(name, 1, (0, 0, 0))
-            screen.blit(title, (420, 30))
+            screen.blit(title, (420, 10))
 
             numFont = pygame.font.SysFont("Courier", 15)
             x = 0
@@ -583,14 +598,14 @@ class Game(object):
                 screen.blit(flavor, (345, 90 +x*20))
                 x += 1
 
-            asset = pygame.image.load("winbutt1.png")
+            asset = pygame.image.load("winbutt5.png")
             rect = asset.get_rect()
             rect = rect.move([offset[0], offset[1]])
             rect = rect.move([200, 210])
             screen.blit(asset, rect)
             self.currentEntities.append((rect, BUTTON1, None))
 
-            asset = pygame.image.load("winbutt3.png")
+            asset = pygame.image.load("winbutt4.png")
             rect = asset.get_rect()
             rect = rect.move([offset[0], offset[1]])
             rect = rect.move([320, 210])
