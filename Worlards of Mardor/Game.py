@@ -54,6 +54,7 @@ class Game(object):
         self.clerkDlg = False
         self.clerkSpch = None
         self.favor = 0.05
+        self.eventTime = True
 
 
     def updateTithe(self):
@@ -170,180 +171,186 @@ class Game(object):
     ##
 
     def drawScreen(self, screen):
-        self.currentEntities = []
-        if self.state is DWELLINGS:
-            #TODO: draw our dwellings screen
-            do = "stuff"
+        if not self.eventTime:
+            self.currentEntities = []
+            if self.state is DWELLINGS:
+                #TODO: draw our dwellings screen
+                do = "stuff"
 
-        elif self.state is PLOTS:
-            #initialize some values used later
-            xAdjust = 0
-            yAdjust = 0
-            unitID = 0
-            frogCount = 0
-            ratCount = 0
+            elif self.state is PLOTS:
+                #initialize some values used later
+                xAdjust = 0
+                yAdjust = 0
+                unitID = 0
+                frogCount = 0
+                ratCount = 0
 
-            for path in self.plotPaths:
-                screen.blit(path[0], path[1])
+                for path in self.plotPaths:
+                    screen.blit(path[0], path[1])
 
-            for unit in self.inventory.unitList:
-                #remove the previous picture
-                plot = None
-                #don't do this for our GOBLINs
-                if isinstance(unit, Worker):
-                    break
-                #draw the appropriate image for the crop
-                elif isinstance(unit, Crop):
-                    if unit.type == ORCWORT:
-                        if unit.clock == unit.time:
-                            plot = pygame.image.load("orcwort1.png")
-                        elif unit.clock > 0:
-                            plot = pygame.image.load("orcwort2.png")
-                        elif unit.clock == 0:
-                            plot = pygame.image.load("orcwort3.png")
-                        elif unit.stacks == -1:
-                            plot = pygame.image.load("orcwort4.png")
-                    elif unit.type == SCREAMING_FUNGUS:
-                        if unit.clock == unit.time:
-                            plot = pygame.image.load("shrieker1.png")
-                        elif unit.clock > 0:
-                            plot = pygame.image.load("shrieker2.png")
-                        elif unit.clock == 0:
-                            plot = pygame.image.load("shrieker3.png")
-                        elif unit.stacks == -1:
-                            plot = pygame.image.load("shrieker4.png")
-                    elif unit.type == BLOODROOT:
-                        if unit.clock == unit.time:
-                            plot = pygame.image.load("bloodroot1.png")
-                        elif unit.clock > 0:
-                            plot = pygame.image.load("bloodroot2.png")
-                        elif unit.clock == 0:
-                            plot = pygame.image.load("bloodroot3.png")
-                        elif unit.stacks == -1:
-                            plot = pygame.image.load("bloodroot4.png")
+                for unit in self.inventory.unitList:
+                    #remove the previous picture
+                    plot = None
+                    #don't do this for our GOBLINs
+                    if isinstance(unit, Worker):
+                        break
+                    #draw the appropriate image for the crop
+                    elif isinstance(unit, Crop):
+                        if unit.type == ORCWORT:
+                            if unit.clock == unit.time:
+                                plot = pygame.image.load("orcwort1.png")
+                            elif unit.clock > 0:
+                                plot = pygame.image.load("orcwort2.png")
+                            elif unit.clock == 0:
+                                plot = pygame.image.load("orcwort3.png")
+                            elif unit.stacks == -1:
+                                plot = pygame.image.load("orcwort4.png")
+                        elif unit.type == SCREAMING_FUNGUS:
+                            if unit.clock == unit.time:
+                                plot = pygame.image.load("shrieker1.png")
+                            elif unit.clock > 0:
+                                plot = pygame.image.load("shrieker2.png")
+                            elif unit.clock == 0:
+                                plot = pygame.image.load("shrieker3.png")
+                            elif unit.stacks == -1:
+                                plot = pygame.image.load("shrieker4.png")
+                        elif unit.type == BLOODROOT:
+                            if unit.clock == unit.time:
+                                plot = pygame.image.load("bloodroot1.png")
+                            elif unit.clock > 0:
+                                plot = pygame.image.load("bloodroot2.png")
+                            elif unit.clock == 0:
+                                plot = pygame.image.load("bloodroot3.png")
+                            elif unit.stacks == -1:
+                                plot = pygame.image.load("bloodroot4.png")
 
-                #draw the appropriate image for the Livestock
-                elif isinstance(unit, Livestock):
-                    if unit.type == PLAGUE_TOAD:
-                        plot = self.plagueT[frogCount]
-                        frogCount += 1
-                    elif unit.type == DIRE_RAT:
-                        plot = self.rats[ratCount]
-                        ratCount += 1
+                    #draw the appropriate image for the Livestock
+                    elif isinstance(unit, Livestock):
+                        if unit.type == PLAGUE_TOAD:
+                            plot = self.plagueT[frogCount]
+                            frogCount += 1
+                        elif unit.type == DIRE_RAT:
+                            plot = self.rats[ratCount]
+                            ratCount += 1
+                        else:
+                            plot = pygame.image.load("pen.png")
+                    #if it isn't either, just draw dirt
                     else:
-                        plot = pygame.image.load("pen.png")
-                #if it isn't either, just draw dirt
-                else:
-                    plot = pygame.image.load("dirt.png")
-                #get the rect of our button image, move it to the right location
-                rect = plot.get_rect()
-                rect = rect.move([32 + xAdjust*160, 16 + yAdjust*160])
-                #create an entry for currentEntities that includes the button's rect, unit object, and the number of the
-                #plot
-                if not self.popUpActive:
-                    self.currentEntities.append((rect, unit, unitID))
-                else:
-                    self.popUp([200, 200], self.screen)
-                #draw it
-                screen.blit(plot, rect)
-                #adjust where the next draw will happen
-                xAdjust += 1
-                if xAdjust > 3:
-                    yAdjust += 1
-                    xAdjust = 0
-                #increment the unitID
-                unitID += 1
-        #state is STORE
+                        plot = pygame.image.load("dirt.png")
+                    #get the rect of our button image, move it to the right location
+                    rect = plot.get_rect()
+                    rect = rect.move([32 + xAdjust*160, 16 + yAdjust*160])
+                    #create an entry for currentEntities that includes the button's rect, unit object, and the number of the
+                    #plot
+                    if not self.popUpActive:
+                        self.currentEntities.append((rect, unit, unitID))
+                    else:
+                        self.popUp([200, 200], self.screen)
+                    #draw it
+                    screen.blit(plot, rect)
+                    #adjust where the next draw will happen
+                    xAdjust += 1
+                    if xAdjust > 3:
+                        yAdjust += 1
+                        xAdjust = 0
+                    #increment the unitID
+                    unitID += 1
+            #state is STORE
+            else:
+                bar = pygame.image.load("storebar.png")
+                rect = bar.get_rect()
+                rect = rect.move([0, 448])
+                self.screen.blit(bar, rect)
+
+                xAdjust = 0
+                yAdjust = 0
+                for item in [BLOODROOT, SCREAMING_FUNGUS, ORCWORT, PLAGUE_TOAD, DIRE_RAT, GOBLIN]:
+                    if item is BLOODROOT:
+                        icon = pygame.image.load("shopBloodroot.png")
+                    elif item is SCREAMING_FUNGUS:
+                        icon = pygame.image.load("shopShreiker.png")
+                    elif item is ORCWORT:
+                        icon = pygame.image.load("shopOrcwort.png")
+                    elif item is PLAGUE_TOAD:
+                        icon = pygame.image.load("shopToad.png")
+                    elif item is DIRE_RAT:
+                        icon = pygame.image.load("shopRat.png")
+                    elif item is GOBLIN:
+                        icon = pygame.image.load("shopGoblin.png")
+                    rect = icon.get_rect()
+                    rect = rect.move([60 + 250 * xAdjust, 465 + 96 * yAdjust])
+                    self.screen.blit(icon, rect)
+                    if not self.popUpActive:
+                        self.currentEntities.append((rect, item, None))
+                    #draw the popup
+                    else:
+                        self.popUp([200, 200], self.screen)
+                    xAdjust += 1
+                    if xAdjust > 2:
+                        yAdjust += 1
+                        xAdjust = 0
+                if self.clerkDlg:
+                    asset = pygame.image.load("shopDlg.png")
+                    rect = asset.get_rect()
+                    rect = rect.move([290, 315])
+                    self.screen.blit(asset, rect)
+                    if self.clerkSpch is None:
+                        options = []
+                        if self.inventory.blood <= 30:
+                            speech1 = []
+                            speech1.append("What do you want, worm? I do not have")
+                            speech1.append("time for your weakness.")
+                            options.append(speech1)
+                            speech2 = []
+                            speech2.append("Ah. You. You'd better not incinerate")
+                            speech2.append("my shelver again.")
+                            options.append(speech2)
+                        elif self.inventory.blood <= 80:
+                            speech1 = []
+                            speech1.append("I see you haven't been killed yet.")
+                            speech1.append("How surprising.")
+                            options.append(speech1)
+                            speech2 = []
+                            speech2.append("It's amazing that you don't nauseate")
+                            speech2.append("me to look at anymore.")
+                            options.append(speech2)
+                        else:
+                            speech1 = []
+                            speech1.append("Once again you seek my services. And")
+                            speech1.append("what might you need, hm?")
+                            options.append(speech1)
+                            speech2 = []
+                            speech2.append("Welcome, Great One. Please, how my I")
+                            speech2.append("serve you...?")
+                            options.append(speech2)
+                        self.clerkSpch = random.choice(options)
+
+                    numFont = pygame.font.SysFont("Courier", 15)
+                    x = 0
+
+                    for ch in self.clerkSpch:
+                        flavor = numFont.render(ch, 1, (0, 0, 0))
+                        screen.blit(flavor, (320, 340 +x*20))
+                        x += 1
+
+            asset = pygame.image.load("arrowL.png")
+            rect = asset.get_rect()
+            rect = rect.move([0, 320])
+            self.screen.blit(asset, rect)
+            self.currentEntities.append((rect, LEFT, None))
+
+            asset = pygame.image.load("arrowR.png")
+            rect = asset.get_rect()
+            rect = rect.move([640, 320])
+            self.screen.blit(asset, rect)
+            self.currentEntities.append((rect, RIGHT, None))
+
+            self.currentEntities.append((self.endRect, ENDBUTTON, None))
         else:
-            bar = pygame.image.load("storebar.png")
-            rect = bar.get_rect()
-            rect = rect.move([0, 448])
-            self.screen.blit(bar, rect)
-
-            xAdjust = 0
-            yAdjust = 0
-            for item in [BLOODROOT, SCREAMING_FUNGUS, ORCWORT, PLAGUE_TOAD, DIRE_RAT, GOBLIN]:
-                if item is BLOODROOT:
-                    icon = pygame.image.load("shopBloodroot.png")
-                elif item is SCREAMING_FUNGUS:
-                    icon = pygame.image.load("shopShreiker.png")
-                elif item is ORCWORT:
-                    icon = pygame.image.load("shopOrcwort.png")
-                elif item is PLAGUE_TOAD:
-                    icon = pygame.image.load("shopToad.png")
-                elif item is DIRE_RAT:
-                    icon = pygame.image.load("shopRat.png")
-                elif item is GOBLIN:
-                    icon = pygame.image.load("shopGoblin.png")
-                rect = icon.get_rect()
-                rect = rect.move([60 + 250 * xAdjust, 465 + 96 * yAdjust])
-                self.screen.blit(icon, rect)
-                if not self.popUpActive:
-                    self.currentEntities.append((rect, item, None))
-                #draw the popup
-                else:
-                    self.popUp([200, 200], self.screen)
-                xAdjust += 1
-                if xAdjust > 2:
-                    yAdjust += 1
-                    xAdjust = 0
-            if self.clerkDlg:
-                asset = pygame.image.load("shopDlg.png")
-                rect = asset.get_rect()
-                rect = rect.move([290, 315])
-                self.screen.blit(asset, rect)
-                if self.clerkSpch is None:
-                    options = []
-                    if self.inventory.blood <= 30:
-                        speech1 = []
-                        speech1.append("What do you want, worm? I do not have")
-                        speech1.append("time for your weakness.")
-                        options.append(speech1)
-                        speech2 = []
-                        speech2.append("Ah. You. You'd better not incinerate")
-                        speech2.append("my shelver again.")
-                        options.append(speech2)
-                    elif self.inventory.blood <= 80:
-                        speech1 = []
-                        speech1.append("I see you haven't been killed yet.")
-                        speech1.append("How surprising.")
-                        options.append(speech1)
-                        speech2 = []
-                        speech2.append("It's amazing that you don't nauseate")
-                        speech2.append("me to look at anymore.")
-                        options.append(speech2)
-                    else:
-                        speech1 = []
-                        speech1.append("Once again you seek my services. And")
-                        speech1.append("what might you need, hm?")
-                        options.append(speech1)
-                        speech2 = []
-                        speech2.append("Welcome, Great One. Please, how my I")
-                        speech2.append("serve you...?")
-                        options.append(speech2)
-                    self.clerkSpch = random.choice(options)
-
-                numFont = pygame.font.SysFont("Courier", 15)
-                x = 0
-
-                for ch in self.clerkSpch:
-                    flavor = numFont.render(ch, 1, (0, 0, 0))
-                    screen.blit(flavor, (320, 340 +x*20))
-                    x += 1
-
-        asset = pygame.image.load("arrowL.png")
-        rect = asset.get_rect()
-        rect = rect.move([0, 320])
-        self.screen.blit(asset, rect)
-        self.currentEntities.append((rect, LEFT, None))
-
-        asset = pygame.image.load("arrowR.png")
-        rect = asset.get_rect()
-        rect = rect.move([640, 320])
-        self.screen.blit(asset, rect)
-        self.currentEntities.append((rect, RIGHT, None))
-
-        self.currentEntities.append((self.endRect, ENDBUTTON, None))
+            asset = pygame.image.load("eventScreen.png")
+            rect = asset.get_rect()
+            self.screen.blit(asset, rect)
+            self.currentEntities.append((rect, EVENT, None))
 
     ##
     #drawSideBar
@@ -356,7 +363,23 @@ class Game(object):
         rect = rect.move([672, 0])
         screen.blit(asset, rect)
 
-        asset = pygame.image.load("bloodvial.png")
+        progress = (self.inventory.tithe/self.reqTithe)
+        if progress <= (1/6):
+            asset = pygame.image.load("vial1.png")
+        elif progress <= (2/6):
+            asset = pygame.image.load("vial2.png")
+        elif progress <= (3/6):
+            asset = pygame.image.load("vial3.png")
+        elif progress <= (4/6):
+            asset = pygame.image.load("vial4.png")
+        elif progress <= (5/6):
+            asset = pygame.image.load("vial5.png")
+        elif progress <= 1:
+            asset = pygame.image.load("vial6.png")
+        else:
+            asset = pygame.image.load("vial7.png")
+
+
         rect = asset.get_rect()
         rect = rect.move([700, 10])
         screen.blit(asset, rect)
@@ -625,21 +648,21 @@ class Game(object):
             asset = pygame.image.load("winbutt1.png")
             rect = asset.get_rect()
             rect = rect.move([offset[0], offset[1]])
-            rect = rect.move([13, 210])
+            rect = rect.move([45, 210])
             screen.blit(asset, rect)
             self.currentEntities.append((rect, BUTTON1, None))
 
             asset = pygame.image.load("winbutt2.png")
             rect = asset.get_rect()
             rect = rect.move([offset[0], offset[1]])
-            rect = rect.move([113, 210])
+            rect = rect.move([145, 210])
             screen.blit(asset, rect)
             self.currentEntities.append((rect, BUTTON2, None))
 
             asset = pygame.image.load("winbutt3.png")
             rect = asset.get_rect()
             rect = rect.move([offset[0], offset[1]])
-            rect = rect.move([213, 210])
+            rect = rect.move([245, 210])
             screen.blit(asset, rect)
             self.currentEntities.append((rect, BUTTON3, None))
 
@@ -657,6 +680,7 @@ class Game(object):
             description = []
             if things[self.selectedPlot] is BLOODROOT:
                 asset = pygame.image.load("shopBloodroot.png")
+                flavor = pygame.image.load("bldrtFlv.png")
                 name = "BLOODROOT"
                 cost = "10"
                 description.append("Known for killing off nearby plants,")
@@ -665,6 +689,7 @@ class Game(object):
                 description.append("protective gear.")
             elif things[self.selectedPlot] is SCREAMING_FUNGUS:
                 asset = pygame.image.load("shopShreiker.png")
+                flavor = pygame.image.load("bldrtFlv.png")
                 name = "SCREAMING FUNGUS"
                 cost = "20"
                 description.append("Possibly the best food and cash crop")
@@ -672,6 +697,7 @@ class Game(object):
                 description.append("wasn't for all the screaming....")
             elif things[self.selectedPlot] is ORCWORT:
                 asset = pygame.image.load("shopOrcwort.png")
+                flavor = pygame.image.load("bldrtFlv.png")
                 name = "ORCWORT"
                 cost = "40"
                 description.append("A simple white flower whose seeds")
@@ -679,6 +705,7 @@ class Game(object):
                 description.append("blood doesn't grow on trees!")
             elif things[self.selectedPlot] is PLAGUE_TOAD:
                 asset = pygame.image.load("shopToad.png")
+                flavor = pygame.image.load("bldrtFlv.png")
                 name = "PLAGUE TOAD"
                 cost = "30"
                 description.append("If the peasants complain, sacrifice")
@@ -686,6 +713,7 @@ class Game(object):
                 description.append("valuable, anyway.")
             elif things[self.selectedPlot] is DIRE_RAT:
                 asset = pygame.image.load("shopRat.png")
+                flavor = pygame.image.load("bldrtFlv.png")
                 name = "DIRE RAT"
                 cost = "80"
                 description.append("Dire-Rat smells of decay and")
@@ -693,6 +721,7 @@ class Game(object):
                 description.append("it must arouse in you.")
             elif things[self.selectedPlot] is GOBLIN:
                 asset = pygame.image.load("shopGoblin.png")
+                flavor = pygame.image.load("bldrtFlv.png")
                 name = "GOBLIN"
                 cost = "100"
                 description.append("Nearly useless sacks of skin and")
@@ -704,14 +733,18 @@ class Game(object):
             rect = rect.move([340, 10])
             screen.blit(asset, rect)
 
+            rect = flavor.get_rect()
+            rect = rect.move([360, 190])
+            screen.blit(flavor, rect)
+
             asset = pygame.image.load("bloodicon.png")
             rect = asset.get_rect()
-            rect = rect.move([420, 35])
+            rect = rect.move([430, 45])
             screen.blit(asset, rect)
 
             numFont = pygame.font.SysFont("Courier", 20)
             price = numFont.render(cost, 1, (0, 0, 0))
-            screen.blit(price, (460, 45))
+            screen.blit(price, (465, 50))
 
             numFont = pygame.font.SysFont("Courier", 25)
             title = numFont.render(name, 1, (0, 0, 0))
@@ -788,6 +821,8 @@ class Game(object):
     #
     # culprit - A tuple containing ([the rect of our culprit], [and their metadata], [and their plot ID where relevant])
     def clickCallback(self, culprit):
+        if culprit[1] == EVENT:
+            self.eventTime = False
         if culprit[1] is RIGHT:
             self.changeState(1)
         elif culprit[1] is LEFT:
@@ -854,7 +889,7 @@ while True:
 
     a.screen.fill((0, 0, 0))
     a.drawScreen(a.screen)
-    a.drawSideBar(a.screen)
+    if not a.eventTime: a.drawSideBar(a.screen)
     pygame.display.flip()
 
 

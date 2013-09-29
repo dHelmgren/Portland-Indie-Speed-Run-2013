@@ -5,6 +5,9 @@ __author__ = 'Devin'
 #Description: a list for all of the constants that are used in the game
 ##
 
+#Event Screen
+EVENT = -10
+
 #Arrows
 LEFT = -9
 RIGHT = -8
