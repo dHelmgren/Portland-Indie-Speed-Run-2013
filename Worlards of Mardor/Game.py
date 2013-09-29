@@ -40,6 +40,15 @@ class Game(object):
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
+        self.plotEntities = []
+        self.shopEntities = []
+        self.shantyEntities = []
+        self.popUpEntities = []
+        self.currentEntities = []
+        self.butt1 = None
+        self.butt2 = None
+        self.butt3 = None
+
 
     def updateTithe(self):
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
@@ -81,6 +90,9 @@ class Game(object):
 
         for deceased in deadNums:
             self.inventory.removeUnitPlot(deceased)
+
+        for remaining in self.inventory.unitList:
+            self.plotEntities.append(remaining)
 
 
     def unitTest(self):
@@ -134,6 +146,7 @@ class Game(object):
     ##
 
     def drawScreen(self, screen):
+        self.currentEntities = []
         if self.state is DWELLINGS:
             #TODO: draw our dwellings screen
             do = "stuff"
@@ -151,10 +164,14 @@ class Game(object):
                     elif unit.stacks == -1:
                         plot = pygame.image.load("deadplant.png")
 
+                elif isinstance(unit, Livestock):
+                    plot = pygame.image.load("pen.png")
+
                 else:
                     plot = pygame.image.load("dirt.png")
                 rect = plot.get_rect()
-                rect = rect.move([32 + xAdjust*160, 16 + yAdjust*160])  #move the vial to the right side of the screen
+                rect = rect.move([32 + xAdjust*160, 16 + yAdjust*160])
+                self.currentEntities.append(rect)
                 screen.blit(plot, rect)
                 xAdjust += 1
                 if xAdjust > 3:
@@ -218,6 +235,9 @@ class Game(object):
     #
     #
     def checkClick(self, pos, rect):
+        if rect is None:
+            return False
+
         if rect.collidepoint(self.click) and rect.collidepoint(pos):
             return True
         else:
@@ -345,6 +365,13 @@ class Game(object):
     def button3(self):
         print "button 3!"
 
+    def changeState(self, direction):
+        self.state += direction
+        if self.state > -1:
+            self.state = SHOP
+        elif self.state < -3:
+            self.state = DWELLINGS
+
 a = Game()
 a.unitTest()
 
@@ -353,18 +380,20 @@ while True:
         if event.type == pygame.QUIT: sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN: a.click = pygame.mouse.get_pos()
         elif event.type == pygame.MOUSEBUTTONUP:
-            if a.checkClick(pygame.mouse.get_pos(), a.butt1):
-                a.button1()
-            elif a.checkClick(pygame.mouse.get_pos(), a.butt2):
-                a.button2()
-            elif a.checkClick(pygame.mouse.get_pos(), a.butt3):
-                a.button3()
-            elif a.checkClick(pygame.mouse.get_pos(), a.endRect):
-                a.endTurn()
+            for thing in a.currentEntities:
+                if a.checkClick(pygame.mouse.get_pos(), thing):
+                    print "You clicked something!"
+            # if a.checkClick(pygame.mouse.get_pos(), a.butt1):
+            #     a.button1()
+            # elif a.checkClick(pygame.mouse.get_pos(), a.butt2):
+            #     a.button2()
+            # elif a.checkClick(pygame.mouse.get_pos(), a.butt3):
+            #     a.button3()
+            # elif a.checkClick(pygame.mouse.get_pos(), a.endRect):
+            #     a.endTurn()
+
         elif event.type == pygame.KEYDOWN:
-            a.state -= 1
-            if a.state <= -4:
-                a.state = -1
+            a.changeState(1)
 
     musicPlaying = pygame.mixer.get_busy()
     if not musicPlaying:
@@ -373,6 +402,5 @@ while True:
 
     a.screen.fill((0, 0, 0))
     a.drawScreen(a.screen)
-    a.popUp((10, 10), a.screen)
     a.drawSideBar(a.screen)
     pygame.display.flip()
