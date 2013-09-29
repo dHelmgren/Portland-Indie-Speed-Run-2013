@@ -7,13 +7,13 @@
     </list>
     <ignored path="Worlards of Mardor.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Game.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380478624510" ignored="false" />
+    <file path="/Game.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380480073699" ignored="false" />
     <file path="/Inventory.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380443899308" ignored="false" />
     <file path="/Farmable.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380407419428" ignored="false" />
     <file path="/Crop.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380408074617" ignored="false" />
     <file path="/Livestock.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380354385161" ignored="false" />
     <file path="/Worker.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380400052597" ignored="false" />
-    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380477151876" ignored="false" />
+    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380478924059" ignored="false" />
     <file path="/UserInterface.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380346428623" ignored="false" />
     <file path="$PROJECT_DIR$/../../AIHW4/CS421DepthFirstHeuristic-/HumanPlayer.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380347269545" ignored="false" />
     <file path="/Constants.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380444031900" ignored="false" />
@@ -39,9 +39,9 @@
       <file leaf-file-name="Game.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="613" column="8" selection-start="23105" selection-end="23105" vertical-scroll-proportion="0.4503464">
+            <state line="36" column="26" selection-start="839" selection-end="839" vertical-scroll-proportion="0.15704387">
               <folding>
-                <marker date="1380478881096" expanded="true" signature="17840:17849" placeholder="..." />
+                <marker date="1380480084428" expanded="true" signature="18519:18528" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -509,7 +509,11 @@
       <created>1380477155134</created>
       <updated>1380477155134</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="goblin counter updates properly as time passes">
+      <created>1380478928819</created>
+      <updated>1380478928819</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -598,7 +602,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="preparing to add images to sidebar" />
+    <option name="LAST_COMMIT_MESSAGE" value="goblin counter updates properly as time passes" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -636,6 +640,7 @@
     <MESSAGE value="Goblins now control the number of plots the player can use, the game can end if all goblins die." />
     <MESSAGE value="working on fontsies" />
     <MESSAGE value="preparing to add images to sidebar" />
+    <MESSAGE value="goblin counter updates properly as time passes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -742,9 +747,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="613" column="8" selection-start="23105" selection-end="23105" vertical-scroll-proportion="0.4503464">
+        <state line="36" column="26" selection-start="839" selection-end="839" vertical-scroll-proportion="0.15704387">
           <folding>
-            <marker date="1380478881096" expanded="true" signature="17840:17849" placeholder="..." />
+            <marker date="1380480084428" expanded="true" signature="18519:18528" placeholder="..." />
           </folding>
         </state>
       </provider>
