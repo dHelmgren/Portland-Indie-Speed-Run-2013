@@ -41,11 +41,9 @@ class Game(object):
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
-        self.plotEntities = []
-        self.shopEntities = []
-        self.shantyEntities = []
-        self.popUpEntities = []
         self.currentEntities = []
+        self.popUpActive = False
+        self.selectedPlot = None
 
 
     def updateTithe(self):
@@ -90,10 +88,6 @@ class Game(object):
 
         for deceasedIndex in deadNums:
             self.inventory.removeUnitPlot(deceasedIndex)
-
-        for remaining in self.inventory.unitList:
-            self.plotEntities.append(remaining)
-
 
 
     def unitTest(self):
@@ -184,7 +178,10 @@ class Game(object):
                 rect = rect.move([32 + xAdjust*160, 16 + yAdjust*160])
                 #create an entry for currentEntities that includes the button's rect, unit object, and the number of the
                 #plot
-                self.currentEntities.append((rect, unit, unitID))
+                if not self.popUpActive:
+                    self.currentEntities.append((rect, unit, unitID))
+                else:
+                    self.popUp([200, 200], self.screen)
                 #draw it
                 screen.blit(plot, rect)
                 #adjust where the next draw will happen
@@ -398,6 +395,26 @@ class Game(object):
     def clickCallback(self, culprit):
         print "CLICK CALLBACK!"
         print culprit[2]
+        if self.state == PLOTS:
+            if culprit[2] >= 0:
+                self.popUpActive = True
+                self.selectedPlot = culprit[2]
+            elif culprit[1] == BUTTON1:
+                self.harvestPlot(self.selectedPlot)
+                self.popUpActive = False
+                self.selectedPlot = None
+            elif culprit[1] == BUTTON2:
+                self.sellPlot(self.selectedPlot)
+                self.popUpActive = False
+                self.selectedPlot = None
+            elif culprit[1] == BUTTON3:
+                self.sacrificePlot(self.selectedPlot)
+                self.popUpActive = False
+                self.selectedPlot = None
+
+        if culprit[1] == ENDBUTTON:
+            self.endTurn()
+
 
 a = Game()
 a.unitTest()
