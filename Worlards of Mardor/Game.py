@@ -155,31 +155,31 @@ class Game(object):
     #
     #
     def drawSideBar(self, screen):
-        vial = pygame.image.load("sidebar.png")
-        rect = vial.get_rect()
+        asset = pygame.image.load("sidebar.png")
+        rect = asset.get_rect()
         rect = rect.move([672, 0])  #move the vial to the right side of the screen
-        screen.blit(vial, rect)
+        screen.blit(asset, rect)
 
-        vial = pygame.image.load("bloodvial.png")
-        rect = vial.get_rect()
+        asset = pygame.image.load("bloodvial.png")
+        rect = asset.get_rect()
         rect = rect.move([700, 10])  #move the vial to the right side of the screen
-        screen.blit(vial, rect)
+        screen.blit(asset, rect)
 
-        blood = pygame.image.load("bloodicon.png")
-        rect = blood.get_rect()
+        asset = pygame.image.load("bloodicon.png")
+        rect = asset.get_rect()
         rect = rect.move([685, 340])  #move the blood drop to the right side of the screen
-        screen.blit(blood, rect)
+        screen.blit(asset, rect)
 
-        food = pygame.image.load("foodicon.png")
-        rect = food.get_rect()
+        asset = pygame.image.load("foodicon.png")
+        rect = asset.get_rect()
         rect = rect.move([685, 450])  #move the food icon to the right side of the screen
-        screen.blit(food, rect)
+        screen.blit(asset, rect)
 
-        end = pygame.image.load("endbutton.png")
-        rect = end.get_rect()
+        asset = pygame.image.load("endbutton.png")
+        rect = asset.get_rect()
         rect = rect.move([704, 560])  #move the end button to the right side of the screen
         self.endRect = rect
-        screen.blit(end, rect)
+        screen.blit(asset, rect)
 
         numFont = pygame.font.SysFont("Lucidia Console", 50)
 
@@ -293,10 +293,22 @@ class Game(object):
         print "End turn button pressed!"
         self.updateState()
 
+    def popUp(self, offset, screen):
+        asset = pygame.image.load("window.png")
+        rect = asset.get_rect()
+        rect = rect.move([offset[0], offset[1]])
+        screen.blit(asset, rect)
+
+        asset = pygame.image.load("winbutt1.png")
+        rect = asset.get_rect()
+        rect = rect.move([offset[0], offset[1]])
+        rect = rect.move([13, 210])
+        screen.blit(asset, rect)
 
 
 a = Game()
 #a.unitTest()
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
@@ -312,6 +324,7 @@ while True:
 
     a.screen.fill((0, 0, 0))
     a.drawScreen(a.screen)
+    a.popUp((20, 20), a.screen)
     a.drawSideBar(a.screen)
     pygame.display.flip()
 
