@@ -30,12 +30,12 @@ class Inventory(object):
         self.tithe = 0
         self.favor = 0.5
         self.foodstuffs = 10
-        self.unitList = [None]*16
-        self.unitList[0] = Worker(GOBLIN)
+        self.unitList = [None]*17
+        self.unitList[16] = Worker(GOBLIN)
         self.maxUnits = 6
         self.maxPlots = 10
         #sets the number of useable workers to three for the beginning of the game
-        self.unitList[0].modifyWorkerNumber()
+        self.unitList[16].modifyWorkerNumber()
 
     ##
     #removeUnitPlot

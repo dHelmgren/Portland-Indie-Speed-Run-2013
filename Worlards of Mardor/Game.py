@@ -37,6 +37,7 @@ class Game(object):
         self.state = PLOTS
         self.click = None
         self.endRect = None
+        self.plotList = []
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
@@ -95,6 +96,7 @@ class Game(object):
             self.plotEntities.append(remaining)
 
 
+
     def unitTest(self):
         self.inventory.addUnitPlot(1, Crop(BLOODROOT))
         self.inventory.addUnitPlot(2, Crop(SCREAMING_FUNGUS))
@@ -139,6 +141,8 @@ class Game(object):
         #     self.updateState()
 
 
+
+
     ##
     #drawScreen
     #Description: Draws the side bar for the game including the blood vial, and relevant invs
@@ -156,7 +160,9 @@ class Game(object):
             yAdjust = 0
             for unit in self.inventory.unitList:
                 plot = None
-                if isinstance(unit, Crop):
+                if isinstance(unit, Worker):
+                    break
+                elif isinstance(unit, Crop):
                     if unit.stacks == 0:
                         plot = pygame.image.load("sprout2.png")
                     elif unit.stacks == 1:
@@ -234,6 +240,7 @@ class Game(object):
     #       went down
     #
     #
+
     def checkClick(self, pos, rect):
         if rect is None:
             return False
@@ -243,9 +250,9 @@ class Game(object):
         else:
             return False
 
-    ########################################################
+    ##
     #EVENT OUTCOME FUNCTIONS
-    ########################################################
+    ##
 
     ##
     #harvestPlot
@@ -338,32 +345,9 @@ class Game(object):
         asset = pygame.image.load("winbutt1.png")
         rect = asset.get_rect()
         rect = rect.move([offset[0], offset[1]])
-        rect = rect.move([18, 215])
-        self.butt1 = rect
+        rect = rect.move([13, 210])
         screen.blit(asset, rect)
 
-        asset = pygame.image.load("winbutt2.png")
-        rect = asset.get_rect()
-        rect = rect.move([offset[0], offset[1]])
-        rect = rect.move([142, 215])
-        self.butt2 = rect
-        screen.blit(asset, rect)
-
-        asset = pygame.image.load("winbutt3.png")
-        rect = asset.get_rect()
-        rect = rect.move([offset[0], offset[1]])
-        rect = rect.move([270, 215])
-        self.butt3 = rect
-        screen.blit(asset, rect)
-
-    def button1(self):
-        print "button 1!"
-
-    def button2(self):
-        print "button 2!"
-
-    def button3(self):
-        print "button 3!"
 
     def changeState(self, direction):
         self.state += direction
@@ -380,6 +364,7 @@ while True:
         if event.type == pygame.QUIT: sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN: a.click = pygame.mouse.get_pos()
         elif event.type == pygame.MOUSEBUTTONUP:
+
             for thing in a.currentEntities:
                 if a.checkClick(pygame.mouse.get_pos(), thing):
                     print "You clicked something!"
@@ -395,6 +380,7 @@ while True:
         elif event.type == pygame.KEYDOWN:
             a.changeState(1)
 
+
     musicPlaying = pygame.mixer.get_busy()
     if not musicPlaying:
         song = pygame.mixer.Sound("MoonlightHall.wav")
@@ -404,3 +390,5 @@ while True:
     a.drawScreen(a.screen)
     a.drawSideBar(a.screen)
     pygame.display.flip()
+
+
