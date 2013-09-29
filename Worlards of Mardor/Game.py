@@ -42,7 +42,6 @@ class Game(object):
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
 
-
     def updateTithe(self):
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
 
@@ -161,7 +160,6 @@ class Game(object):
                 rect = plot.get_rect()
                 rect = rect.move([32 + xAdjust*160, 16 + yAdjust*160])  #move the vial to the right side of the screen
                 screen.blit(plot, rect)
-                self.plotList.append(rect)
                 xAdjust += 1
                 if xAdjust > 3:
                     yAdjust += 1
@@ -346,6 +344,7 @@ while True:
 
     a.screen.fill((0, 0, 0))
     a.drawScreen(a.screen)
+    a.popUp((500, 500), a.screen)
     a.drawSideBar(a.screen)
     pygame.display.flip()
 
