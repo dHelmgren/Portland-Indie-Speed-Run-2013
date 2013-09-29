@@ -119,14 +119,14 @@ class Game(object):
         #         Farmable.printStats(unit)
         # print(self.inventory.foodstuffs)
 
-        for num in [0,1,2,3,4,5,6,7,8,9,10,11]:
-            print("Turn Number:")
-            print(num)
-            for unit in self.inventory.unitList:
-                if unit is not None:
-                    Farmable.printStats(unit)
-            print(self.inventory.foodstuffs)
-            self.updateState()
+        # for num in [0,1,2,3,4,5,6,7,8,9,10,11]:
+        #     print("Turn Number:")
+        #     print(num)
+        #     for unit in self.inventory.unitList:
+        #         if unit is not None:
+        #             Farmable.printStats(unit)
+        #     print(self.inventory.foodstuffs)
+        #     self.updateState()
 
 
 
@@ -146,7 +146,17 @@ class Game(object):
             xAdjust = 0
             yAdjust = 0
             for unit in self.inventory.unitList:
-                plot = pygame.image.load("dirt.png")
+                plot = None
+                if isinstance(unit, Crop):
+                    if unit.stacks == 0:
+                        plot = pygame.image.load("sprout2.png")
+                    elif unit.stacks == 1:
+                        plot = pygame.image.load("readyplant.png")
+                    elif unit.stacks == -1:
+                        plot = pygame.image.load("deadplant.png")
+
+                else:
+                    plot = pygame.image.load("dirt.png")
                 rect = plot.get_rect()
                 rect = rect.move([32 + xAdjust*160, 16 + yAdjust*160])  #move the vial to the right side of the screen
                 screen.blit(plot, rect)
@@ -340,7 +350,7 @@ class Game(object):
         print "button 3!"
 
 a = Game()
-#a.unitTest()
+a.unitTest()
 
 while True:
     for event in pygame.event.get():
@@ -363,7 +373,7 @@ while True:
 
     a.screen.fill((0, 0, 0))
     a.drawScreen(a.screen)
-    a.popUp((20, 20), a.screen)
+    a.popUp((500, 500), a.screen)
     a.drawSideBar(a.screen)
     pygame.display.flip()
 
