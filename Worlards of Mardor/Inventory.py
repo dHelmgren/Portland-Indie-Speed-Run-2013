@@ -30,7 +30,7 @@ class Inventory(object):
         self.tithe = 0
         self.favor = 0.5
         self.foodstuffs = 10
-        self.unitList = [None]*10
+        self.unitList = [None]*16
         self.unitList[0] = Worker(GOBLIN)
         self.maxUnits = 6
         self.maxPlots = 10
