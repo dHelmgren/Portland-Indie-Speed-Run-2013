@@ -33,15 +33,17 @@ class Game(object):
         size = (800, 640) #(width, height)
         self.screen = pygame.display.set_mode(size)
         pygame.display.set_caption('Worlards of Mardor')
-        self.state = DWELLINGS
+        self.reqTithe = 500
+        self.state = PLOTS
         self.click = None
         self.endRect = None
-        self.titheFrac = "0/100"
+        self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
 
+
     def updateTithe(self):
-        self.titheFrac = "0/100"
+        self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
 
     def updateBlood(self):
         self.bankNum = str(self.inventory.blood)
@@ -140,7 +142,7 @@ class Game(object):
             #TODO: draw our dwellings screen
             do = "stuff"
 
-        elif self.state is CROPS:
+        elif self.state is PLOTS:
             #TODO: draw our crops screen
             do = "stuff"
         else:
@@ -179,7 +181,7 @@ class Game(object):
         self.endRect = rect
         screen.blit(end, rect)
 
-        numFont = pygame.font.SysFont("Lucidia Consol", 50)
+        numFont = pygame.font.SysFont("Lucidia Console", 50)
 
         self.updateTithe()
         titheLab = numFont.render(self.titheFrac, 1, (255, 0, 0))
@@ -292,7 +294,7 @@ class Game(object):
         self.updateState()
 
 a = Game()
-a.unitTest()
+#a.unitTest()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
