@@ -397,7 +397,7 @@ class Game(object):
     # culprit - A tuple containing ([the rect of our culprit], [and their metadata])
     def clickCallback(self, culprit):
         print "CLICK CALLBACK!"
-        print culprit
+        print culprit[2]
 
 a = Game()
 a.unitTest()
@@ -410,7 +410,7 @@ while True:
 
             for thing in a.currentEntities:
                 if a.checkClick(pygame.mouse.get_pos(), thing[0]):
-                    a.clickCallback(thing[2])
+                    a.clickCallback(thing)
             # if a.checkClick(pygame.mouse.get_pos(), a.butt1):
             #     a.button1()
             # elif a.checkClick(pygame.mouse.get_pos(), a.butt2):

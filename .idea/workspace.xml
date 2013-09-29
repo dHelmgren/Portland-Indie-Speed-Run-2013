@@ -9,7 +9,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/end_icon_rough.xcf" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/window_background.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/Game.py" afterPath="$PROJECT_DIR$/Worlards of Mardor/Game.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Portland-Indie-Speed-Run-2013.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,7 +39,7 @@
       <file leaf-file-name="Game.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Worlards of Mardor/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="380" column="8" selection-start="13486" selection-end="13486" vertical-scroll-proportion="0.14190687">
+            <state line="412" column="41" selection-start="14496" selection-end="14496" vertical-scroll-proportion="0.767184">
               <folding>
                 <element signature="e#28#41#0" expanded="true" />
                 <element signature="e#1323#1392#0" expanded="false" />
@@ -423,7 +422,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Worlards of Mardor/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="380" column="8" selection-start="13486" selection-end="13486" vertical-scroll-proportion="0.14190687">
+        <state line="412" column="41" selection-start="14496" selection-end="14496" vertical-scroll-proportion="0.767184">
           <folding>
             <element signature="e#28#41#0" expanded="true" />
             <element signature="e#1323#1392#0" expanded="false" />
