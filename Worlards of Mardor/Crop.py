@@ -25,3 +25,6 @@ class Crop(Farmable):
         self.harvestable = False
         #a plant starts with 0 stack, if ruined, it has -1
         self.stacks = -1
+
+    def removeAStack(self):
+        self.stacks = 0

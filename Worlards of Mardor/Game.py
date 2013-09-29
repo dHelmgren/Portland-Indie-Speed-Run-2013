@@ -44,6 +44,7 @@ class Game(object):
         self.foodNum = str(self.inventory.foodstuffs)
         self.plotPaths = []
         self.plagueT = []
+        self.rats = []
         self.currentEntities = []
         self.popUpActive = False
         self.selectedPlot = None
@@ -69,6 +70,9 @@ class Game(object):
             if farmable is not None:
                 #first, update all the farmable's clock
                 Farmable.updateClock(farmable)
+
+                #TODO We're not getting to our harvestable graphic- DO SOMETHING!!
+
                 #if the clock has hit zero, the object either gains stacks, or is harvestable
                 if farmable.clock == 0:
                     if isinstance(farmable, Worker) or isinstance(farmable, Livestock):
@@ -156,6 +160,8 @@ class Game(object):
             xAdjust = 0
             yAdjust = 0
             unitID = 0
+            frogCount = 0
+            ratCount = 0
 
             for path in self.plotPaths:
                 screen.blit(path[0], path[1])
@@ -168,18 +174,42 @@ class Game(object):
                     break
                 #draw the appropriate image for the crop
                 elif isinstance(unit, Crop):
-                    if unit.stacks == 0:
-                        plot = pygame.image.load("sprout2.png")
-                    elif unit.stacks == 1:
-                        plot = pygame.image.load("readyplant.png")
-                    elif unit.stacks == -1:
-                        plot = pygame.image.load("deadplant.png")
+                    if unit.type == ORCWORT:
+                        if unit.stacks == 0:
+                            plot = pygame.image.load("orcwort1.png")
+                        elif unit.stacks == 1:
+                            plot = pygame.image.load("orcwort2.png")
+                        elif unit.stacks == 2:
+                            plot = pygame.image.load("orcwort3.png")
+                        elif unit.stacks == -1:
+                            plot = pygame.image.load("orcwort4.png")
+                    elif unit.type == SCREAMING_FUNGUS:
+                        if unit.stacks == 0:
+                            plot = pygame.image.load("shrieker1.png")
+                        elif unit.stacks == 1:
+                            plot = pygame.image.load("shrieker2.png")
+                        elif unit.stacks == 2:
+                            plot = pygame.image.load("shrieker3.png")
+                        elif unit.stacks == -1:
+                            plot = pygame.image.load("shrieker4.png")
+                    elif unit.type == BLOODROOT:
+                        if unit.stacks == 0:
+                            plot = pygame.image.load("bloodroot1.png")
+                        elif unit.stacks == 1:
+                            plot = pygame.image.load("bloodroot2.png")
+                        elif unit.stacks == 2:
+                            plot = pygame.image.load("bloodroot3.png")
+                        elif unit.stacks == -1:
+                            plot = pygame.image.load("bloodroot4.png")
+
                 #draw the appropriate image for the Livestock
                 elif isinstance(unit, Livestock):
                     if unit.type == PLAGUE_TOAD:
-                        frogCount = 0
                         plot = self.plagueT[frogCount]
                         frogCount += 1
+                    elif unit.type == DIRE_RAT:
+                        plot = self.rats[ratCount]
+                        ratCount += 1
                     else:
                         plot = pygame.image.load("pen.png")
                 #if it isn't either, just draw dirt
@@ -464,6 +494,13 @@ class Game(object):
             toads.append(pygame.image.load("toads4.png"))
             for x in range(0, 12):
                 self.plagueT.append(random.choice(toads))
+            self.rats = []
+            dires = []
+            dires.append(pygame.image.load("rats1.png"))
+            dires.append(pygame.image.load("rats2.png"))
+            dires.append(pygame.image.load("rats3.png"))
+            for x in range(0, 12):
+                self.rats.append(random.choice(dires))
 
     ##
     #clickCallback
