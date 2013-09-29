@@ -252,7 +252,7 @@ class Game(object):
                 unitID += 1
         #state is STORE
         else:
-            bar = pygame.image.load("tempstorebar.png")
+            bar = pygame.image.load("storebar.png")
             rect = bar.get_rect()
             rect = rect.move([0, 448])
             self.screen.blit(bar, rect)
@@ -273,7 +273,7 @@ class Game(object):
                 elif item is GOBLIN:
                     icon = pygame.image.load("shopGoblin.png")
                 rect = icon.get_rect()
-                rect = rect.move([16 + 192 * xAdjust, 470 + 96 * yAdjust])
+                rect = rect.move([60 + 250 * xAdjust, 465 + 96 * yAdjust])
                 self.screen.blit(icon, rect)
                 if not self.popUpActive:
                     self.currentEntities.append((rect, item, None))
@@ -285,6 +285,17 @@ class Game(object):
                     yAdjust += 1
                     xAdjust = 0
 
+        asset = pygame.image.load("arrowL.png")
+        rect = asset.get_rect()
+        rect = rect.move([0, 320])
+        self.screen.blit(asset, rect)
+        self.currentEntities.append((rect, LEFT, None))
+
+        asset = pygame.image.load("arrowR.png")
+        rect = asset.get_rect()
+        rect = rect.move([640, 320])
+        self.screen.blit(asset, rect)
+        self.currentEntities.append((rect, RIGHT, None))
 
         self.currentEntities.append((self.endRect, ENDBUTTON, None))
 
@@ -537,6 +548,30 @@ class Game(object):
             rect = rect.move([330, 0])
             screen.blit(asset, rect)
 
+            things = [BLOODROOT, SCREAMING_FUNGUS, ORCWORT, PLAGUE_TOAD, DIRE_RAT, GOBLIN]
+
+            if things[self.selectedPlot] is BLOODROOT:
+                asset = pygame.image.load("shopBloodroot.png")
+            elif things[self.selectedPlot] is SCREAMING_FUNGUS:
+                asset = pygame.image.load("shopShreiker.png")
+            elif things[self.selectedPlot] is ORCWORT:
+                asset = pygame.image.load("shopOrcwort.png")
+            elif things[self.selectedPlot] is PLAGUE_TOAD:
+                asset = pygame.image.load("shopToad.png")
+            elif things[self.selectedPlot] is DIRE_RAT:
+                asset = pygame.image.load("shopRat.png")
+            elif things[self.selectedPlot] is GOBLIN:
+                asset = pygame.image.load("shopGoblin.png")
+
+            rect = asset.get_rect()
+            rect = rect.move([340, 10])
+            screen.blit(asset, rect)
+
+            numFont = pygame.font.SysFont("Courier", 15)
+
+            flavor = numFont.render("Here be flavour", 1, (255, 0, 0))
+            screen.blit(flavor, (450, 30))
+
             asset = pygame.image.load("winbutt1.png")
             rect = asset.get_rect()
             rect = rect.move([offset[0], offset[1]])
@@ -598,9 +633,11 @@ class Game(object):
     #
     # culprit - A tuple containing ([the rect of our culprit], [and their metadata], [and their plot ID where relevant])
     def clickCallback(self, culprit):
-        print "CLICK CALLBACK!"
-        print culprit[2]
-        if self.state == PLOTS:
+        if culprit[1] is RIGHT:
+            self.changeState(1)
+        elif culprit[1] is LEFT:
+            self.changeState(-1)
+        elif self.state == PLOTS:
             if culprit[2] >= 0 and culprit[1] is not None:
                 self.popUpActive = True
                 self.selectedPlot = culprit[2]
@@ -650,9 +687,6 @@ while True:
             for thing in a.currentEntities:
                 if a.checkClick(pygame.mouse.get_pos(), thing[0]):
                     a.clickCallback(thing)
-
-        elif event.type == pygame.KEYDOWN:
-            a.changeState(1)
 
 
     musicPlaying = pygame.mixer.get_busy()
