@@ -51,7 +51,7 @@ class Game(object):
         self.currentEntities = []
         self.popUpActive = False
         self.selectedPlot = None
-
+        self.favor = 0.05
 
     def updateTithe(self):
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
@@ -424,6 +424,7 @@ class Game(object):
                 Farmable.removeAStack(unitData)
                 #based on the item's turnout, increase the number of foodstuffs
                 self.inventory.foodstuffs += unitData.turnout
+                self.inventory.blood += 5
                 #if there are no more stacks, that unit is depleted, remove it
                 if unitData.stacks == 0:
                     self.inventory.removeUnitPlot(unitID)
@@ -488,6 +489,7 @@ class Game(object):
     ##
     def endTurn(self):
         print "End turn button pressed!"
+        self.eventEngine()
         self.updateState()
         self.calendar -= 1
         if self.calendar == 0:
@@ -503,10 +505,64 @@ class Game(object):
         if self.inventory.tithe < self.reqTithe:
             print("You failed to meet your required tithe. Your date with the alter is next week.")
             sys.exit(0)
-
-        self.reqTithe = 10 * self.year + self.reqTithe + (self.inventory.tithe/self.reqTithe)
-        self.calendar = 12
         self.year += 1
+        self.reqTithe = (10 + self.reqTithe) * (self.inventory.tithe/self.reqTithe)
+        self.calendar = 12
+        self.inventory.tithe = 0
+
+
+    ##
+    #eventEngine
+    #Description: generates an event, and runs the consequences
+    ##
+
+    def eventEngine(self):
+        #if your luck is worse than your favor gen event
+        luck = random.random()
+        if luck < self.favor:
+            luck = random.random()
+            self.favor = 0.05
+            #Blood Event
+            if luck < .25:
+                #TODO:
+                print("blood event")
+                self.inventory.blood -= 20
+                if self.inventory.blood < 0:
+                    self.inventory.blood = 0
+            #Food Event
+            elif .25 <= luck and luck < .5:
+                #TODO:
+                print("food event")
+                self.inventory.foodstuffs -= 2
+                if self.inventory.foodstuffs < 0:
+                    self.inventory.foodstuffs = 0
+
+            #Livestock Event
+            elif .5 <= luck and luck < .75:
+                #TODO
+
+                haveLivestock = False
+                unluckyLivestock = None
+                for unit in self.inventory.unitList:
+                    if isinstance(unit, Livestock):
+                        haveLivestock = True
+                        unluckyLivestock = unit
+                        break
+                if haveLivestock:
+                    unluckyLivestock.stacks -= 1
+                    #TODO: text for different livestock
+                else:
+                    print("the month passes quietly")
+
+            #Goblin Event
+            else:
+                #TODO
+                self.inventory.unitList[16].stacks -= 1
+
+        else:
+            self.favor += 0.05
+            print("the month passes quietly")
+
 
     ##
     #popUp
