@@ -34,7 +34,7 @@ class Game(object):
         size = (800, 640) #(width, height)
         self.screen = pygame.display.set_mode(size)
         pygame.display.set_caption('Exsanguia')
-        self.reqTithe = 500
+        self.reqTithe = 50
         self.state = PLOTS
         self.click = None
         self.endRect = None
@@ -65,9 +65,13 @@ class Game(object):
     #
     ##
     def updateState(self):
-
+        plotCounter = 0
         for farmable in self.inventory.unitList:
-            if farmable is not None:
+            if plotCounter > self.inventory.unitList[16].stacks:
+                #remove the current unit if we don't have enough Goblins
+                self.inventory.removeUnitPlot(plotCounter - 1)
+            elif farmable is not None:
+                plotCounter += 1
                 #first, update all the farmable's clock
                 Farmable.updateClock(farmable)
 
@@ -89,6 +93,11 @@ class Game(object):
                 #if the farmable is consuming more than user has, it takes damage to its hardiness
                 else:
                     farmable.hardiness -= 1
+
+        if self.inventory.unitList[16].hardiness < 0 or self.inventory.unitList[16].stacks < 0:
+            print("Your goblins cannibalize each other and destroy your farm. Your day at the alter is tentatively scheduled for next week.")
+            sys.exit(0)
+
         #enumerates over all of the units, finds those defined as dead (hardiness < 0) and returns a list of their
         #indicies
         deadNums = (index for index,dead in enumerate(self.inventory.unitList) if dead is not None and dead.hardiness < 0)
@@ -260,6 +269,7 @@ class Game(object):
                 self.screen.blit(icon, rect)
                 if not self.popUpActive:
                     self.currentEntities.append((rect, item, None))
+                #draw the popup
                 else:
                     self.popUp([200, 200], self.screen)
                 xAdjust += 1
@@ -348,7 +358,7 @@ class Game(object):
             self.inventory.unitList[16].stacks += 1
             self.inventory.spendBlood(UNIT_STATS[self.selectedPlot][COST])
             return True
-        else:
+        elif self.inventory.plotsWorked + 1 <= self.inventory.unitList[16].stacks:
             counter = 0
             for slot in self.inventory.unitList:
                 if slot is None:
@@ -361,7 +371,7 @@ class Game(object):
                         self.inventory.spendBlood(UNIT_STATS[self.selectedPlot][COST])
                         return True
                 counter += 1
-            return False
+        return False
 
 
 
@@ -551,7 +561,7 @@ class Game(object):
         print "CLICK CALLBACK!"
         print culprit[2]
         if self.state == PLOTS:
-            if culprit[2] >= 0:
+            if culprit[2] >= 0 and culprit[1] is not None:
                 self.popUpActive = True
                 self.selectedPlot = culprit[2]
             elif culprit[1] == BUTTON1:
@@ -567,9 +577,11 @@ class Game(object):
                 self.popUpActive = False
                 self.selectedPlot = None
         elif self.state == SHOP:
+            #if the pressed button is not a part of pop up
             if culprit[1] >= 0:
                 self.popUpActive = True
                 self.selectedPlot = culprit[1]
+            #if the button IS a part of pop up
             elif culprit[1] == BUTTON1:  #This will buy the thing!
                 if not self.buyItem():
                     print("there is no room")
