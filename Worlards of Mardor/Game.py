@@ -499,7 +499,7 @@ class Game(object):
     #
     ##
 
-    def judgment(self):
+    def judgement(self):
         if self.inventory.tithe < self.reqTithe:
             print("You failed to meet your required tithe. Your date with the alter is next week.")
             sys.exit(0)
