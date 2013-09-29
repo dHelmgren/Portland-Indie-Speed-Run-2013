@@ -33,7 +33,7 @@ class Game(object):
         self.inventory = Inventory.Inventory()
         size = (800, 640) #(width, height)
         self.screen = pygame.display.set_mode(size)
-        pygame.display.set_caption('Worlards of Mardor')
+        pygame.display.set_caption('Exsanguia')
         self.reqTithe = 500
         self.state = PLOTS
         self.click = None
