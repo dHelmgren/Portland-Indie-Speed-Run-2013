@@ -132,7 +132,7 @@ class Game(object):
             do = "stuff"
 
         elif self.state is PLOTS:
-            #TODO: draw our crops screen
+            #TODO: draw our plots screen
             do = "stuff"
         else:
             #TODO: draw our shop screen
@@ -282,6 +282,8 @@ class Game(object):
         print "End turn button pressed!"
         self.updateState()
 
+
+
 a = Game()
 #a.unitTest()
 while True:
@@ -294,7 +296,7 @@ while True:
 
     musicPlaying = pygame.mixer.get_busy()
     if not musicPlaying:
-        song = pygame.mixer.Sound("MoonlightHall.mp3")
+        song = pygame.mixer.Sound("MoonlightHall.wav")
         #song.play()
 
     a.screen.fill((0, 0, 0))
