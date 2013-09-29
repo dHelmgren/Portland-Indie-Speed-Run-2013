@@ -69,6 +69,9 @@ class Game(object):
             if farmable is not None:
                 #first, update all the farmable's clock
                 Farmable.updateClock(farmable)
+
+                #TODO We're not getting to our harvestable graphic- DO SOMETHING!!
+
                 #if the clock has hit zero, the object either gains stacks, or is harvestable
                 if farmable.clock == 0:
                     if isinstance(farmable, Worker) or isinstance(farmable, Livestock):
@@ -168,12 +171,34 @@ class Game(object):
                     break
                 #draw the appropriate image for the crop
                 elif isinstance(unit, Crop):
-                    if unit.stacks == 0:
-                        plot = pygame.image.load("sprout2.png")
-                    elif unit.stacks == 1:
-                        plot = pygame.image.load("readyplant.png")
-                    elif unit.stacks == -1:
-                        plot = pygame.image.load("deadplant.png")
+                    if unit.type == ORCWORT:
+                        if unit.stacks == 0:
+                            plot = pygame.image.load("orcwort1.png")
+                        elif unit.stacks == 1:
+                            plot = pygame.image.load("orcwort2.png")
+                        elif unit.stacks == 2:
+                            plot = pygame.image.load("orcwort3.png")
+                        elif unit.stacks == -1:
+                            plot = pygame.image.load("orcwort4.png")
+                    elif unit.type == SCREAMING_FUNGUS:
+                        if unit.stacks == 0:
+                            plot = pygame.image.load("shrieker1.png")
+                        elif unit.stacks == 1:
+                            plot = pygame.image.load("shrieker2.png")
+                        elif unit.stacks == 2:
+                            plot = pygame.image.load("shrieker3.png")
+                        elif unit.stacks == -1:
+                            plot = pygame.image.load("shrieker4.png")
+                    elif unit.type == BLOODROOT:
+                        if unit.stacks == 0:
+                            plot = pygame.image.load("bloodroot1.png")
+                        elif unit.stacks == 1:
+                            plot = pygame.image.load("bloodroot2.png")
+                        elif unit.stacks == 2:
+                            plot = pygame.image.load("bloodroot3.png")
+                        elif unit.stacks == -1:
+                            plot = pygame.image.load("bloodroot4.png")
+
                 #draw the appropriate image for the Livestock
                 elif isinstance(unit, Livestock):
                     if unit.type == PLAGUE_TOAD:
