@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cea5db1c-f677-490f-bdf4-599d24be03ca" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Game.py" afterPath="$PROJECT_DIR$/Game.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="cea5db1c-f677-490f-bdf4-599d24be03ca" name="Default" comment="" />
     <ignored path="Worlards of Mardor.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Game.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380424750730" ignored="false" />
@@ -13,10 +10,11 @@
     <file path="/Crop.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380408074617" ignored="false" />
     <file path="/Livestock.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380354385161" ignored="false" />
     <file path="/Worker.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380400052597" ignored="false" />
-    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380421249607" ignored="false" />
+    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380425273411" ignored="false" />
     <file path="/UserInterface.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380346428623" ignored="false" />
     <file path="$PROJECT_DIR$/../../AIHW4/CS421DepthFirstHeuristic-/HumanPlayer.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380347269545" ignored="false" />
     <file path="/Constants.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380353961248" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380425352214" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +37,7 @@
       <file leaf-file-name="Game.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="225" column="30" selection-start="7744" selection-end="7744" vertical-scroll-proportion="0.4125874">
+            <state line="223" column="30" selection-start="7700" selection-end="7700" vertical-scroll-proportion="0.4125874">
               <folding>
                 <element signature="e#28#41#0" expanded="true" />
               </folding>
@@ -478,7 +476,11 @@
       <created>1380421252913</created>
       <updated>1380421252913</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Initialized rects for plots">
+      <created>1380425275916</created>
+      <updated>1380425275916</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -567,7 +569,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Crops go through life cycle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initialized rects for plots" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -595,6 +597,7 @@
     <MESSAGE value="units now can starve to death by losing hardiness each turn they go without food" />
     <MESSAGE value="The plots of Land appear!" />
     <MESSAGE value="Crops go through life cycle" />
+    <MESSAGE value="Initialized rects for plots" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -711,7 +714,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="225" column="30" selection-start="7744" selection-end="7744" vertical-scroll-proportion="0.4125874">
+        <state line="223" column="30" selection-start="7700" selection-end="7700" vertical-scroll-proportion="0.4125874">
           <folding>
             <element signature="e#28#41#0" expanded="true" />
           </folding>
