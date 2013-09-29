@@ -35,7 +35,7 @@ class Game(object):
         self.screen = pygame.display.set_mode(size)
         pygame.display.set_caption('Exsanguia')
         self.reqTithe = 10
-        self.state = PLOTS
+        self.state = SHOP
         self.click = None
         self.endRect = None
         self.plotList = []
@@ -51,7 +51,8 @@ class Game(object):
         self.currentEntities = []
         self.popUpActive = False
         self.selectedPlot = None
-
+        self.clerkDlg = False
+        self.clerkSpch = None
 
     def updateTithe(self):
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
@@ -284,6 +285,49 @@ class Game(object):
                 if xAdjust > 2:
                     yAdjust += 1
                     xAdjust = 0
+            if self.clerkDlg:
+                asset = pygame.image.load("shopDlg.png")
+                rect = asset.get_rect()
+                rect = rect.move([290, 315])
+                self.screen.blit(asset, rect)
+                if self.clerkSpch is None:
+                    options = []
+                    if self.inventory.blood <= 30:
+                        speech1 = []
+                        speech1.append("What do you want, worm? I do not have")
+                        speech1.append("time for your weakness.")
+                        options.append(speech1)
+                        speech2 = []
+                        speech2.append("Ah. You. You'd better not incinerate")
+                        speech2.append("my shelver again.")
+                        options.append(speech2)
+                    elif self.inventory.blood <= 80:
+                        speech1 = []
+                        speech1.append("I see you haven't been killed yet.")
+                        speech1.append("How surprising.")
+                        options.append(speech1)
+                        speech2 = []
+                        speech2.append("It's amazing that you don't nauseate")
+                        speech2.append("me to look at anymore.")
+                        options.append(speech2)
+                    else:
+                        speech1 = []
+                        speech1.append("Once again you seek my services. And")
+                        speech1.append("what might you need, hm?")
+                        options.append(speech1)
+                        speech2 = []
+                        speech2.append("Welcome, Great One. Please, how my I")
+                        speech2.append("serve you...?")
+                        options.append(speech2)
+                    self.clerkSpch = random.choice(options)
+
+                numFont = pygame.font.SysFont("Courier", 15)
+                x = 0
+
+                for ch in self.clerkSpch:
+                    flavor = numFont.render(ch, 1, (0, 0, 0))
+                    screen.blit(flavor, (320, 340 +x*20))
+                    x += 1
 
         asset = pygame.image.load("arrowL.png")
         rect = asset.get_rect()
@@ -542,6 +586,8 @@ class Game(object):
             self.currentEntities.append((rect, BUTTON3, None))
 
         elif self.state == SHOP:
+            self.clerkDlg = False
+            self.clerkSpch = None
             self.currentEntities = []
             asset = pygame.image.load("shopdisplay.png")
             rect = asset.get_rect()
@@ -675,6 +721,9 @@ class Game(object):
             for x in range(0, 12):
                 self.rats.append(random.choice(dires))
 
+        elif self.state == SHOP:
+            self.clerkDlg = True
+
     ##
     #clickCallback
     #Description: The method called when something on our screen has been clicked
@@ -708,14 +757,17 @@ class Game(object):
                 self.selectedPlot = culprit[1]
             #if the button IS a part of pop up
             elif culprit[1] == BUTTON1:  #This will buy the thing!
+                self.clerkDlg = True
                 if not self.buyItem():
                     print("there is no room")
                 self.popUpActive = False
                 self.selectedPlot = None
             elif culprit[1] == BUTTON2:
+                self.clerkDlg = True
                 self.popUpActive = False
                 self.selectedPlot = None
             elif culprit[1] == BUTTON3:
+                self.clerkDlg = True
                 self.popUpActive = False
                 self.selectedPlot = None
         if culprit[1] == ENDBUTTON:
