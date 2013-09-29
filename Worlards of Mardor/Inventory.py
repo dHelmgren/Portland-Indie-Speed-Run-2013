@@ -68,8 +68,7 @@ class Inventory(object):
     #
     #Parameter:
     #   amtToEat - the consumption cost of a unit
-    #
-    #TODO: negative food total?
+    ##
     def consume(self, amtToEat):
         self.foodstuffs -= amtToEat
 

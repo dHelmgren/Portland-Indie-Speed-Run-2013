@@ -84,10 +84,12 @@ class Game(object):
                 #if the farmable is consuming more than user has, it takes damage to its hardiness
                 else:
                     farmable.hardiness -= 1
+        #enumerates over all of the units, finds those defined as dead (hardiness < 0) and returns a list of their
+        #indicies
         deadNums = (index for index,dead in enumerate(self.inventory.unitList) if dead is not None and dead.hardiness < 0)
 
-        for deceased in deadNums:
-            self.inventory.removeUnitPlot(deceased)
+        for deceasedIndex in deadNums:
+            self.inventory.removeUnitPlot(deceasedIndex)
 
         for remaining in self.inventory.unitList:
             self.plotEntities.append(remaining)
@@ -153,12 +155,17 @@ class Game(object):
             do = "stuff"
 
         elif self.state is PLOTS:
+            #initialize some values used later
             xAdjust = 0
             yAdjust = 0
+            unitID = 0
             for unit in self.inventory.unitList:
+                #remove the previous picture
                 plot = None
+                #don't do this for our GOBLINs
                 if isinstance(unit, Worker):
                     break
+                #draw the appropriate image for the crop
                 elif isinstance(unit, Crop):
                     if unit.stacks == 0:
                         plot = pygame.image.load("sprout2.png")
@@ -166,20 +173,27 @@ class Game(object):
                         plot = pygame.image.load("readyplant.png")
                     elif unit.stacks == -1:
                         plot = pygame.image.load("deadplant.png")
-
+                #draw the appropriate image for the Livestock
                 elif isinstance(unit, Livestock):
                     plot = pygame.image.load("pen.png")
-
+                #if it isn't either, just draw dirt
                 else:
                     plot = pygame.image.load("dirt.png")
+                #get the rect of our button image, move it to the right location
                 rect = plot.get_rect()
                 rect = rect.move([32 + xAdjust*160, 16 + yAdjust*160])
-                self.currentEntities.append((rect, unit))
+                #create an entry for currentEntities that includes the button's rect, unit object, and the number of the
+                #plot
+                self.currentEntities.append((rect, unit, unitID))
+                #draw it
                 screen.blit(plot, rect)
+                #adjust where the next draw will happen
                 xAdjust += 1
                 if xAdjust > 3:
                     yAdjust += 1
                     xAdjust = 0
+                #increment the unitID
+                unitID += 1
 
         else:
             #TODO: draw our shop screen
@@ -396,7 +410,7 @@ while True:
 
             for thing in a.currentEntities:
                 if a.checkClick(pygame.mouse.get_pos(), thing[0]):
-                    a.clickCallback(thing[1])
+                    a.clickCallback(thing[2])
             # if a.checkClick(pygame.mouse.get_pos(), a.butt1):
             #     a.button1()
             # elif a.checkClick(pygame.mouse.get_pos(), a.butt2):
