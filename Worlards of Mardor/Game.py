@@ -42,6 +42,10 @@ class Game(object):
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
+        self.gobNum = 3
+        self.toadNum = 0
+        self.ratNum = 0
+        self.calendar = 0
         self.plotPaths = []
         self.plagueT = []
         self.rats = []
@@ -298,12 +302,12 @@ class Game(object):
 
         asset = pygame.image.load("bloodicon.png")
         rect = asset.get_rect()
-        rect = rect.move([685, 340])
+        rect = rect.move([685, 308])
         screen.blit(asset, rect)
 
         asset = pygame.image.load("foodicon.png")
         rect = asset.get_rect()
-        rect = rect.move([685, 450])
+        rect = rect.move([685, 370])
         screen.blit(asset, rect)
 
         asset = pygame.image.load("endbutton.png")
@@ -311,6 +315,8 @@ class Game(object):
         rect = rect.move([704, 560])
         self.endRect = rect
         screen.blit(asset, rect)
+
+        #asset = pygame.image.load("")
 
         numFont = pygame.font.SysFont("Lucidia Console", 30)
 
@@ -320,11 +326,11 @@ class Game(object):
 
         self.updateBlood()
         bankLab = numFont.render(self.bankNum, 1, (255, 0, 0))
-        screen.blit(bankLab, (690, 380))
+        screen.blit(bankLab, (690, 348))
 
         self.updateFood()
         foodLab = numFont.render(self.foodNum, 1, (255, 0, 0))
-        screen.blit(foodLab, (690, 490))
+        screen.blit(foodLab, (690, 408))
 
     ##
     #checkClick
@@ -396,8 +402,10 @@ class Game(object):
                 #if there are no more stacks, that unit is depleted, remove it
                 if unitData.stacks == 0:
                     self.inventory.removeUnitPlot(unitID)
-            elif unitData.stacks <= 0:
+            elif unitData.stacks == 0:
                 print("Not ready to harvest.")
+            else:
+                self.inventory.removeUnitPlot(unitID)
 
     ##
     #sellPlot
