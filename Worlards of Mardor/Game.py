@@ -211,8 +211,8 @@ class Game(object):
     #       went down
     #
     #
-    def checkClick(self, pos):
-        if self.endRect.collidepoint(self.click) and self.endRect.collidepoint(pos):
+    def checkClick(self, pos, rect):
+        if rect.collidepoint(self.click) and rect.collidepoint(pos):
             return True
         else:
             return False
@@ -313,20 +313,31 @@ class Game(object):
         rect = asset.get_rect()
         rect = rect.move([offset[0], offset[1]])
         rect = rect.move([18, 215])
+        self.butt1 = rect
         screen.blit(asset, rect)
 
         asset = pygame.image.load("winbutt2.png")
         rect = asset.get_rect()
         rect = rect.move([offset[0], offset[1]])
         rect = rect.move([142, 215])
+        self.butt2 = rect
         screen.blit(asset, rect)
 
         asset = pygame.image.load("winbutt3.png")
         rect = asset.get_rect()
         rect = rect.move([offset[0], offset[1]])
         rect = rect.move([270, 215])
+        self.butt3 = rect
         screen.blit(asset, rect)
 
+    def button1(self):
+        print "button 1!"
+
+    def button2(self):
+        print "button 2!"
+
+    def button3(self):
+        print "button 3!"
 
 a = Game()
 #a.unitTest()
@@ -336,7 +347,13 @@ while True:
         if event.type == pygame.QUIT: sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN: a.click = pygame.mouse.get_pos()
         elif event.type == pygame.MOUSEBUTTONUP:
-            if a.checkClick(pygame.mouse.get_pos()):
+            if a.checkClick(pygame.mouse.get_pos(), a.butt1):
+                a.button1()
+            elif a.checkClick(pygame.mouse.get_pos(), a.butt2):
+                a.button2()
+            elif a.checkClick(pygame.mouse.get_pos(), a.butt3):
+                a.button3()
+            elif a.checkClick(pygame.mouse.get_pos(), a.endRect):
                 a.endTurn()
 
     musicPlaying = pygame.mixer.get_busy()
