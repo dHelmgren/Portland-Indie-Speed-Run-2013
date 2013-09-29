@@ -147,7 +147,9 @@ class Game(object):
             yAdjust = 0
             for unit in self.inventory.unitList:
                 plot = None
-                if isinstance(unit, Crop):
+                if isinstance(unit, Worker):
+                    break
+                elif isinstance(unit, Crop):
                     if unit.stacks == 0:
                         plot = pygame.image.load("sprout2.png")
                     elif unit.stacks == 1:
