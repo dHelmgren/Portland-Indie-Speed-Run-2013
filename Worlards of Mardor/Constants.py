@@ -7,7 +7,7 @@ __author__ = 'Devin'
 
 #Screen States
 SHOP = -3
-CROPS = -2
+PLOTS = -2
 DWELLINGS = -1
 
 #Crop Types
