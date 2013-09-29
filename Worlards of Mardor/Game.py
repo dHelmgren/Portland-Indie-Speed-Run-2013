@@ -198,7 +198,7 @@ class Game(object):
         else:
             #TODO: draw our shop screen
             do = "stuff"
-        self.currentEntities.append((self.endRect, ENDBUTTON))
+        self.currentEntities.append((self.endRect, ENDBUTTON, None))
 
     ##
     #drawSideBar
@@ -364,21 +364,21 @@ class Game(object):
         rect = rect.move([offset[0], offset[1]])
         rect = rect.move([13, 210])
         screen.blit(asset, rect)
-        self.currentEntities.append((rect, BUTTON1))
+        self.currentEntities.append((rect, BUTTON1, None))
 
         asset = pygame.image.load("winbutt2.png")
         rect = asset.get_rect()
         rect = rect.move([offset[0], offset[1]])
         rect = rect.move([113, 210])
         screen.blit(asset, rect)
-        self.currentEntities.append((rect, BUTTON2))
+        self.currentEntities.append((rect, BUTTON2, None))
 
         asset = pygame.image.load("winbutt3.png")
         rect = asset.get_rect()
         rect = rect.move([offset[0], offset[1]])
         rect = rect.move([213, 210])
         screen.blit(asset, rect)
-        self.currentEntities.append((rect, BUTTON3))
+        self.currentEntities.append((rect, BUTTON3, None))
 
     ##
     #changeState
