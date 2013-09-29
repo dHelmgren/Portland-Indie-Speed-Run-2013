@@ -302,7 +302,19 @@ class Game(object):
         asset = pygame.image.load("winbutt1.png")
         rect = asset.get_rect()
         rect = rect.move([offset[0], offset[1]])
-        rect = rect.move([13, 210])
+        rect = rect.move([18, 215])
+        screen.blit(asset, rect)
+
+        asset = pygame.image.load("winbutt2.png")
+        rect = asset.get_rect()
+        rect = rect.move([offset[0], offset[1]])
+        rect = rect.move([142, 215])
+        screen.blit(asset, rect)
+
+        asset = pygame.image.load("winbutt3.png")
+        rect = asset.get_rect()
+        rect = rect.move([offset[0], offset[1]])
+        rect = rect.move([270, 215])
         screen.blit(asset, rect)
 
 
