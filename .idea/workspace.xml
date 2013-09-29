@@ -15,23 +15,12 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/sprout2.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/tempstoreicon.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/window_background.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/path1.png" afterPath="$PROJECT_DIR$/Worlards of Mardor/path1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/path2.png" afterPath="$PROJECT_DIR$/Worlards of Mardor/path2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/path3.png" afterPath="$PROJECT_DIR$/Worlards of Mardor/path3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/pathcross.png" afterPath="$PROJECT_DIR$/Worlards of Mardor/pathcross.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/sprites/road_1.xcf" afterPath="$PROJECT_DIR$/Worlards of Mardor/sprites/road_1.xcf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/sprites/road_2.xcf" afterPath="$PROJECT_DIR$/Worlards of Mardor/sprites/road_2.xcf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/sprites/road_3.xcf" afterPath="$PROJECT_DIR$/Worlards of Mardor/sprites/road_3.xcf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/sprites/road_intersection.xcf" afterPath="$PROJECT_DIR$/Worlards of Mardor/sprites/road_intersection.xcf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/shopdisplay.png" afterPath="$PROJECT_DIR$/Worlards of Mardor/shopdisplay.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/window.png" afterPath="$PROJECT_DIR$/Worlards of Mardor/window.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/Constants.py" afterPath="$PROJECT_DIR$/Worlards of Mardor/Constants.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/Game.py" afterPath="$PROJECT_DIR$/Worlards of Mardor/Game.py" />
     </list>
     <ignored path="Portland-Indie-Speed-Run-2013.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380352017524" ignored="false" />
-    <file path="/Game.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380492843025" ignored="false" />
+    <file path="/Game.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380495389621" ignored="false" />
     <file path="/Inventory.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380352103550" ignored="false" />
     <file path="/Worker.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380353067407" ignored="false" />
     <file path="/Constants.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380491454944" ignored="false" />
@@ -57,7 +46,7 @@
       <file leaf-file-name="Game.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Worlards of Mardor/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="379" column="44" selection-start="15650" selection-end="15650" vertical-scroll-proportion="0.7201835">
+            <state line="60" column="29" selection-start="1621" selection-end="1621" vertical-scroll-proportion="-0.41284403">
               <folding>
                 <element signature="e#28#41#0" expanded="true" />
               </folding>
@@ -395,7 +384,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/Worlards of Mardor/Game.py</url>
-          <line>455</line>
+          <line>486</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
@@ -467,7 +456,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Worlards of Mardor/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="379" column="44" selection-start="15650" selection-end="15650" vertical-scroll-proportion="0.7201835">
+        <state line="60" column="29" selection-start="1621" selection-end="1621" vertical-scroll-proportion="-0.41284403">
           <folding>
             <element signature="e#28#41#0" expanded="true" />
           </folding>

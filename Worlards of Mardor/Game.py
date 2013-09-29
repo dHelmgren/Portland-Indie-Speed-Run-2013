@@ -55,6 +55,10 @@ class Game(object):
         self.clerkSpch = None
         self.favor = 0.05
         self.eventTime = True
+        self.intro = [True, 0]#30]
+        self.shopNoob = True
+        self.plotNoob = True
+        self.slaveNoob = True
 
 
     def updateTithe(self):
@@ -346,11 +350,38 @@ class Game(object):
             self.currentEntities.append((rect, RIGHT, None))
 
             self.currentEntities.append((self.endRect, ENDBUTTON, None))
-        else:
-            asset = pygame.image.load("eventScreen.png")
-            rect = asset.get_rect()
-            self.screen.blit(asset, rect)
-            self.currentEntities.append((rect, EVENT, None))
+        else:#THIS IS AN EVENT
+            if not self.intro[0]:
+                asset = pygame.image.load("eventScreen.png")
+                rect = asset.get_rect()
+                self.screen.blit(asset, rect)
+                self.currentEntities.append((rect, EVENT, None))
+            else:
+                self.intro[1] -= 1
+                asset = pygame.image.load("Exsanguia.png")
+                rect = asset.get_rect()
+                rect = rect.move([-50, 0])
+                self.screen.blit(asset, rect)
+                self.currentEntities.append((rect, EVENT, None))
+                if self.intro[1] <= 0:
+                    asset = pygame.image.load("window.png")
+                    rect = asset.get_rect()
+                    rect = rect.move([200, 380])
+                    self.screen.blit(asset, rect)
+                    numFont = pygame.font.SysFont("Courier", 15)
+                    intro = ["Welcome, devout follower of Exsanguia.",
+                             "It is time to show your zeal. Collect",
+                             "tithe for our Goddess, and she shall",
+                             "favor you. Fail, and die. You have",
+                             "been given the tools necessary to",
+                             "succeed, and as your influence grows,",
+                             "so too shall your wealth.","",""
+                             "[CLICK TO CONTIUE]"]
+                    x = 0
+                    for ch in intro:
+                        flavor = numFont.render(ch, 1, (0, 0, 0))
+                        screen.blit(flavor, (220, 410 +x*20))
+                        x += 1
 
     ##
     #drawSideBar
