@@ -72,3 +72,12 @@ class Inventory(object):
     def consume(self, amtToEat):
         self.foodstuffs -= amtToEat
 
+    ##
+    #spendBlood
+    #Description: modifies the amount of blood in your blood bank
+    #
+    #Parameter:
+    #   price - the cost of the item you purchased
+    ##
+    def spendBlood(self, price):
+        self.blood -= price

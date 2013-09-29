@@ -28,4 +28,11 @@ DIRE_RAT = 4
 #Worker Types
 GOBLIN = 5
 
+#Unit Stat Constants
+
+TURNOUT = 0
+TIME = 1
+COST = 2
+SELL_PRICE = 3
+
 

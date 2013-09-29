@@ -330,8 +330,12 @@ class Game(object):
     #Description: from the shop menu pop up, adds the proper thing to your inventory
     ##
     def buyItem(self):
+        #if the thing you selected to buy is a GOBLIN, it will be added as a stack
+        if self.inventory.blood < UNIT_STATS[self.selectedPlot][COST]:
+            return False
         if self.selectedPlot == GOBLIN:
             self.inventory.unitList[16].stacks += 1
+            self.inventory.spendBlood(UNIT_STATS[self.selectedPlot][COST])
             return True
         else:
             counter = 0
@@ -339,9 +343,11 @@ class Game(object):
                 if slot is None:
                     if self.selectedPlot <= ORCWORT:
                         self.inventory.addUnitPlot(counter, Crop(self.selectedPlot))
+                        self.inventory.spendBlood(UNIT_STATS[self.selectedPlot][COST])
                         return True
                     else:
                         self.inventory.addUnitPlot(counter, Livestock(self.selectedPlot))
+                        self.inventory.spendBlood(UNIT_STATS[self.selectedPlot][COST])
                         return True
                 counter += 1
             return False
@@ -548,7 +554,7 @@ class Game(object):
 
 a = Game()
 a.changeState(0)
-a.unitTest()
+#a.unitTest()
 
 while True:
     for event in pygame.event.get():
