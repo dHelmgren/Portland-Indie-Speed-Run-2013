@@ -35,7 +35,7 @@ class Inventory(object):
         self.maxUnits = 6
         self.maxPlots = 10
         #sets the number of useable workers to three for the beginning of the game
-        self.unitList[0].modifyWorkerNumber()
+        self.unitList[16].modifyWorkerNumber()
 
     ##
     #removeUnitPlot

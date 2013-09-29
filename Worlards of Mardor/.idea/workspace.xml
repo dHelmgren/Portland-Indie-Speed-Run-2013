@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cea5db1c-f677-490f-bdf4-599d24be03ca" name="Default" comment="" />
+    <list default="true" id="cea5db1c-f677-490f-bdf4-599d24be03ca" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Inventory.py" afterPath="$PROJECT_DIR$/Inventory.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Worlards of Mardor.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Game.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380424750730" ignored="false" />
-    <file path="/Inventory.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380409801742" ignored="false" />
+    <file path="/Game.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380426221307" ignored="false" />
+    <file path="/Inventory.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380426052397" ignored="false" />
     <file path="/Farmable.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380407419428" ignored="false" />
     <file path="/Crop.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380408074617" ignored="false" />
     <file path="/Livestock.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380354385161" ignored="false" />
     <file path="/Worker.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380400052597" ignored="false" />
-    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380425273411" ignored="false" />
+    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380426327347" ignored="false" />
     <file path="/UserInterface.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380346428623" ignored="false" />
     <file path="$PROJECT_DIR$/../../AIHW4/CS421DepthFirstHeuristic-/HumanPlayer.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380347269545" ignored="false" />
     <file path="/Constants.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380353961248" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380425352214" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,10 +36,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Game.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Game.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="223" column="30" selection-start="7700" selection-end="7700" vertical-scroll-proportion="0.4125874">
+            <state line="149" column="36" selection-start="5026" selection-end="5026" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#28#41#0" expanded="true" />
               </folding>
@@ -81,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Inventory.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Inventory.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Inventory.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="33" selection-start="957" selection-end="957" vertical-scroll-proportion="0.0">
+            <state line="37" column="24" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.7226107">
               <folding />
             </state>
           </provider>
@@ -124,8 +126,8 @@
         <option value="$PROJECT_DIR$/Worker.py" />
         <option value="$PROJECT_DIR$/Crop.py" />
         <option value="$PROJECT_DIR$/Farmable.py" />
-        <option value="$PROJECT_DIR$/Inventory.py" />
         <option value="$PROJECT_DIR$/Game.py" />
+        <option value="$PROJECT_DIR$/Inventory.py" />
       </list>
     </option>
   </component>
@@ -480,7 +482,11 @@
       <created>1380425275916</created>
       <updated>1380425275916</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Goblin workers live at the end of the unitList, which has been adjusted such that the 16 plots of land are filled by only Livestock and Crops">
+      <created>1380426330834</created>
+      <updated>1380426330834</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -569,7 +575,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initialized rects for plots" />
+    <option name="LAST_COMMIT_MESSAGE" value="Goblin workers live at the end of the unitList, which has been adjusted such that the 16 plots of land are filled by only Livestock and Crops" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -598,6 +604,7 @@
     <MESSAGE value="The plots of Land appear!" />
     <MESSAGE value="Crops go through life cycle" />
     <MESSAGE value="Initialized rects for plots" />
+    <MESSAGE value="Goblin workers live at the end of the unitList, which has been adjusted such that the 16 plots of land are filled by only Livestock and Crops" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -684,23 +691,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Farmable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="36" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="0" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Inventory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="33" selection-start="957" selection-end="957" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -712,12 +705,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Farmable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="36" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="223" column="30" selection-start="7700" selection-end="7700" vertical-scroll-proportion="0.4125874">
+        <state line="149" column="36" selection-start="5026" selection-end="5026" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#28#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Inventory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="24" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.7226107">
+          <folding />
         </state>
       </provider>
     </entry>
