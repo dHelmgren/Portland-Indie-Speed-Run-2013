@@ -12,7 +12,7 @@
     <file path="/Crop.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380408074617" ignored="false" />
     <file path="/Livestock.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380354385161" ignored="false" />
     <file path="/Worker.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380400052597" ignored="false" />
-    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380436756208" ignored="false" />
+    <file path="/Dummy.txt" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380436975569" ignored="false" />
     <file path="/UserInterface.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380346428623" ignored="false" />
     <file path="$PROJECT_DIR$/../../AIHW4/CS421DepthFirstHeuristic-/HumanPlayer.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380347269545" ignored="false" />
     <file path="/Constants.py" changelist="cea5db1c-f677-490f-bdf4-599d24be03ca" time="1380353961248" ignored="false" />
@@ -369,7 +369,11 @@
       <created>1380431372825</created>
       <updated>1380431372825</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="this thing works. I wish I knew why.">
+      <created>1380436978643</created>
+      <updated>1380436978643</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -458,7 +462,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Callback function for clicking buttons now also returns the associated unitID for the button" />
+    <option name="LAST_COMMIT_MESSAGE" value="this thing works. I wish I knew why." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -490,6 +494,7 @@
     <MESSAGE value="Goblin workers live at the end of the unitList, which has been adjusted such that the 16 plots of land are filled by only Livestock and Crops" />
     <MESSAGE value="fixed idiot bug" />
     <MESSAGE value="Callback function for clicking buttons now also returns the associated unitID for the button" />
+    <MESSAGE value="this thing works. I wish I knew why." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
