@@ -43,10 +43,7 @@ class Game(object):
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
         self.plotPaths = []
-        self.plotEntities = []
-        self.shopEntities = []
-        self.shantyEntities = []
-        self.popUpEntities = []
+        self.plagueT = []
         self.currentEntities = []
 
 
@@ -181,7 +178,12 @@ class Game(object):
                         plot = pygame.image.load("deadplant.png")
                 #draw the appropriate image for the Livestock
                 elif isinstance(unit, Livestock):
-                    plot = pygame.image.load("pen.png")
+                    if unit.type == PLAGUE_TOAD:
+                        frogCount = 0
+                        plot = self.plagueT[frogCount]
+                        frogCount += 1
+                    else:
+                        plot = pygame.image.load("pen.png")
                 #if it isn't either, just draw dirt
                 else:
                     plot = pygame.image.load("dirt.png")
@@ -410,6 +412,14 @@ class Game(object):
                     rect = asset.get_rect()
                     rect = rect.move([x*32, y*32 - 16])
                     self.plotPaths.append((asset, rect))
+            self.plagueT = []
+            toads = []
+            toads.append(pygame.image.load("toads1.png"))
+            toads.append(pygame.image.load("toads2.png"))
+            toads.append(pygame.image.load("toads3.png"))
+            toads.append(pygame.image.load("toads4.png"))
+            for x in range(0, 12):
+                self.plagueT.append(random.choice(toads))
 
     ##
     #clickCallback
