@@ -42,10 +42,10 @@ class Game(object):
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
-        self.gobNum = 3
-        self.toadNum = 0
-        self.ratNum = 0
-        self.calendar = 0
+        self.gobNum = str(3)
+        self.toadNum = str(0)
+        self.ratNum = str(0)
+        self.calendar = str(0)
         self.plotPaths = []
         self.plagueT = []
         self.rats = []
@@ -62,6 +62,9 @@ class Game(object):
 
     def updateFood(self):
         self.foodNum = str(self.inventory.foodstuffs)
+
+    def updateGobs(self):
+        self.gobNum = str(self.inventory.unitList[16].stacks)
     ##
     #updateState
     #Description: Updates the state of the game and the inventory between turns. Is responsible for
@@ -327,7 +330,10 @@ class Game(object):
         self.endRect = rect
         screen.blit(asset, rect)
 
-        #asset = pygame.image.load("")
+        asset = pygame.image.load("goblinicon.png")
+        rect = asset.get_rect()
+        rect = rect.move([684, 428])
+        screen.blit(asset, rect)
 
         numFont = pygame.font.SysFont("Lucidia Console", 30)
 
@@ -342,6 +348,10 @@ class Game(object):
         self.updateFood()
         foodLab = numFont.render(self.foodNum, 1, (255, 0, 0))
         screen.blit(foodLab, (690, 408))
+
+        self.updateGobs()
+        gobLab = numFont.render(self.gobNum, 1, (255, 0, 0))
+        screen.blit(gobLab, (690, 408 + 50))
 
     ##
     #checkClick
@@ -638,7 +648,6 @@ class Game(object):
             elif culprit[1] == BUTTON3:
                 self.popUpActive = False
                 self.selectedPlot = None
-
         if culprit[1] == ENDBUTTON:
             self.endTurn()
 
