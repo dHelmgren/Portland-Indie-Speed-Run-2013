@@ -73,24 +73,35 @@ class Game(object):
                 elif farmable.clock < 0:
                     Crop.makeRuined(farmable)
                 #next, make things eat food, using consume function and the unit's food cost
-                self.inventory.consume(farmable.consumption)
+                if self.inventory.foodstuffs >= farmable.consumption:
+                    self.inventory.consume(farmable.consumption)
+                #if the farmable is consuming more than user has, it takes damage to its hardiness
+                else:
+                    farmable.hardiness -= 1
+        deadNums = (index for index,dead in enumerate(self.inventory.unitList) if dead is not None and dead.hardiness < 0)
+
+        for deceased in deadNums:
+            self.inventory.removeUnitPlot(deceased)
+
+
 
     def unitTest(self):
         self.inventory.addUnitPlot(1, Crop(BLOODROOT))
-        #self.inventory.addUnitPlot(2, Crop(SCREAMING_FUNGUS))
-        #self.inventory.addUnitPlot(3, Crop(ORCWORT))
-        #self.inventory.addUnitPlot(4, Livestock(PLAGUE_TOAD))
-        #self.inventory.addUnitPlot(5, Livestock(DIRE_RAT))
+        self.inventory.addUnitPlot(2, Crop(SCREAMING_FUNGUS))
+        self.inventory.addUnitPlot(3, Crop(ORCWORT))
+        self.inventory.addUnitPlot(4, Livestock(PLAGUE_TOAD))
+        self.inventory.addUnitPlot(5, Livestock(DIRE_RAT))
 
-        print(self.inventory.blood)
-        print(self.inventory.tithe)
-        print(self.inventory.foodstuffs)
-        self.sacrificePlot(0)
-        self.sellPlot(0)
-        self.harvestPlot(0)
-        print(self.inventory.blood)
-        print(self.inventory.tithe)
-        print(self.inventory.foodstuffs)
+        # print(self.inventory.blood)
+        # print(self.inventory.tithe)
+        # print(self.inventory.foodstuffs)
+        # self.sacrificePlot(0)
+        # self.sellPlot(0)
+        # self.harvestPlot(0)
+        # print(self.inventory.blood)
+        # print(self.inventory.tithe)
+        # print(self.inventory.foodstuffs)
+
         # self.endTurn()
         # print(self.inventory.foodstuffs)
         # for unit in self.inventory.unitList:
@@ -108,14 +119,14 @@ class Game(object):
         #         Farmable.printStats(unit)
         # print(self.inventory.foodstuffs)
 
-        # for num in [0,1,2,3,4,5,6,7,8,9,10,11]:
-        #     print("Turn Number:")
-        #     print(num)
-        #     for unit in self.inventory.unitList:
-        #         if unit is not None:
-        #             Farmable.printStats(unit)
-        #     print(self.inventory.foodstuffs)
-        #     self.updateState()
+        for num in [0,1,2,3,4,5,6,7,8,9,10,11]:
+            print("Turn Number:")
+            print(num)
+            for unit in self.inventory.unitList:
+                if unit is not None:
+                    Farmable.printStats(unit)
+            print(self.inventory.foodstuffs)
+            self.updateState()
 
 
 

@@ -10,9 +10,9 @@ UNIT_STATS = []
 UNIT_STATS.append((8, 2, 100, 100, 0, 0, 0, None, None))  #BLOODROOT
 UNIT_STATS.append((6, 3, 200, 300, 0, 0, 0, None, None))  #SCREAMING_FUNGUS
 UNIT_STATS.append((1, 6, 400, 800, 0, 0, 0, None, None))  #ORCWORT
-UNIT_STATS.append((.2, 3, 300, 50, 0, 1, 2, 80, None))  #PLAGUE_TOAD
-UNIT_STATS.append((10, 7, 800, 400, 0, 4, 2, 8, None))  #DIRE_RAT
-UNIT_STATS.append((4, 7, 1000, 500, 0, 2, 0, 0, 0))  #GOBLIN
+UNIT_STATS.append((.2, 3, 300, 50, 1, 1, 2, 80, None))  #PLAGUE_TOAD
+UNIT_STATS.append((10, 7, 800, 400, 2, 4, 2, 8, None))  #DIRE_RAT
+UNIT_STATS.append((4, 7, 1000, 500, 2, 2, 0, 0, 0))  #GOBLIN
 
 ##
 #Farmable
