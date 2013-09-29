@@ -143,8 +143,18 @@ class Game(object):
             do = "stuff"
 
         elif self.state is PLOTS:
-            #TODO: draw our plots screen
-            do = "stuff"
+            xAdjust = 0
+            yAdjust = 0
+            for unit in self.inventory.unitList:
+                plot = pygame.image.load("dirt.png")
+                rect = plot.get_rect()
+                rect = rect.move([32 + xAdjust*160, 16 + yAdjust*160])  #move the vial to the right side of the screen
+                screen.blit(plot, rect)
+                xAdjust += 1
+                if xAdjust > 3:
+                    yAdjust += 1
+                    xAdjust = 0
+
         else:
             #TODO: draw our shop screen
             do = "stuff"
