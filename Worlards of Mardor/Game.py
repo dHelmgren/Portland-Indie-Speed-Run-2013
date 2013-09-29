@@ -41,7 +41,6 @@ class Game(object):
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
 
-
     def updateTithe(self):
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
 
@@ -82,7 +81,6 @@ class Game(object):
 
         for deceased in deadNums:
             self.inventory.removeUnitPlot(deceased)
-
 
 
     def unitTest(self):
@@ -127,8 +125,6 @@ class Game(object):
         #             Farmable.printStats(unit)
         #     print(self.inventory.foodstuffs)
         #     self.updateState()
-
-
 
 
     ##
@@ -227,9 +223,9 @@ class Game(object):
         else:
             return False
 
-    ##
+    ########################################################
     #EVENT OUTCOME FUNCTIONS
-    ##
+    ########################################################
 
     ##
     #harvestPlot
@@ -365,6 +361,10 @@ while True:
                 a.button3()
             elif a.checkClick(pygame.mouse.get_pos(), a.endRect):
                 a.endTurn()
+        elif event.type == pygame.KEYDOWN:
+            a.state -= 1
+            if a.state <= -4:
+                a.state = -1
 
     musicPlaying = pygame.mixer.get_busy()
     if not musicPlaying:
@@ -373,8 +373,6 @@ while True:
 
     a.screen.fill((0, 0, 0))
     a.drawScreen(a.screen)
-    a.popUp((500, 500), a.screen)
+    a.popUp((10, 10), a.screen)
     a.drawSideBar(a.screen)
     pygame.display.flip()
-
-
