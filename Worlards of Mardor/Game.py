@@ -53,6 +53,8 @@ class Game(object):
         self.selectedPlot = None
         self.clerkDlg = False
         self.clerkSpch = None
+        self.favor = 0.05
+
 
     def updateTithe(self):
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
@@ -193,29 +195,29 @@ class Game(object):
                 #draw the appropriate image for the crop
                 elif isinstance(unit, Crop):
                     if unit.type == ORCWORT:
-                        if unit.stacks == 0:
+                        if unit.clock == unit.time:
                             plot = pygame.image.load("orcwort1.png")
-                        elif unit.stacks == 1:
+                        elif unit.clock > 0:
                             plot = pygame.image.load("orcwort2.png")
-                        elif unit.stacks == 2:
+                        elif unit.clock == 0:
                             plot = pygame.image.load("orcwort3.png")
                         elif unit.stacks == -1:
                             plot = pygame.image.load("orcwort4.png")
                     elif unit.type == SCREAMING_FUNGUS:
-                        if unit.stacks == 0:
+                        if unit.clock == unit.time:
                             plot = pygame.image.load("shrieker1.png")
-                        elif unit.stacks == 1:
+                        elif unit.clock > 0:
                             plot = pygame.image.load("shrieker2.png")
-                        elif unit.stacks == 2:
+                        elif unit.clock == 0:
                             plot = pygame.image.load("shrieker3.png")
                         elif unit.stacks == -1:
                             plot = pygame.image.load("shrieker4.png")
                     elif unit.type == BLOODROOT:
-                        if unit.stacks == 0:
+                        if unit.clock == unit.time:
                             plot = pygame.image.load("bloodroot1.png")
-                        elif unit.stacks == 1:
+                        elif unit.clock > 0:
                             plot = pygame.image.load("bloodroot2.png")
-                        elif unit.stacks == 2:
+                        elif unit.clock == 0:
                             plot = pygame.image.load("bloodroot3.png")
                         elif unit.stacks == -1:
                             plot = pygame.image.load("bloodroot4.png")
@@ -468,6 +470,7 @@ class Game(object):
                 Farmable.removeAStack(unitData)
                 #based on the item's turnout, increase the number of foodstuffs
                 self.inventory.foodstuffs += unitData.turnout
+                self.inventory.blood += 5
                 #if there are no more stacks, that unit is depleted, remove it
                 if unitData.stacks == 0:
                     self.inventory.removeUnitPlot(unitID)
@@ -516,7 +519,7 @@ class Game(object):
                 Farmable.removeAStack(unitData)
                 #based on the item's turnout, increase the blood in our funds
                 if isinstance(unitData, Worker):
-                    self.inventory.tithe += unitData.sellPrice * 2
+                    self.inventory.tithe += unitData.sellPrice * 5
                 else:
                     self.inventory.tithe += unitData.sellPrice
                 #if there are no more stacks, that unit is depleted, remove it
@@ -532,6 +535,7 @@ class Game(object):
     ##
     def endTurn(self):
         print "End turn button pressed!"
+        self.eventEngine()
         self.updateState()
         self.calendar -= 1
         if self.calendar == 0:
@@ -547,10 +551,64 @@ class Game(object):
         if self.inventory.tithe < self.reqTithe:
             print("You failed to meet your required tithe. Your date with the alter is next week.")
             sys.exit(0)
-
-        self.reqTithe = 10 * self.year + self.reqTithe + (self.inventory.tithe/self.reqTithe)
-        self.calendar = 12
         self.year += 1
+        self.reqTithe = (10 + self.reqTithe) * (self.inventory.tithe/self.reqTithe)
+        self.calendar = 12
+        self.inventory.tithe = 0
+
+
+    ##
+    #eventEngine
+    #Description: generates an event, and runs the consequences
+    ##
+
+    def eventEngine(self):
+        #if your luck is worse than your favor gen event
+        luck = random.random()
+        if luck < self.favor:
+            luck = random.random()
+            self.favor = 0.05
+            #Blood Event
+            if luck < .25:
+                #TODO:
+                print("blood event")
+                self.inventory.blood -= 20
+                if self.inventory.blood < 0:
+                    self.inventory.blood = 0
+            #Food Event
+            elif .25 <= luck and luck < .5:
+                #TODO:
+                print("food event")
+                self.inventory.foodstuffs -= 2
+                if self.inventory.foodstuffs < 0:
+                    self.inventory.foodstuffs = 0
+
+            #Livestock Event
+            elif .5 <= luck and luck < .75:
+                #TODO
+
+                haveLivestock = False
+                unluckyLivestock = None
+                for unit in self.inventory.unitList:
+                    if isinstance(unit, Livestock):
+                        haveLivestock = True
+                        unluckyLivestock = unit
+                        break
+                if haveLivestock:
+                    unluckyLivestock.stacks -= 1
+                    #TODO: text for different livestock
+                else:
+                    print("the month passes quietly")
+
+            #Goblin Event
+            else:
+                #TODO
+                self.inventory.unitList[16].stacks -= 1
+
+        else:
+            self.favor += 0.05
+            print("the month passes quietly")
+
 
     ##
     #popUp
