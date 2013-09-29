@@ -500,14 +500,14 @@ class Game(object):
             asset = pygame.image.load("winbutt1.png")
             rect = asset.get_rect()
             rect = rect.move([offset[0], offset[1]])
-            rect = rect.move([13, 210])
+            rect = rect.move([200, 210])
             screen.blit(asset, rect)
             self.currentEntities.append((rect, BUTTON1, None))
 
             asset = pygame.image.load("winbutt3.png")
             rect = asset.get_rect()
             rect = rect.move([offset[0], offset[1]])
-            rect = rect.move([213, 210])
+            rect = rect.move([320, 210])
             screen.blit(asset, rect)
             self.currentEntities.append((rect, BUTTON3, None))
 
