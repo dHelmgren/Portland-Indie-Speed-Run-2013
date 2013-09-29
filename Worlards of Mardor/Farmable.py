@@ -12,7 +12,7 @@ UNIT_STATS.append((6, 3, 20, 40, 0, 0, 0, None, None))  #SCREAMING_FUNGUS
 UNIT_STATS.append((1, 6, 40, 80, 0, 0, 0, None, None))  #ORCWORT
 UNIT_STATS.append((1, 2, 30, 5, 1, 1, 2, 80, None))  #PLAGUE_TOAD
 UNIT_STATS.append((10, 5, 80, 40, 2, 4, 2, 8, None))  #DIRE_RAT
-UNIT_STATS.append((4, 7, 100, 50, 2, 2, 0, 16, 0))  #GOBLIN
+UNIT_STATS.append((4, 7, 100, 20, 2, 2, 0, 16, 0))  #GOBLIN
 
 ##
 #Farmable

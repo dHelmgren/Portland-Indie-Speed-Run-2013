@@ -192,29 +192,29 @@ class Game(object):
                 #draw the appropriate image for the crop
                 elif isinstance(unit, Crop):
                     if unit.type == ORCWORT:
-                        if unit.stacks == 0:
+                        if unit.clock == unit.time:
                             plot = pygame.image.load("orcwort1.png")
-                        elif unit.stacks == 1:
+                        elif unit.clock > 0:
                             plot = pygame.image.load("orcwort2.png")
-                        elif unit.stacks == 2:
+                        elif unit.clock == 0:
                             plot = pygame.image.load("orcwort3.png")
                         elif unit.stacks == -1:
                             plot = pygame.image.load("orcwort4.png")
                     elif unit.type == SCREAMING_FUNGUS:
-                        if unit.stacks == 0:
+                        if unit.clock == unit.time:
                             plot = pygame.image.load("shrieker1.png")
-                        elif unit.stacks == 1:
+                        elif unit.clock > 0:
                             plot = pygame.image.load("shrieker2.png")
-                        elif unit.stacks == 2:
+                        elif unit.clock == 0:
                             plot = pygame.image.load("shrieker3.png")
                         elif unit.stacks == -1:
                             plot = pygame.image.load("shrieker4.png")
                     elif unit.type == BLOODROOT:
-                        if unit.stacks == 0:
+                        if unit.clock == unit.time:
                             plot = pygame.image.load("bloodroot1.png")
-                        elif unit.stacks == 1:
+                        elif unit.clock > 0:
                             plot = pygame.image.load("bloodroot2.png")
-                        elif unit.stacks == 2:
+                        elif unit.clock == 0:
                             plot = pygame.image.load("bloodroot3.png")
                         elif unit.stacks == -1:
                             plot = pygame.image.load("bloodroot4.png")
@@ -473,7 +473,7 @@ class Game(object):
                 Farmable.removeAStack(unitData)
                 #based on the item's turnout, increase the blood in our funds
                 if isinstance(unitData, Worker):
-                    self.inventory.tithe += unitData.sellPrice * 2
+                    self.inventory.tithe += unitData.sellPrice * 5
                 else:
                     self.inventory.tithe += unitData.sellPrice
                 #if there are no more stacks, that unit is depleted, remove it
