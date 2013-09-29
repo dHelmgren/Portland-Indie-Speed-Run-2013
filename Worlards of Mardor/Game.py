@@ -34,8 +34,8 @@ class Game(object):
         size = (800, 640) #(width, height)
         self.screen = pygame.display.set_mode(size)
         pygame.display.set_caption('Exsanguia')
-        self.reqTithe = 50
-        self.state = SHOP
+        self.reqTithe = 10
+        self.state = PLOTS
         self.click = None
         self.endRect = None
         self.plotList = []
@@ -43,9 +43,8 @@ class Game(object):
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
         self.gobNum = str(3)
-        self.toadNum = str(0)
-        self.ratNum = str(0)
-        self.calendar = str(0)
+        self.calendar = 12
+        self.year = 0
         self.plotPaths = []
         self.plagueT = []
         self.rats = []
@@ -157,7 +156,9 @@ class Game(object):
         #     self.updateState()
 
 
-
+    ##
+    #VIEW FUNCTIONS
+    ##
 
     ##
     #drawScreen
@@ -353,6 +354,9 @@ class Game(object):
         gobLab = numFont.render(self.gobNum, 1, (255, 0, 0))
         screen.blit(gobLab, (690, 408 + 50))
 
+        calenLab = numFont.render(str(self.calendar), 1, (255, 0, 0))
+        screen.blit(calenLab, (690, 500))
+
     ##
     #checkClick
     #Description: Checks to see if the release of a button click is the same place as where it
@@ -485,6 +489,24 @@ class Game(object):
     def endTurn(self):
         print "End turn button pressed!"
         self.updateState()
+        self.calendar -= 1
+        if self.calendar == 0:
+            self.judgement()
+
+    ##
+    #judgement
+    #Description: at the end of the year, decides whether the player has lost, and calculates the new tithe
+    #
+    ##
+
+    def judgement(self):
+        if self.inventory.tithe < self.reqTithe:
+            print("You failed to meet your required tithe. Your date with the alter is next week.")
+            sys.exit(0)
+
+        self.reqTithe = 10 * self.year + self.reqTithe + (self.inventory.tithe/self.reqTithe)
+        self.calendar = 12
+        self.year += 1
 
     ##
     #popUp
