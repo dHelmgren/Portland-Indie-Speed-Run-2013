@@ -462,37 +462,60 @@ class Game(object):
     #Description: Draws our game's popup window
     #
     def popUp(self, offset, screen):
-        self.currentEntities = []
-        asset = pygame.image.load("window.png")
-        rect = asset.get_rect()
-        rect = rect.move([offset[0], offset[1]])
-        screen.blit(asset, rect)
+        if self.state == PLOTS:
+            self.currentEntities = []
+            asset = pygame.image.load("window.png")
+            rect = asset.get_rect()
+            rect = rect.move([offset[0], offset[1]])
+            screen.blit(asset, rect)
 
-        asset = pygame.image.load("winbutt1.png")
-        rect = asset.get_rect()
-        rect = rect.move([offset[0], offset[1]])
-        rect = rect.move([13, 210])
-        screen.blit(asset, rect)
-        self.currentEntities.append((rect, BUTTON1, None))
+            asset = pygame.image.load("winbutt1.png")
+            rect = asset.get_rect()
+            rect = rect.move([offset[0], offset[1]])
+            rect = rect.move([13, 210])
+            screen.blit(asset, rect)
+            self.currentEntities.append((rect, BUTTON1, None))
 
-        asset = pygame.image.load("winbutt2.png")
-        rect = asset.get_rect()
-        rect = rect.move([offset[0], offset[1]])
-        rect = rect.move([113, 210])
-        screen.blit(asset, rect)
-        self.currentEntities.append((rect, BUTTON2, None))
+            asset = pygame.image.load("winbutt2.png")
+            rect = asset.get_rect()
+            rect = rect.move([offset[0], offset[1]])
+            rect = rect.move([113, 210])
+            screen.blit(asset, rect)
+            self.currentEntities.append((rect, BUTTON2, None))
 
-        asset = pygame.image.load("winbutt3.png")
-        rect = asset.get_rect()
-        rect = rect.move([offset[0], offset[1]])
-        rect = rect.move([213, 210])
-        screen.blit(asset, rect)
-        self.currentEntities.append((rect, BUTTON3, None))
+            asset = pygame.image.load("winbutt3.png")
+            rect = asset.get_rect()
+            rect = rect.move([offset[0], offset[1]])
+            rect = rect.move([213, 210])
+            screen.blit(asset, rect)
+            self.currentEntities.append((rect, BUTTON3, None))
+
+        elif self.state == SHOP:
+            self.currentEntities = []
+            asset = pygame.image.load("shopdisplay.png")
+            rect = asset.get_rect()
+            rect = rect.move([330, 0])
+            screen.blit(asset, rect)
+
+            asset = pygame.image.load("winbutt1.png")
+            rect = asset.get_rect()
+            rect = rect.move([offset[0], offset[1]])
+            rect = rect.move([13, 210])
+            screen.blit(asset, rect)
+            self.currentEntities.append((rect, BUTTON1, None))
+
+            asset = pygame.image.load("winbutt3.png")
+            rect = asset.get_rect()
+            rect = rect.move([offset[0], offset[1]])
+            rect = rect.move([213, 210])
+            screen.blit(asset, rect)
+            self.currentEntities.append((rect, BUTTON3, None))
 
     ##
     #changeState
     #Description: Changes the state
     def changeState(self, direction):
+        self.popUpActive = False
         self.state += direction
         if self.state > -1:
             self.state = SHOP
@@ -588,14 +611,6 @@ while True:
             for thing in a.currentEntities:
                 if a.checkClick(pygame.mouse.get_pos(), thing[0]):
                     a.clickCallback(thing)
-            # if a.checkClick(pygame.mouse.get_pos(), a.butt1):
-            #     a.button1()
-            # elif a.checkClick(pygame.mouse.get_pos(), a.butt2):
-            #     a.button2()
-            # elif a.checkClick(pygame.mouse.get_pos(), a.butt3):
-            #     a.button3()
-            # elif a.checkClick(pygame.mouse.get_pos(), a.endRect):
-            #     a.endTurn()
 
         elif event.type == pygame.KEYDOWN:
             a.changeState(1)
