@@ -2,6 +2,7 @@ __author__ = 'Devin & Stan'
 import pygame
 import Inventory
 import sys
+import random
 from Farmable import *
 from Worker import *
 from Livestock import *
@@ -41,6 +42,7 @@ class Game(object):
         self.titheFrac = str(self.inventory.tithe) + "/" + str(self.reqTithe)
         self.bankNum = str(self.inventory.blood)
         self.foodNum = str(self.inventory.foodstuffs)
+        self.plotPaths = []
         self.plotEntities = []
         self.shopEntities = []
         self.shantyEntities = []
@@ -159,6 +161,10 @@ class Game(object):
             xAdjust = 0
             yAdjust = 0
             unitID = 0
+
+            for path in self.plotPaths:
+                screen.blit(path[0], path[1])
+
             for unit in self.inventory.unitList:
                 #remove the previous picture
                 plot = None
@@ -390,16 +396,32 @@ class Game(object):
         elif self.state < -3:
             self.state = DWELLINGS
 
+        if self.state == PLOTS:
+            self.plotPaths = []
+            paths = []
+            paths.append(pygame.image.load("path1.png"))
+            paths.append(pygame.image.load("path2.png"))
+            paths.append(pygame.image.load("path3.png"))
+            paths.append(pygame.image.load("pathcross.png"))
+
+            for y in range(0, 25):
+                for x in range(0, 25):
+                    asset = random.choice(paths)
+                    rect = asset.get_rect()
+                    rect = rect.move([x*32, y*32 - 16])
+                    self.plotPaths.append((asset, rect))
+
     ##
     #clickCallback
     #Description: The method called when something on our screen has been clicked
     #
-    # culprit - A tuple containing ([the rect of our culprit], [and their metadata])
+    # culprit - A tuple containing ([the rect of our culprit], [and their metadata], [and their plot ID where relevant])
     def clickCallback(self, culprit):
         print "CLICK CALLBACK!"
         print culprit[2]
 
 a = Game()
+a.changeState(0)
 a.unitTest()
 
 while True:

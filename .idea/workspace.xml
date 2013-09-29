@@ -7,13 +7,14 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/Window_button3.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/background.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/end_icon_rough.xcf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/path3.xcf" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Worlards of Mardor/window_background.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Worlards of Mardor/Game.py" afterPath="$PROJECT_DIR$/Worlards of Mardor/Game.py" />
     </list>
     <ignored path="Portland-Indie-Speed-Run-2013.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380352017524" ignored="false" />
-    <file path="/Game.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380431412902" ignored="false" />
+    <file path="/Game.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380433805033" ignored="false" />
     <file path="/Inventory.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380352103550" ignored="false" />
     <file path="/Worker.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380353067407" ignored="false" />
     <file path="/Constants.py" changelist="31b63e3e-13fa-46a1-b388-04cc01d847f9" time="1380429363918" ignored="false" />
@@ -39,18 +40,16 @@
       <file leaf-file-name="Game.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Worlards of Mardor/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="412" column="41" selection-start="14496" selection-end="14496" vertical-scroll-proportion="0.767184">
+            <state line="410" column="52" selection-start="14461" selection-end="14461" vertical-scroll-proportion="0.67849225">
               <folding>
                 <element signature="e#28#41#0" expanded="true" />
-                <element signature="e#1323#1392#0" expanded="false" />
-                <element signature="e#1429#1469#0" expanded="false" />
-                <element signature="e#1505#1555#0" expanded="false" />
-                <element signature="e#3400#4958#0" expanded="false" />
-                <element signature="e#7423#8929#0" expanded="false" />
-                <element signature="e#9692#10372#0" expanded="false" />
-                <element signature="e#10573#11245#0" expanded="false" />
-                <element signature="e#11460#12280#0" expanded="false" />
-                <element signature="e#13644#13796#0" expanded="false" />
+                <element signature="e#1365#1434#0" expanded="false" />
+                <element signature="e#1471#1511#0" expanded="false" />
+                <element signature="e#1547#1597#0" expanded="false" />
+                <element signature="e#7553#9059#0" expanded="false" />
+                <element signature="e#9822#10502#0" expanded="false" />
+                <element signature="e#10703#11375#0" expanded="false" />
+                <element signature="e#11590#12410#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -422,18 +421,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Worlards of Mardor/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="412" column="41" selection-start="14496" selection-end="14496" vertical-scroll-proportion="0.767184">
+        <state line="410" column="52" selection-start="14461" selection-end="14461" vertical-scroll-proportion="0.67849225">
           <folding>
             <element signature="e#28#41#0" expanded="true" />
-            <element signature="e#1323#1392#0" expanded="false" />
-            <element signature="e#1429#1469#0" expanded="false" />
-            <element signature="e#1505#1555#0" expanded="false" />
-            <element signature="e#3400#4958#0" expanded="false" />
-            <element signature="e#7423#8929#0" expanded="false" />
-            <element signature="e#9692#10372#0" expanded="false" />
-            <element signature="e#10573#11245#0" expanded="false" />
-            <element signature="e#11460#12280#0" expanded="false" />
-            <element signature="e#13644#13796#0" expanded="false" />
+            <element signature="e#1365#1434#0" expanded="false" />
+            <element signature="e#1471#1511#0" expanded="false" />
+            <element signature="e#1547#1597#0" expanded="false" />
+            <element signature="e#7553#9059#0" expanded="false" />
+            <element signature="e#9822#10502#0" expanded="false" />
+            <element signature="e#10703#11375#0" expanded="false" />
+            <element signature="e#11590#12410#0" expanded="false" />
           </folding>
         </state>
       </provider>
