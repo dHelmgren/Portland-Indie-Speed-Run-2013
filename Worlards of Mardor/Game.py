@@ -203,10 +203,30 @@ class Game(object):
                     xAdjust = 0
                 #increment the unitID
                 unitID += 1
-
+        #state is STORE
         else:
-            #TODO: draw our shop screen
-            do = "stuff"
+            bar = pygame.image.load("tempstorebar.png")
+            rect = bar.get_rect()
+            rect = rect.move([0, 448])
+            self.screen.blit(bar, rect)
+
+            xAdjust = 0
+            yAdjust = 0
+            for item in [BLOODROOT, SCREAMING_FUNGUS, ORCWORT, PLAGUE_TOAD, DIRE_RAT, GOBLIN]:
+                icon = pygame.image.load("tempstoreicon.png")
+                rect = icon.get_rect()
+                rect = rect.move([16 + 192 * xAdjust, 470 + 96 * yAdjust])
+                self.screen.blit(icon, rect)
+                if not self.popUpActive:
+                    self.currentEntities.append((rect, item, None))
+                else:
+                    self.popUp([200, 200], self.screen)
+                xAdjust += 1
+                if xAdjust > 2:
+                    yAdjust += 1
+                    xAdjust = 0
+
+
         self.currentEntities.append((self.endRect, ENDBUTTON, None))
 
     ##
@@ -274,6 +294,29 @@ class Game(object):
     ##
     #EVENT OUTCOME FUNCTIONS
     ##
+
+    ##
+    #buyItem
+    #Description: from the shop menu pop up, adds the proper thing to your inventory
+    ##
+    def buyItem(self):
+        if self.selectedPlot == GOBLIN:
+            self.inventory.unitList[16].stacks += 1
+            return True
+        else:
+            counter = 0
+            for slot in self.inventory.unitList:
+                if slot is None:
+                    if self.selectedPlot <= ORCWORT:
+                        self.inventory.addUnitPlot(counter, Crop(self.selectedPlot))
+                        return True
+                    else:
+                        self.inventory.addUnitPlot(counter, Livestock(self.selectedPlot))
+                        return True
+                counter += 1
+            return False
+
+
 
     ##
     #harvestPlot
@@ -444,6 +487,21 @@ class Game(object):
                 self.selectedPlot = None
             elif culprit[1] == BUTTON3:
                 self.sacrificePlot(self.selectedPlot)
+                self.popUpActive = False
+                self.selectedPlot = None
+        elif self.state == SHOP:
+            if culprit[1] >= 0:
+                self.popUpActive = True
+                self.selectedPlot = culprit[1]
+            elif culprit[1] == BUTTON1:  #This will buy the thing!
+                if not self.buyItem():
+                    print("there is no room")
+                self.popUpActive = False
+                self.selectedPlot = None
+            elif culprit[1] == BUTTON2:
+                self.popUpActive = False
+                self.selectedPlot = None
+            elif culprit[1] == BUTTON3:
                 self.popUpActive = False
                 self.selectedPlot = None
 
