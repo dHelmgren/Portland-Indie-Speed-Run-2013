@@ -262,10 +262,14 @@ class Game(object):
                     unitID += 1
             #state is STORE
             else:
-                bar = pygame.image.load("storebar.png")
-                rect = bar.get_rect()
+                asset = pygame.image.load("shopfront.png")
+                rect = asset.get_rect()
+                self.screen.blit(asset, rect)
+
+                asset = pygame.image.load("storebar.png")
+                rect = asset.get_rect()
                 rect = rect.move([0, 448])
-                self.screen.blit(bar, rect)
+                self.screen.blit(asset, rect)
 
                 xAdjust = 0
                 yAdjust = 0
@@ -379,10 +383,10 @@ class Game(object):
                     intro = ["Welcome, devout follower of Exsanguia.",
                              "It is time to show your zeal. Collect",
                              "tithe for our Goddess, and she shall",
-                             "favor you. Fail, and die. You have",
-                             "been given the tools necessary to",
-                             "succeed, and as your influence grows,",
-                             "so too shall your wealth.","",""
+                             "favor you. You have been given the",
+                             "tools necessary to succeed, and as",
+                             "your influence grows, so too shall",
+                             "your wealth. Do not fail.", "", ""
                              "[CLICK TO CONTIUE]"]
                     x = 0
                     for ch in intro:
@@ -748,7 +752,7 @@ class Game(object):
                 description.append("protective gear.")
             elif things[self.selectedPlot] is SCREAMING_FUNGUS:
                 asset = pygame.image.load("shopShreiker.png")
-                flavor = pygame.image.load("bldrtFlv.png")
+                flavor = pygame.image.load("shrkFlv.png")
                 name = "SCREAMING FUNGUS"
                 cost = "20"
                 description.append("Possibly the best food and cash crop")
@@ -756,7 +760,7 @@ class Game(object):
                 description.append("wasn't for all the screaming....")
             elif things[self.selectedPlot] is ORCWORT:
                 asset = pygame.image.load("shopOrcwort.png")
-                flavor = pygame.image.load("bldrtFlv.png")
+                flavor = pygame.image.load("orcwrtFlv.png")
                 name = "ORCWORT"
                 cost = "40"
                 description.append("A simple white flower whose seeds")
@@ -795,6 +799,9 @@ class Game(object):
             rect = flavor.get_rect()
             rect = rect.move([360, 190])
             screen.blit(flavor, rect)
+
+            asset = pygame.image.load("shopframe.png")
+            screen.blit(asset, rect)
 
             asset = pygame.image.load("bloodicon.png")
             rect = asset.get_rect()
