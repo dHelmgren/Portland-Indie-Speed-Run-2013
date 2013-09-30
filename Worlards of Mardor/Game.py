@@ -185,6 +185,7 @@ class Game(object):
                 asset = pygame.image.load("map_slavepens.png")
                 rect = asset.get_rect()
                 screen.blit(asset, rect)
+
                 if self.popUpActive:
                     self.popUp([200, 200], self.screen)
                 else:
