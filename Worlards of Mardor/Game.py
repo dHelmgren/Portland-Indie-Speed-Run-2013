@@ -182,8 +182,9 @@ class Game(object):
         if not self.eventTime:
             self.currentEntities = []
             if self.state is DWELLINGS:
-                #TODO: draw our dwellings screen
-                do = "stuff"
+                asset = pygame.image.load("map_slavepens.png")
+                rect = asset.get_rect()
+                screen.blit(asset, rect)
 
             elif self.state is PLOTS:
                 #initialize some values used later
