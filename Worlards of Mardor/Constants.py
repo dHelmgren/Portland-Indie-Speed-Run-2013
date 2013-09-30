@@ -42,6 +42,11 @@ TIME = 1
 COST = 2
 SELL_PRICE = 3
 
+#noob Constants
+GOBLINNOOB = 4
+SHOPNOOB = 5
+PLOTSNOOB = 6
+
 #LOSS OF FOOD
 WITHER = ["Your crop is left too long and withers in the fields.",
           " Your pathetic attempts at saving the last of it",

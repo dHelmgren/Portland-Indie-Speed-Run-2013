@@ -55,7 +55,7 @@ class Game(object):
         self.clerkSpch = None
         self.favor = 0.05
         self.eventTime = True
-        self.intro = [True, 0]#30]
+        self.intro = [True, 20]
         self.shopNoob = True
         self.plotNoob = True
         self.slaveNoob = True
@@ -92,8 +92,6 @@ class Game(object):
                 plotCounter += 1
                 #first, update all the farmable's clock
                 Farmable.updateClock(farmable)
-
-                #TODO We're not getting to our harvestable graphic- DO SOMETHING!!
 
                 #if the clock has hit zero, the object either gains stacks, or is harvestable
                 if farmable.clock == 0:
@@ -188,8 +186,38 @@ class Game(object):
 
                 if self.popUpActive:
                     self.popUp([200, 200], self.screen)
+                    numFont = pygame.font.SysFont("Courier", 13)
+                    flavor = numFont.render("How would you like to slaughter your goblins?", 1, (0, 0, 0))
+                    screen.blit(flavor, (220, 300))
+                elif self.slaveNoob:
+                    asset = pygame.image.load("window.png")
+                    rect = asset.get_rect()
+                    rect = rect.move([200, 200])
+                    screen.blit(asset, rect)
+
+                    self.currentEntities.append((rect, GOBLINNOOB, None))
+
+                    numFont = pygame.font.SysFont("Courier", 13)
+                    lines = ["This is your goblin screen. From here you can",
+                             "slaughter your goblins for food, sell them",
+                             "for blood, or sacrifice them as a tithe to",
+                             "Exsanguia. While they offer much sacrificial",
+                             "blood, they are hard to sell used. If you",
+                             "have reservations about heartlessly murdering",
+                             "them, I suggest you get ready to meet",
+                             "Exsanguia in person.","",
+                             "[CLICK WINDOW TO CLOSE IT]"]
+                    x = 0
+                    for line in lines:
+                        flavor = numFont.render(line, 1, (0, 0, 0))
+                        screen.blit(flavor, (220, 235 +x*20))
+                        x += 1
+
+
                 else:
                     self.currentEntities.append((rect, self.inventory.unitList[16], 16))
+
+
 
             elif self.state is PLOTS:
                 #initialize some values used later
@@ -256,7 +284,7 @@ class Game(object):
                     rect = rect.move([32 + xAdjust*160, 16 + yAdjust*160])
                     #create an entry for currentEntities that includes the button's rect, unit object, and the number of the
                     #plot
-                    if not self.popUpActive:
+                    if not self.popUpActive and not self.plotNoob:
                         self.currentEntities.append((rect, unit, unitID))
                     else:
                         self.popUp([200, 200], self.screen)
@@ -269,6 +297,31 @@ class Game(object):
                         xAdjust = 0
                     #increment the unitID
                     unitID += 1
+                if self.plotNoob:
+                    self.currentEntities = []
+                    asset = pygame.image.load("window.png")
+                    rect = asset.get_rect()
+                    rect = rect.move([200, 200])
+                    screen.blit(asset, rect)
+
+                    self.currentEntities.append((rect, PLOTSNOOB, None))
+
+                    numFont = pygame.font.SysFont("Courier", 13)
+                    lines = ["This is your farm screen. It shows you what",
+                             "is currently growing on your lands. Take",
+                             "care you do not let your plants wilt, lest",
+                             "you lose your investment. You can only",
+                             "work as many plots as you have goblins,",
+                             "since you clearly have more important",
+                             "business to attend to.",
+                             "To harvest a plot, click on it.",
+                             "",
+                             "[CLICK WINDOW TO CLOSE IT]"]
+                    x = 0
+                    for line in lines:
+                        flavor = numFont.render(line, 1, (0, 0, 0))
+                        screen.blit(flavor, (220, 235 +x*20))
+                        x += 1
             #state is STORE
             else:
                 asset = pygame.image.load("shopfront.png")
@@ -350,6 +403,31 @@ class Game(object):
                         flavor = numFont.render(ch, 1, (0, 0, 0))
                         screen.blit(flavor, (320, 340 +x*20))
                         x += 1
+                if self.shopNoob:
+                    self.currentEntities = []
+                    asset = pygame.image.load("window.png")
+                    rect = asset.get_rect()
+                    rect = rect.move([200, 200])
+                    screen.blit(asset, rect)
+
+                    self.currentEntities.append((rect, SHOPNOOB, None))
+
+                    numFont = pygame.font.SysFont("Courier", 13)
+                    lines = ["Welcome. First of all, note the sidebar. It",
+                             "shows your current tithe, blood money, food,",
+                             "goblin count, and the countdown until your",
+                             "tithe is due. Use the arrows on either side",
+                             "to navigate to the other screens, where you",
+                             "can do other things. Here, at the shop, you",
+                             "can buy goods. Click on one of the icons to",
+                             "consider them. Make careful choices.",
+                             "",
+                             "[CLICK WINDOW TO CLOSE IT]"]
+                    x = 0
+                    for line in lines:
+                        flavor = numFont.render(line, 1, (0, 0, 0))
+                        screen.blit(flavor, (220, 235 +x*20))
+                        x += 1
 
             asset = pygame.image.load("arrowL.png")
             rect = asset.get_rect()
@@ -418,7 +496,7 @@ class Game(object):
                     numFont = pygame.font.SysFont("Courier", 15)
                     intro = ["Welcome, devout follower of Exsanguia.",
                              "It is time to show your zeal. Collect",
-                             "tithe for our Goddess, and she shall",
+                             "tithes for our Goddess, and she shall",
                              "favor you. You have been given the",
                              "tools necessary to succeed, and as",
                              "your influence grows, so too shall",
@@ -933,9 +1011,7 @@ class Game(object):
         elif culprit[1] is LEFT:
             self.changeState(-1)
         elif self.state == PLOTS or self.state == DWELLINGS:
-            print"yahclicked"
             if culprit[2] >= 0 and culprit[1] is not None:
-                print"yahculpt"
                 self.popUpActive = True
                 self.selectedPlot = culprit[2]
             elif culprit[1] == BUTTON1:
@@ -950,9 +1026,15 @@ class Game(object):
                 self.sacrificePlot(self.selectedPlot)
                 self.popUpActive = False
                 self.selectedPlot = None
+            elif culprit[1] == GOBLINNOOB:
+                self.slaveNoob = False
+            elif culprit[1] == PLOTSNOOB:
+                self.plotNoob = False
         elif self.state == SHOP:
+            if culprit[1] == SHOPNOOB:
+                self.shopNoob = False
             #if the pressed button is not a part of pop up
-            if culprit[1] >= 0:
+            elif culprit[1] >= 0:
                 self.popUpActive = True
                 self.selectedPlot = culprit[1]
             #if the button IS a part of pop up
@@ -970,6 +1052,7 @@ class Game(object):
                 self.clerkDlg = True
                 self.popUpActive = False
                 self.selectedPlot = None
+
         if culprit[1] == ENDBUTTON:
             self.endTurn()
 
@@ -992,7 +1075,7 @@ while True:
     musicPlaying = pygame.mixer.get_busy()
     if not musicPlaying:
         song = pygame.mixer.Sound("MoonlightHall.wav")
-        song.play()
+        #song.play()
 
     a.screen.fill((0, 0, 0))
     a.drawScreen(a.screen)
