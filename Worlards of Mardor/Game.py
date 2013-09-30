@@ -185,7 +185,7 @@ class Game(object):
                 asset = pygame.image.load("map_slavepens.png")
                 rect = asset.get_rect()
                 screen.blit(asset, rect)
-                self.currentEntities.append((rect, self.inventory.unitList[16], 0))
+                self.currentEntities.append((rect, self.inventory.unitList[16], 16))
 
             elif self.state is PLOTS:
                 #initialize some values used later
