@@ -932,9 +932,7 @@ class Game(object):
         elif culprit[1] is LEFT:
             self.changeState(-1)
         elif self.state == PLOTS or self.state == DWELLINGS:
-            print"yahclicked"
             if culprit[2] >= 0 and culprit[1] is not None:
-                print"yahculpt"
                 self.popUpActive = True
                 self.selectedPlot = culprit[2]
             elif culprit[1] == BUTTON1:
