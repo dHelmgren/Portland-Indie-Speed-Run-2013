@@ -59,7 +59,8 @@ class Game(object):
         self.shopNoob = True
         self.plotNoob = True
         self.slaveNoob = True
-        self.randEventText = None
+        self.randEventText = ["", ""]
+        self.gameOver = False
 
 
     def updateTithe(self):
@@ -110,8 +111,8 @@ class Game(object):
                     farmable.hardiness -= 1
 
         if self.inventory.unitList[16].hardiness < 0 or self.inventory.unitList[16].stacks < 0:
-            print("Your goblins cannibalize each other and destroy your farm. Your day at the alter is tentatively scheduled for next week.")
-            sys.exit(0)
+            self.gameOver = True
+            self.eventTime = True
 
         #enumerates over all of the units, finds those defined as dead (hardiness < 0) and returns a list of their
         #indicies
@@ -357,16 +358,23 @@ class Game(object):
             self.currentEntities.append((self.endRect, ENDBUTTON, None))
         else:#THIS IS AN EVENT
             if not self.intro[0]:
-                asset = pygame.image.load("eventScreen.png")
-                rect = asset.get_rect()
-                self.screen.blit(asset, rect)
-                self.currentEntities.append((rect, EVENT, None))
-                numFont = pygame.font.SysFont("Courier", 15)
-                x = 0
-                for ch in self.randEventText:
-                    flavor = numFont.render(ch, 1, (0, 0, 0))
-                    screen.blit(flavor, (220, 220 +x*20))
-                    x += 1
+                if not self.gameOver:
+                    asset = pygame.image.load("eventScreen.png")
+                    rect = asset.get_rect()
+                    self.screen.blit(asset, rect)
+                    self.currentEntities.append((rect, EVENT, None))
+                    numFont = pygame.font.SysFont("Courier", 15)
+                    x = 0
+                    for ch in self.randEventText:
+                        flavor = numFont.render(ch, 1, (0, 0, 0))
+                        screen.blit(flavor, (220, 220 +x*20))
+                        x += 1
+                else:
+                    asset = pygame.image.load("gameOver.png")
+                    rect = asset.get_rect()
+                    rect = rect.move([50, 96])
+                    self.screen.blit(asset, rect)
+                    self.currentEntities.append((rect, EVENT, None))
             else:
                 self.intro[1] -= 1
                 asset = pygame.image.load("Exsanguia.png")
@@ -614,8 +622,8 @@ class Game(object):
 
     def judgement(self):
         if self.inventory.tithe < self.reqTithe:
-            print("You failed to meet your required tithe. Your date with the alter is next week.")
-            sys.exit(0)
+            self.gameOver = True
+            self.eventTime = True
         self.year += 1
         self.reqTithe = (10 + self.reqTithe) * (self.inventory.tithe/self.reqTithe)
         self.calendar = 12
@@ -951,7 +959,7 @@ while True:
     musicPlaying = pygame.mixer.get_busy()
     if not musicPlaying:
         song = pygame.mixer.Sound("MoonlightHall.wav")
-        #song.play()
+        song.play()
 
     a.screen.fill((0, 0, 0))
     a.drawScreen(a.screen)
