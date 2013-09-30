@@ -429,7 +429,9 @@ class Game(object):
         screen.blit(asset, rect)
 
         progress = (self.inventory.tithe/self.reqTithe)
-        if progress <= (1/6):
+        if self.inventory.tithe > self.reqTithe:
+            asset = pygame.image.load("vial7.png")
+        elif progress <= (1/6):
             asset = pygame.image.load("vial1.png")
         elif progress <= (2/6):
             asset = pygame.image.load("vial2.png")
@@ -441,8 +443,6 @@ class Game(object):
             asset = pygame.image.load("vial5.png")
         elif progress <= 1:
             asset = pygame.image.load("vial6.png")
-        else:
-            asset = pygame.image.load("vial7.png")
 
 
         rect = asset.get_rect()
