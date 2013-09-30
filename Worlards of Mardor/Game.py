@@ -60,6 +60,7 @@ class Game(object):
         self.plotNoob = True
         self.slaveNoob = True
         self.randEventText = None
+        self.newYearEvent = False
 
 
     def updateTithe(self):
@@ -356,7 +357,7 @@ class Game(object):
 
             self.currentEntities.append((self.endRect, ENDBUTTON, None))
         else:#THIS IS AN EVENT
-            if not self.intro[0]:
+            if not self.intro[0] and not self.newYearEvent:
                 asset = pygame.image.load("eventScreen.png")
                 rect = asset.get_rect()
                 self.screen.blit(asset, rect)
@@ -367,6 +368,28 @@ class Game(object):
                     flavor = numFont.render(ch, 1, (0, 0, 0))
                     screen.blit(flavor, (220, 220 +x*20))
                     x += 1
+
+            elif self.newYearEvent:
+                asset = pygame.image.load("Exsanguia.png")
+                rect = asset.get_rect()
+                rect = rect.move([-50, 0])
+                self.screen.blit(asset, rect)
+                self.currentEntities.append((rect, EVENT, None))
+                if self.intro[1] <= 0:
+                    asset = pygame.image.load("window.png")
+                    rect = asset.get_rect()
+                    rect = rect.move([200, 380])
+                    self.screen.blit(asset, rect)
+                    numFont = pygame.font.SysFont("Courier", 15)
+                    text = ["You have done well Follower. Your ",
+                             "tithe for next year will be " + str(self.reqTithe)+"."]
+                    x = 0
+                    for ch in text:
+                        flavor = numFont.render(ch, 1, (0, 0, 0))
+                        screen.blit(flavor, (220, 410 +x*20))
+                        x += 1
+
+
             else:
                 self.intro[1] -= 1
                 asset = pygame.image.load("Exsanguia.png")
@@ -600,7 +623,8 @@ class Game(object):
     ##
     def endTurn(self):
         self.intro = [False, 0]
-        self.eventEngine()
+        if not self.newYearEvent:
+            self.eventEngine()
         self.updateState()
         self.calendar -= 1
         if self.calendar == 0:
@@ -620,6 +644,8 @@ class Game(object):
         self.reqTithe = (10 + self.reqTithe) * (self.inventory.tithe/self.reqTithe)
         self.calendar = 12
         self.inventory.tithe = 0
+        self.newYearEvent = True
+        self.eventTime = True
 
 
     ##
@@ -692,7 +718,7 @@ class Game(object):
                 self.inventory.unitList[16].stacks -= 1
 
         else:
-            self.favor += 0.05
+            self.favor += 0.02
             print("the month passes quietly")
 
 
