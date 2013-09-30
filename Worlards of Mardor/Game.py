@@ -735,7 +735,7 @@ class Game(object):
     #Description: Draws our game's popup window
     #
     def popUp(self, offset, screen):
-        if self.state == PLOTS:
+        if self.state == PLOTS or self.state == DWELLINGS:
             self.currentEntities = []
             asset = pygame.image.load("window.png")
             rect = asset.get_rect()
