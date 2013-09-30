@@ -59,6 +59,7 @@ class Game(object):
         self.shopNoob = True
         self.plotNoob = True
         self.slaveNoob = True
+        self.randEventText = None
 
 
     def updateTithe(self):
@@ -360,6 +361,12 @@ class Game(object):
                 rect = asset.get_rect()
                 self.screen.blit(asset, rect)
                 self.currentEntities.append((rect, EVENT, None))
+                numFont = pygame.font.SysFont("Courier", 15)
+                x = 0
+                for ch in self.randEventText:
+                    flavor = numFont.render(ch, 1, (0, 0, 0))
+                    screen.blit(flavor, (220, 220 +x*20))
+                    x += 1
             else:
                 self.intro[1] -= 1
                 asset = pygame.image.load("Exsanguia.png")
@@ -592,7 +599,7 @@ class Game(object):
     #Description: Do all of our cool end-turn thingies
     ##
     def endTurn(self):
-        print "End turn button pressed!"
+        self.intro = [False, 0]
         self.eventEngine()
         self.updateState()
         self.calendar -= 1
@@ -626,25 +633,41 @@ class Game(object):
         if luck < self.favor:
             luck = random.random()
             self.favor = 0.05
+            self.eventTime = True
             #Blood Event
             if luck < .25:
-                #TODO:
-                print("blood event")
+                luck = random.random()
+                if luck < .3:
+                    self.randEventText = VAMPIRES
+                elif luck < .6:
+                    self.ranEventText = INJURY
+                else:
+                    self.randEventText = LOCAL_TAXES
                 self.inventory.blood -= 20
                 if self.inventory.blood < 0:
                     self.inventory.blood = 0
             #Food Event
             elif .25 <= luck and luck < .5:
-                #TODO:
-                print("food event")
+                luck = random.random()
+                if luck < .3:
+                    self.randEventText = WITHER
+                elif luck < .6:
+                    self.ranEventText = GEL_CUBE
+                else:
+                    self.randEventText = SMALL
                 self.inventory.foodstuffs -= 2
                 if self.inventory.foodstuffs < 0:
                     self.inventory.foodstuffs = 0
 
             #Livestock Event
             elif .5 <= luck and luck < .75:
-                #TODO
-
+                luck = random.random()
+                if luck < .3:
+                    self.randEventText = BARBARIANS
+                elif luck < .6:
+                    self.ranEventText = RAT_ESCAPE
+                else:
+                    self.randEventText = FIRE_WRYM
                 haveLivestock = False
                 unluckyLivestock = None
                 for unit in self.inventory.unitList:
@@ -654,13 +677,18 @@ class Game(object):
                         break
                 if haveLivestock:
                     unluckyLivestock.stacks -= 1
-                    #TODO: text for different livestock
                 else:
-                    print("the month passes quietly")
+                    self.eventTime = False
 
             #Goblin Event
             else:
-                #TODO
+                luck = random.random()
+                if luck < .3:
+                    self.randEventText = EMPTY_LANDS
+                elif luck < .6:
+                    self.ranEventText = DO_GOODERS
+                else:
+                    self.randEventText = FEED_FRENZY
                 self.inventory.unitList[16].stacks -= 1
 
         else:
