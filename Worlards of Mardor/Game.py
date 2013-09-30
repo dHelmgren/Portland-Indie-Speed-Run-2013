@@ -185,7 +185,10 @@ class Game(object):
                 asset = pygame.image.load("map_slavepens.png")
                 rect = asset.get_rect()
                 screen.blit(asset, rect)
-                self.currentEntities.append((rect, self.inventory.unitList[16], 0))
+                if self.popUpActive:
+                    self.popUp([200, 200], self.screen)
+                else:
+                    self.currentEntities.append((rect, self.inventory.unitList[16], 16))
 
             elif self.state is PLOTS:
                 #initialize some values used later
@@ -736,7 +739,7 @@ class Game(object):
     #Description: Draws our game's popup window
     #
     def popUp(self, offset, screen):
-        if self.state == PLOTS:
+        if self.state == PLOTS or self.state == DWELLINGS:
             self.currentEntities = []
             asset = pygame.image.load("window.png")
             rect = asset.get_rect()
@@ -928,8 +931,10 @@ class Game(object):
             self.changeState(1)
         elif culprit[1] is LEFT:
             self.changeState(-1)
-        elif self.state == PLOTS:
+        elif self.state == PLOTS or self.state == DWELLINGS:
+            print"yahclicked"
             if culprit[2] >= 0 and culprit[1] is not None:
+                print"yahculpt"
                 self.popUpActive = True
                 self.selectedPlot = culprit[2]
             elif culprit[1] == BUTTON1:
