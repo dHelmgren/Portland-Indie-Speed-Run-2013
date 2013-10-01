@@ -714,12 +714,13 @@ class Game(object):
     ##
     def endTurn(self):
         self.intro = [False, 0]
-        if not self.newYearEvent:
-            self.eventEngine()
-        self.updateState()
         self.calendar -= 1
         if self.calendar == 0:
             self.judgement()
+        if not self.newYearEvent:
+            self.eventEngine()
+        self.updateState()
+
 
     ##
     #judgement
